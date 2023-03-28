@@ -1,30 +1,28 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import HomePage from './components/HomePage/HomePage'
+import Login from './components/Login/Login'
+import PrivacityCookies from './components/PrivacityCookies/PrivacityCookies'
+import PrivacityPolicy from './components/PrivacityPolicy/PrivacityPolicy'
+import Profile from './components/Profile/Profile'
+import Register from './components/Register/Register'
 
-function App() {
-
-  const compis = ['Fran 👦🏻 💻', 'Lupe 👩🏻 💻', 'Inés 👩🏼 💻', 'Jose 👦🏻 💻']
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Vamos a darle caña a esto compisssss!!!</h1>
-      {compis.map((compi, index) => (
-        <ul key={index} style={{listStyle:'none' }}>
-          <li>
-          <h2>{compi}</h2>
-          </li>
-        </ul>
-      ))}
-
-      <h2>Recoradad:</h2>
-      <ul style={{listStyle:'none' }}>
-        <li> <h3>Siempre pull antes de trabajar</h3></li>
-        <li> <h3>Trabaja desde tu propia rama, nunca desde Main</h3></li>
-        <li><h3>Y sobre todo, vamos a aprender!!!!</h3></li>
-      </ul>
-    
-    
-     
-    </div>
+    <>
+    <Routes>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path="/registro" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/perfil" element={<Profile />} />
+      <Route path="/:idNew" element={<HomePage />} />
+      {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
+      <Route path="/politica-privacidad" element={<PrivacityPolicy/>}/>
+      <Route path="/politica-cookies" element={<PrivacityCookies/>}/>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+    </>
   )
 }
 
