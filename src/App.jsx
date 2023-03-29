@@ -20,7 +20,7 @@ const App = () => {
 
     setInterval(() => {
       setShowSpinner(true)
-    }, 3000);
+    }, 4000);
   }, [])
 
   return (
