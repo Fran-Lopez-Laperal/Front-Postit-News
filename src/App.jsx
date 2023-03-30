@@ -13,22 +13,20 @@ import Register from "./components/Register/Register";
 import Spinner from "./components/Spinner/Spinner";
 
 const App = () => {
-
-  const [showSpinner, setShowSpinner] = useState(false)
+  const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
-
     setInterval(() => {
-      setShowSpinner(true)
-    }, 4000);
-  }, [])
+      setShowSpinner(true);
+    }, 1000);
+  }, []);
 
   return (
     <>
-      {!showSpinner ?
+      {!showSpinner ? (
         <Spinner />
-        :
-        <div>
+      ) : (
+        <main>
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -42,10 +40,8 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
-        </div>
-
-      }
-
+        </main>
+      )}
     </>
   );
 };

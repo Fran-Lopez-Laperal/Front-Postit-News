@@ -1,0 +1,20 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+label {
+  text-align: center;
+}
+
+button {
+  width: 20%;
+  margin-top: 1rem;
+}
