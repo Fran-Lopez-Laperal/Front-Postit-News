@@ -7,20 +7,21 @@ export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
   useEffect(() => {
-    localStorage.setItem("token", token);
+    const [tokenValue] = Object.values(token);
+    localStorage.setItem("token", JSON.stringify(tokenValue));
   }, [token]);
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const data = await getMyUserDataService({ token });
+        const data = await getMyUserDataService(token);
         setUser(data);
       } catch (error) {
         logout();
       }
     };
     if (token) getUserData();
-  }, [token]);
+  }, [token, setToken]);
 
   const login = (token) => {
     setToken(token);
