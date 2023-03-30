@@ -1,0 +1,77 @@
+.navBar {
+    display: flex;
+    justify-content: start;
+    background-color: var(--corporation);
+    width: 70px;
+    min-height: 80vh;
+    border-radius: 20px;
+    top: 100px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    transition: all .4s ease-out;
+}
+
+.navBar__expand {
+    background-color: var(--corporation);
+    width: 240px;
+    min-height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+}
+
+
+
+.navBar__button{
+    right: 0;
+    margin-top: 30px;
+    margin-right: 0px;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    position:absolute;
+    border-radius: 50%;
+    z-index: -1;
+    border: none;
+}
+
+.navBar__menu__ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 3rem;
+    margin-left: 10px;
+    position: absolute;
+    
+}
+
+.navBar__menu__ul__li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    padding: 1rem;
+  margin-top: 30px;
+}
+
+
+
+.navBar__menu__ul__li:hover {
+    background-color: rgba(128, 128, 128, 0.32);
+    border-radius: 30px;
+}
+
+
+
+.navBar__menu__ul__li > a{
+    color: black;
+
+}
+
+.navBar__menu__ul__li_iconMenu{
+    width: 70px;
+}
+
