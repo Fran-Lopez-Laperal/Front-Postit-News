@@ -1,4 +1,4 @@
 .footer {
   height: 10vh;
-  background-color: rgb(26, 35, 71);
+  background-color: var(--corporation);
 }

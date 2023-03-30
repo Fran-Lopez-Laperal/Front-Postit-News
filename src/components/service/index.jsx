@@ -36,7 +36,7 @@ export const loginUserService = async ({email, password}) => {
 
 };
 
-/* export const getMyUserDataService = async ({token}) => {
+export const getMyUserDataService = async ({token}) => {
   const response= await fetch(`http://localhost:4000/users`, {
     headers: {
       Authorization: token
@@ -50,4 +50,4 @@ console.log(json);
   }
 
   return json.data;
-}; */
+};
