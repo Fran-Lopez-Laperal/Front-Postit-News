@@ -1,5 +1,7 @@
+import { registerUserService } from "../service";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./Register.css";
 
 const Register = () => {
@@ -10,12 +12,31 @@ const Register = () => {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [bio, setBio] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    if (pass1 !== pass2) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
+
+    try {
+      await registerUserService({ name, email, password: pass1, bio });
+
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <article className="articleRegister">
+      {error !== "" ? <p className="error">{error}</p> : null}
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Nombre</label>
         <input
@@ -77,7 +98,7 @@ const Register = () => {
             setBio(e.target.value);
           }}
         ></textarea>
-        <button>¡Crea tu perfil! </button>
+        {loading ? <div>Cargando!</div> : <button>¡Crea tu perfil! </button>}
       </form>
     </article>
   );
