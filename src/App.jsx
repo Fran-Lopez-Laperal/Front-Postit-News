@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
+import NavBar from "./components/NavBar/NavBar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import PrivacityCookies from "./components/PrivacityCookies/PrivacityCookies";
 import PrivacityPolicy from "./components/PrivacityPolicy/PrivacityPolicy";
@@ -28,6 +29,7 @@ const App = () => {
       ) : (
         <main>
           <Header />
+          <NavBar/>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/registro" element={<Register />} />

@@ -4,8 +4,42 @@
   box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.563);
   background-color: var(--corporation);
   /* position: fixed; */
+  z-index: 3;
+  border-radius: 20px;
 }
 
-.header > img {
+.header__section__search{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header__section__search > img {
   height: 80px;
+}
+
+.header__section__search__article{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(128, 128, 128, 0.445);
+  border: none;
+  border-radius: 20px;
+  width: 900px;
+  height: 60px;
+  margin-right: 20px;
+  padding: 1rem;
+}
+
+.header__section__search--input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 300px;
+}
+
+
+.header__section__search__article--img {
+  width: 50px;
 }
