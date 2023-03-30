@@ -1,7 +1,13 @@
-export const registerUserService = async ({ name, email, password, bio }) => {
+export const registerUserService = async ({
+  name,
+  email,
+  password,
+  bio,
+  photo,
+}) => {
   const response = await fetch(`http://localhost:4000/users/register`, {
     method: "POST",
-    body: JSON.stringify({ name, email, password, bio }),
+    body: JSON.stringify({ name, email, password, bio, photo }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -9,21 +15,18 @@ export const registerUserService = async ({ name, email, password, bio }) => {
 
   const json = await response.json();
 
-  console.log(json);
-
   if (!response.ok) {
     throw new Error(json.message);
   }
 };
 
-export const loginUserService = async ({email, password}) => {
+export const loginUserService = async ({ email, password }) => {
   const response = await fetch(`http://localhost:4000/users/login`, {
-  method: "POST",
-  headers: {
+    method: "POST",
+    headers: {
       "Content-Type": "application/json",
     },
-  body: JSON.stringify({email, password})
-
+    body: JSON.stringify({ email, password }),
   });
 
   const json = await response.json();
@@ -33,19 +36,18 @@ export const loginUserService = async ({email, password}) => {
   }
 
   return json.data; //es el token
-
 };
 
-export const getMyUserDataService = async ({token}) => {
-  const response= await fetch(`http://localhost:4000/users`, {
+export const getMyUserDataService = async ({ token }) => {
+  const response = await fetch(`http://localhost:4000/users`, {
     headers: {
-      Authorization: token
+      Authorization: token,
     },
   });
 
   const json = await response.json();
-console.log(json);
-  if(!response.ok){
+  console.log(json);
+  if (!response.ok) {
     throw new Error(json.message);
   }
 
