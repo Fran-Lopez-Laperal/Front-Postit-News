@@ -13,8 +13,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(name, email, pass1, pass2, bio);
   };
   return (
     <article className="articleRegister">
