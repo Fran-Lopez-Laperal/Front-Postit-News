@@ -1,14 +1,17 @@
-const registerUserService = async ({ name, email, pass1, bio }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/users/register`,
-    {
-      method: "POST",
-      body: JSON.stringify({ name, email, pass1, bio }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-};
+export const registerUserService = async ({ name, email, password, bio }) => {
+  const response = await fetch(`http://localhost:4000/users/register`, {
+    method: "POST",
+    body: JSON.stringify({ name, email, password, bio }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-export default { registerUserService };
+  const json = await response.json();
+
+  console.log(json);
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
