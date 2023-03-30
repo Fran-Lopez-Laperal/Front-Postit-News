@@ -36,7 +36,7 @@ export const loginUserService = async ({email, password}) => {
 
 };
 
-export const getMyUserDataService = async ({token}) => {
+/* export const getMyUserDataService = async ({token}) => {
   const response= await fetch(`http://localhost:4000/users`, {
     headers: {
       Authorization: token
@@ -44,10 +44,10 @@ export const getMyUserDataService = async ({token}) => {
   });
 
   const json = await response.json();
-
+console.log(json);
   if(!response.ok){
     throw new Error(json.message);
   }
 
   return json.data;
-};
+}; */
