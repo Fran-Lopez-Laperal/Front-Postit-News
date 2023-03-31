@@ -7,13 +7,15 @@ export const Auth = () => {
 
   return user ? (
     <section>
-      Logged in as <Link to={`/users/${user.id}`}>{user.email}</Link>{" "}
+      
+      Hola <Link to={`/users/${user.id}`}>{user.name}</Link>{" "}
+      
       <button onClick={() => logout()}>Cerrar sesión</button>{" "}
     </section>
   ) : (
     <ul>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/registro">Register</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
