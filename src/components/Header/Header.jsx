@@ -3,6 +3,7 @@ import logo from '../assets/logo.png'
 import avatar from '../assets/avatar.jpg'
 
 import './Header.css'
+import { Auth } from '../Auth'
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
             <img className='header__section__search__article--img' src={avatar} alt="" />
           </figure>
         </article>
+        <Auth></Auth>
       </section>
 
     </div>
