@@ -16,9 +16,9 @@ const Login = () => {
     setError("");
 
     try {
-      const data = await loginUserService({email,password})
-      console.log(data);
-      login(data);
+      const token = await loginUserService({email,password})
+      console.log(token);
+      login(token);
       navigate('/');
 
     } catch (error){
