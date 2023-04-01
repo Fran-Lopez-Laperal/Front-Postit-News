@@ -46,6 +46,7 @@ const Register = () => {
   return (
     <article className="articleRegister">
       {error !== "" ? <p className="error">{error}</p> : null}
+      <h1 className="h1-title">Registro</h1>
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">Nombre</label>
@@ -123,7 +124,9 @@ const Register = () => {
             <img src={URL.createObjectURL(photo)} alt="foto-seleccionada" />
           ) : null}
         </fieldset>
+        <section className="button-register">
         {loading ? <div>Cargando!</div> : <button>¡Crea tu perfil! </button>}
+        </section>
       </form>
     </article>
   );

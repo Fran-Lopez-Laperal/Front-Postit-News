@@ -4,19 +4,23 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 500px;
-  width: 400px;
+  width: 90%;
   margin: 0 auto;
+  
 }
 
 .login-container h1 {
   text-align: center;
   color: #6bded7;
   margin-bottom: 20px;
+  font-size: 28px;
 }
 
-form {
+
+.label-input-container {
   display: flex;
   flex-direction: column;
+  
 }
 
 label {
@@ -36,6 +40,7 @@ label {
   background-color: #fff;
   color: #333;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  
 }
 
 .input-email:focus,
@@ -54,6 +59,7 @@ label {
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
+  margin: 30px auto 0 auto;
 }
 
 button:hover {
@@ -65,3 +71,46 @@ p {
   font-size: 14px;
   margin-top: 10px;
 }
+
+@media only screen and (min-width: 768px) {
+  .login-container {
+    width: 500px;
+    margin: 50px auto;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    
+  }
+
+  .login-container h1 {
+    font-size: 36px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .label-input-container {
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+  .input-email,
+  .input-password {
+    font-size: 18px;
+  }
+  .button-container {
+    display: flex;
+
+  }
+  .login-container button {
+    font-size: 1.4rem;
+    margin: 30px auto 0;
+    
+  }
+}
+

@@ -32,15 +32,17 @@ const Login = () => {
     <section className='login-container'>
       <h1>Login</h1>
       <form onSubmit={handleForm}>
+          <section className='label-input-container'>
+            <label htmlFor="email">Email</label>
+            <input className='input-email' type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)}/>
         
-          <label htmlFor="email">Email</label>
-          <input className='input-email' type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)}/>
         
-        
-          <label htmlFor="password">Password</label>
-          <input className='input-password' type="password" id= "password" name="password" required onChange={(e) => setPassword(e.target.value) } />
-        
-        <button>Login</button>
+            <label htmlFor="password">Password</label>
+            <input className='input-password' type="password" id= "password" name="password" required onChange={(e) => setPassword(e.target.value) } />
+          </section>
+          <section className='button-container'>
+            <button>Login</button>
+          </section>
         {error ? <p>{error}</p> : null}
       </form>
     </section>
