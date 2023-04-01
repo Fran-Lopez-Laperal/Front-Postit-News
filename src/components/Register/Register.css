@@ -80,10 +80,11 @@ button {
 button:hover {
   background-color: #56c9c1;
 }
-p {
+.p-error-form {
   color: red;
   font-size: 14px;
   margin-top: 10px;
+  text-align: center;
 }
 
 #selectedPhoto {
