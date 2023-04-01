@@ -31,45 +31,45 @@ const NavBar = () => {
           
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-            <i class="fa fa-users" aria-hidden="true"></i>
+            <i className="fa fa-users" aria-hidden="true"></i>
               </div>
               <Link to='/login' style={{ textDecoration: 'none' }}>Sociedad</Link>
             </li>
 
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+            <i className="fa fa-futbol-o" aria-hidden="true"></i>
               </div>
               <Link to='/registro' style={{ textDecoration: 'none' }}>Deportes</Link>
             </li>
 
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-            <i class="fa fa-university" aria-hidden="true"></i>
+            <i className="fa fa-university" aria-hidden="true"></i>
               </div>
               <Link to='/registro' style={{ textDecoration: 'none' }}>Cultura</Link>
             </li>
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-            <i class="fa fa-book" aria-hidden="true"></i>
+            <i className="fa fa-book" aria-hidden="true"></i>
               </div>
               <Link to='/registro' style={{ textDecoration: 'none' }}>Actualidad</Link>
             </li>
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-                <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                <i className="fa fa-balance-scale" aria-hidden="true"></i>
               </div>
               <Link to='/login' style={{ textDecoration: 'none' }}>Politica</Link>
             </li>
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
-                <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                <i className="fa fa-balance-scale" aria-hidden="true"></i>
               </div>
               <Link to='/registro' style={{ textDecoration: 'none' }}>Sucesos</Link>
             </li>
             <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
               <div className='navBar__menu__ul__li_iconMenu'>
-              <i class="fa fa-eur" aria-hidden="true"></i>
+              <i className="fa fa-eur" aria-hidden="true"></i>
               </div>
 
               <Link to='/registro' style={{ textDecoration: 'none' }}>Economía</Link>
