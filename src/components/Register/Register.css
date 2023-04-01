@@ -6,55 +6,26 @@
   max-width: 500px;
   width: 90%;
   margin: 0 auto;
-  
 }
-
 
 .h1-title {
   font-size: 28px;
 }
-
 .articleRegister h1 {
   text-align: center;
   color: #6bded7;
   margin-bottom: 20px;
 }
-
 form {
   display: flex;
   flex-direction: column;
-
-  align-items: center;
-  border: 1rem solid var(--corporation);
-  border-radius: 2rem;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
 }
-
-h2 {
-  margin: 1rem;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 1fr;
-  gap: 1rem;
-  align-items: center;
-  justify-content: end;
-  
-}
-
 fieldset {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
   border: none;
-  
- 
 }
-
 label {
   font-size: 16px;
   font-weight: bold;
@@ -62,40 +33,6 @@ label {
   color: #444;
   display: block;
 }
-
-fieldset {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-
-  border: 0;
-}
-
-#selectedPhoto {
-  width: 70%;
-  margin-top: 2rem;
-  border-radius: 50%;
-}
-
-#bio {
-  width: 80%;
-  height: 30%;
-}
-
-#photo {
-  margin-top: 1rem;
-}
-
-input {
-  width: 80%;
-}
-
-label,
-button {
-  margin-top: 1rem;
-  text-align: center;
-
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -118,7 +55,6 @@ textarea {
 height: 100px; / altura fija del textarea */
 }
 
-
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
@@ -126,15 +62,10 @@ textarea:focus {
   outline: none;
   box-shadow: 0 0 5px #6bded7;
 }
-
-.button-register{
+.button-register {
   text-align: center;
 }
 button {
-
-  width: 40%;
-  height: 20%;
-
   margin-top: 30px;
   padding: 1rem 2rem;
   border: none;
@@ -145,22 +76,15 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
-  
-  
-  
-  
 }
-
 button:hover {
   background-color: #56c9c1;
 }
-
 p {
   color: red;
   font-size: 14px;
   margin-top: 10px;
 }
-
 @media (min-width: 768px) {
   .articleRegister {
     display: flex;
@@ -171,18 +95,14 @@ p {
     align-items: center;
     flex-wrap: wrap;
   }
-
   form {
     width: 80%;
   }
-
   fieldset {
     margin-right: 20px;
     margin-bottom: 0;
     width: 90%;
-    
   }
-
   input[type="file"] {
     margin-top: 10px;
   }
