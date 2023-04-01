@@ -43,7 +43,9 @@ const Login = () => {
           <section className='button-container'>
             <button>Login</button>
           </section>
-        {error ? <p>{error}</p> : null}
+          <section className='p-error-form'>
+            {error ? <p>{error}</p> : null}
+        </section>
       </form>
     </section>
   );
