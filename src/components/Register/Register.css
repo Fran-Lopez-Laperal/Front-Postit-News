@@ -2,22 +2,53 @@ article.articleRegister {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid var(--corporation);
+  border: 1rem solid var(--corporation);
+  border-radius: 2rem;
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
 }
 
+h2 {
+  margin: 1rem;
+}
+
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  gap: 1rem;
   align-items: center;
+  justify-content: end;
 }
 
 p.error {
   background-color: var(--error);
   width: 100%;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+
+  border: 0;
+}
+
+#selectedPhoto {
+  width: 70%;
+  margin-top: 2rem;
+  border-radius: 50%;
+}
+
+#bio {
+  width: 80%;
+  height: 30%;
+}
+
+#photo {
+  margin-top: 1rem;
 }
 
 input {
@@ -27,13 +58,10 @@ input {
 label,
 button {
   margin-top: 1rem;
-}
-
-label {
   text-align: center;
 }
 
 button {
-  width: 20%;
-  margin-top: 1rem;
+  width: 40%;
+  height: 20%;
 }

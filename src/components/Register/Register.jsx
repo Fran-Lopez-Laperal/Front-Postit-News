@@ -12,7 +12,7 @@ const Register = () => {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [bio, setBio] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -25,17 +25,14 @@ const Register = () => {
     }
 
     try {
-      console.log(photo.name);
-
-      const photoName = photo.name;
       await registerUserService({
         name,
         email,
         password: pass1,
         bio,
-        photo: photoName,
+        photo,
       });
-      // navigate("/login");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -46,8 +43,9 @@ const Register = () => {
   return (
     <article className="articleRegister">
       {error !== "" ? <p className="error">{error}</p> : null}
+      <h2>FORMULARIO DE REGISTRO</h2>
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset className="formText">
           <label htmlFor="name">Nombre</label>
           <input
             type="text"
@@ -109,18 +107,24 @@ const Register = () => {
             }}
           ></textarea>
         </fieldset>
-        <fieldset>
+        <fieldset className="formImg">
           <label htmlFor="photo">Imagen de perfil</label>
           <input
             type="file"
             name="photo"
             id="photo"
             accept={"image/*"}
-            onChange={(e) => setPhoto(e.target.files[0])}
+            onChange={(e) => {
+              setPhoto({ name: e.target.files[0].name });
+            }}
           />
 
           {photo ? (
-            <img src={URL.createObjectURL(photo)} alt="foto-seleccionada" />
+            <img
+              id="selectedPhoto"
+              //src={URL.createObjectURL(photo)}
+              alt="foto-seleccionada"
+            />
           ) : null}
         </fieldset>
         {loading ? <div>Cargando!</div> : <button>¡Crea tu perfil! </button>}
