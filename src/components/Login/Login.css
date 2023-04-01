@@ -60,6 +60,11 @@ label {
   transition: all 0.3s ease;
   width: fit-content;
   margin: 30px auto 0 auto;
+  
+}
+
+.button-container{
+  text-align: center;
 }
 
 button:hover {
