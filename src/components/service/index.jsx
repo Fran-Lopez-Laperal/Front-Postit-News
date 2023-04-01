@@ -1,24 +1,9 @@
-export const registerUserService = async ({
-  name,
-  email,
-  password,
-  bio,
-  photo,
-}) => {
+export const registerUserService = async ({ formData }) => {
+  console.log(formData);
   const response = await fetch(`http://localhost:4000/users/register`, {
     method: "POST",
-    body: JSON.stringify({ name, email, password, bio }),
-    files: JSON.stringify({ photo }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: formData,
   });
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
 };
 
 export const loginUserService = async ({ email, password }) => {
@@ -55,16 +40,15 @@ export const getMyUserDataService = async ({ token }) => {
   return json.data;
 };
 
-
 export const getNewsDataService = async () => {
   const response = await fetch(`http://localhost:4000/news`, {
-    method: 'GET',
-  })
+    method: "GET",
+  });
   const json = await response.json();
-  console.log(json)
+  console.log(json);
   if (!response.ok) {
-    throw new Error(json.message)
+    throw new Error(json.message);
   }
-  return json.data
-}
-getNewsDataService()
+  return json.data;
+};
+getNewsDataService();

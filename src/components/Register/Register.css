@@ -85,6 +85,12 @@ p {
   font-size: 14px;
   margin-top: 10px;
 }
+
+#selectedPhoto {
+  width: 100%;
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
   .articleRegister {
     display: flex;
