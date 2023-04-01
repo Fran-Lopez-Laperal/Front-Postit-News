@@ -9,6 +9,7 @@
   
 }
 
+
 .h1-title {
   font-size: 28px;
 }
@@ -54,7 +55,16 @@ textarea {
   background-color: #fff;
   color: #333;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  resize: none;
+  /* nueva línea para inputs de texto */
 }
+
+textarea {
+  resize: none;
+  /* nueva línea para textarea /
+height: 100px; / altura fija del textarea */
+}
+
 
 input[type="text"]:focus,
 input[type="email"]:focus,
