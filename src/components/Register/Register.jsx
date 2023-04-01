@@ -31,9 +31,9 @@ const Register = () => {
       formData.append("email", email);
       formData.append("password", pass1);
       formData.append("bio", bio);
-      formData.append("avatar", photo);
+      formData.append("photo", photo);
 
-      await registerUserService(formData);
+      await registerUserService({ formData });
       console.log("listo!");
 
       // navigate("/login");
