@@ -9,17 +9,19 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-links">
-        <Modal>
+        <Modal buttonText="Política de Cookies">
           <PrivacityCookies />
         </Modal>
-        <Modal>
+        <Modal buttonText="Política de Privacidad">
           <PrivacityPolicy />
-        </Modal>
-        <Modal>
+        </Modal >
+        <Modal buttonText="Sobre nosotros">
           <AboutAs />
         </Modal>
       </div>
+      <div className="copyright">
       © 2023 HACK A BOSS
+      </div>
     </footer>
   );
 };
