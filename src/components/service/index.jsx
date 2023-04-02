@@ -2,9 +2,6 @@ export const registerUserService = async ({ formData }) => {
   console.log(formData);
   const response = await fetch(`http://localhost:4000/users/register`, {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "multipart/form-data",
-    // },
     body: formData,
   });
 };
