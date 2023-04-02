@@ -34,9 +34,12 @@ const Register = () => {
       formData.append("photo", photo);
 
       await registerUserService({ formData });
-      console.log("listo!");
 
-      // navigate("/login");
+      if (!error) {
+        navigate("/");
+      }
+
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -126,7 +129,7 @@ const Register = () => {
           {photo ? (
             <img
               id="selectedPhoto"
-              //src={URL.createObjectURL(photo)}
+              src={URL.createObjectURL(photo)}
               alt="foto-seleccionada"
             />
           ) : null}
