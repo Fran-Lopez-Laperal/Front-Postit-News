@@ -4,6 +4,12 @@ export const registerUserService = async ({ formData }) => {
     method: "POST",
     body: formData,
   });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 };
 
 export const loginUserService = async ({ email, password }) => {
