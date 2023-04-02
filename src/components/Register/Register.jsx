@@ -46,10 +46,9 @@ const Register = () => {
   };
   return (
     <article className="articleRegister">
-
       <h1 className="h1-title">Registro</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form id="myForm" encType="multipart/form-data" onSubmit={handleSubmit}>
         <fieldset className="formText">
           <label htmlFor="name">Nombre</label>
           <input
@@ -63,7 +62,7 @@ const Register = () => {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            ></input>
+          ></input>
           <label htmlFor="email">Correo electrónico</label>
           <input
             type="email"
@@ -74,7 +73,7 @@ const Register = () => {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            ></input>
+          ></input>
           <label htmlFor="pass1">Contraseña</label>
           <input
             type="password"
@@ -85,7 +84,7 @@ const Register = () => {
             onChange={(e) => {
               setPass1(e.target.value);
             }}
-            ></input>
+          ></input>
           <label htmlFor="pass2">Confirmar contraseña</label>
           <input
             type="password"
@@ -96,7 +95,7 @@ const Register = () => {
             onChange={(e) => {
               setPass2(e.target.value);
             }}
-            ></input>
+          ></input>
           <label htmlFor="bio">Biografía</label>
           <textarea
             type="textarea"
@@ -110,7 +109,7 @@ const Register = () => {
             onChange={(e) => {
               setBio(e.target.value);
             }}
-            ></textarea>
+          ></textarea>
         </fieldset>
         <fieldset className="formImg">
           <label htmlFor="photo">Imagen de perfil</label>
@@ -120,17 +119,17 @@ const Register = () => {
             id="photo"
             accept={"image/*"}
             onChange={(e) => {
-              setPhoto(e.target.files[0].name);
+              setPhoto(e.target.files[0]);
             }}
-            />
+          />
 
           {photo ? (
             <img
-            id="selectedPhoto"
-            //src={URL.createObjectURL(photo)}
-            alt="foto-seleccionada"
+              id="selectedPhoto"
+              //src={URL.createObjectURL(photo)}
+              alt="foto-seleccionada"
             />
-            ) : null}
+          ) : null}
         </fieldset>
         <section className="button-register">
           {
@@ -138,7 +137,7 @@ const Register = () => {
             <button>¡Crea tu perfil! </button>
           }
         </section>
-        <section className='p-error-form'>
+        <section className="p-error-form">
           {error !== "" ? <p className="error">{error}</p> : null}
         </section>
       </form>
