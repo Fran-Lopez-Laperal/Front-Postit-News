@@ -4,11 +4,11 @@
     background-color: var(--corporation);
     width: 70px;
     min-height: 80vh;
-    border-radius: 20px;
+    border-radius: 5px;
     top: 100px;
     overflow: hidden;
-    position:absolute;
-    z-index: 1;
+    position:fixed;
+    z-index: 2;
     transition: all .4s ease-out;
 }
 
@@ -16,9 +16,7 @@
     background-color: var(--corporation);
     width: 240px;
     min-height: 80vh;
-    overflow: hidden;
-    position: fixed;
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -27,7 +25,7 @@
     right: 0;
     margin-top: 30px;
     margin-right: 0px;
-    z-index: 2;
+    z-index: 3;
     width: 25px;
     height: 25px;
     position:absolute;

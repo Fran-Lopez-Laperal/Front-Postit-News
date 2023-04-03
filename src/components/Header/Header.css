@@ -5,7 +5,7 @@
   background-color: var(--corporation);
   /* position: fixed; */
   z-index: 3;
-  border-radius: 20px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
@@ -32,7 +32,7 @@
   justify-content: space-between;
   background-color: rgba(128, 128, 128, 0.445);
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   width: 900px;
   height: 60px;
   margin-right: 20px;
