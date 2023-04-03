@@ -28,10 +28,10 @@ const News = () => {
     return (
         <div>
             {
-                news.map(({id, title, image}) => (
+                news.map(({ id, title, imagePath }) => (
                     <section key={id}>
                         <p>{title}</p>
-                        <img src={image} alt={title} />
+                        <img src={imagePath} alt={title} />
                     </section>
 
                 ))

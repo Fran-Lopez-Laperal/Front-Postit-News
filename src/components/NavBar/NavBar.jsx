@@ -11,6 +11,7 @@ const NavBar = () => {
   const handleOpneMenu = () => {
     setShowMenu(!showMenu)
     setIcon(showMenu ? 'fa fa-arrow-right' : 'fa fa-arrow-left')
+    console.log('hola')
   }
 
   const handleCloseMenu = () => {
