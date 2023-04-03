@@ -46,6 +46,18 @@ export const getMyUserDataService = async ({ token }) => {
   return json.data;
 };
 
+export const getImagesService = async ({ nameImg }) => {
+  const response = await fetch(`http://localhost:4000/images/${nameImg}`, {
+    method: "GET",
+  });
+  const json = await response.json();
+  console.log(json.data);
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.data;
+};
+
 export const getNewsDataService = async () => {
   const response = await fetch(`http://localhost:4000/news`, {
     method: "GET",
