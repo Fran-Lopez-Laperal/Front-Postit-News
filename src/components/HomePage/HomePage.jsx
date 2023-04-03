@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './HomePage.css'
 import News from '../News/News'
 
 const HomePage = () => {
 
+ const [orderBy, setOrderBy] = useState('latest')
+
+  const handleOrder =  (newsOrder) => {
+    setOrderBy(newsOrder)
+    console.log('hola')
+  }
+
   return (
 
     <>
-      <section className='homePage__section__buttons'>
-        <button className='homePage__button'>Noticias mas antiguas</button>
-        <button className='homePage__button'>Noticias actuales</button>
-      </section>
-      <section className='homePage__section__news'>
-        <News />
+      <section className='homePage'>
+        <section className='homePage__section__news'>
+          <News orderBy={orderBy}/>
+        </section>
       </section>
 
     </>
