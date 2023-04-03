@@ -1,4 +1,24 @@
 .footer {
+  
   height: 10vh;
   background-color: var(--corporation);
+  
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  
+}
+
+.copyright p {
+  font-size:small;
+  
 }
