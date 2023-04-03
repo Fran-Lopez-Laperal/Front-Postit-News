@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../assets/logo.png";
-import avatar from "../assets/avatar.jpg";
+import logo from "../../assets/logo.png";
+import avatar from "../../assets/avatar.jpg";
 
 import "./Header.css";
 import { Auth } from "../Auth/Auth";

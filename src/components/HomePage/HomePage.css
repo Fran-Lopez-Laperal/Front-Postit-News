@@ -1,3 +1,8 @@
-.homePage{
+.homePage__button{
+  margin-left: 100px;
+}
+
+.homePage__section__news{
   min-height: 100vh;
+  margin: 0px 100px auto 100px;
 }
