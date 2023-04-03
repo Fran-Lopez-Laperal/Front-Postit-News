@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import avatar from "../assets/avatar.jpg";
 
 import "./Header.css";
-import { Auth } from "../Auth";
+import { Auth } from "../Auth/Auth";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -31,7 +31,9 @@ const Header = () => {
             />
           </figure>
         </article>
+        <section className="buttons-header">
         <Auth></Auth>
+        </section>
       </section>
     </div>
   );

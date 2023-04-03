@@ -4,6 +4,7 @@ import PrivacityCookies from "../PrivacityCookies/PrivacityCookies";
 import PrivacityPolicy from "../PrivacityPolicy/PrivacityPolicy";
 import Modal from "../Modal/Modal";
 import AboutAs from "../AboutAs/AboutAs";
+import Contacto from "../Contacto/Contacto";
 
 const Footer = () => {
   return (
@@ -18,9 +19,12 @@ const Footer = () => {
         <Modal buttonText="Sobre nosotros">
           <AboutAs />
         </Modal>
+        <Modal buttonText="Contacto">
+          <Contacto/>
+        </Modal>
       </div>
       <div className="copyright">
-      © 2023 HACK A BOSS
+        <p>© 2023 HACK A BOSS</p>
       </div>
     </footer>
   );

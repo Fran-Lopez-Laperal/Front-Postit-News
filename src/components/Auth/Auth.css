@@ -1,0 +1,48 @@
+.buttons-auth-header {
+  display: flex;
+  flex-direction: row;
+  gap:2rem;
+  
+}
+
+.button-register-auth-header,
+.button-login-auth-header {
+  display: inline-block;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #6bded7;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button-register-auth-header:hover,
+.button-login-auth-header:hover {
+  background-color: #3ab0ad;
+  text-decoration: none;
+}
+
+.button-register-auth-header>a,
+.button-login-auth-header>a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.p-buttonclose-auth{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: bold;
+}
+
+.p-buttonclose-auth p {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}
+
+.p-buttonclose-auth button {
+  margin-bottom: 1rem;
+}
