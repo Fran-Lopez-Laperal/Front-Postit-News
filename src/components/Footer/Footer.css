@@ -1,8 +1,13 @@
 .footer {
-  
+
+  background-color: var(--corporation);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 10vh;
   background-color: var(--corporation);
-  
+  z-index: 9999;
 }
 
 .footer-links {
