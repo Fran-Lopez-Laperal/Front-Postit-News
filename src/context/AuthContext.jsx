@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { getMyUserDataService } from "../components/service";
+import { Link } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
@@ -32,6 +33,7 @@ export const AuthProviderComponent = ({ children }) => {
   const logout = () => {
     setToken("");
     setUser(null);
+    <Link to="/"></Link>;
   };
 
   return (
