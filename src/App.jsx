@@ -12,6 +12,7 @@ import PrivacityPolicy from "./components/PrivacityPolicy/PrivacityPolicy";
 import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import Spinner from "./components/Spinner/Spinner";
+import NewsDetail from "./components/NewsDetail/NewsDetail";
 
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -35,7 +36,7 @@ const App = () => {
             <Route path="/registro" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Profile />} />
-            <Route path="/:idNew" element={<HomePage />} />
+            <Route path="/:idNew" element={<NewsDetail />} />
             {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
             <Route path="/politica-privacidad" element={<PrivacityPolicy />} />
             <Route path="/politica-cookies" element={<PrivacityCookies />} />
