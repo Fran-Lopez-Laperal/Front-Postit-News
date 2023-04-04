@@ -71,4 +71,21 @@ export const getNewsDataService = async () => {
 };
 getNewsDataService();
 
-// export const editUserService = async ({ formData }) => {};
+export const editUserService = async ({ name, email, bio, token }) => {
+  console.log(name, email, bio);
+  const response = await fetch(`http://localhost:4000/users`, {
+    method: "PUT",
+    headers: {
+      Authorization: token,
+    },
+    body: name,
+    email,
+    bio,
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
