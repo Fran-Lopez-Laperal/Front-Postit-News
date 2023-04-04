@@ -1,3 +1,7 @@
+.register-container {
+  min-height: 100vh;
+}
+
 .articleRegister {
   background-color: #f5f5f5;
   padding: 20px;
@@ -5,7 +9,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 500px;
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
+  
 }
 
 .h1-title {
@@ -20,6 +25,12 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.formImg {
+  width: 80%;
+  align-items: center;
+}
+
 fieldset {
   display: flex;
   flex-direction: column;
@@ -87,7 +98,9 @@ button:hover {
 }
 
 #selectedPhoto {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 50%;
   border-radius: 50%;
 }
 
