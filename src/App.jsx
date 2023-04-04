@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -29,7 +29,7 @@ const App = () => {
       ) : (
         <main>
           <Header />
-          <NavBar/>
+          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/registro" element={<Register />} />
@@ -41,6 +41,7 @@ const App = () => {
             <Route path="/politica-cookies" element={<PrivacityCookies />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          <Outlet />
           <Footer />
         </main>
       )}

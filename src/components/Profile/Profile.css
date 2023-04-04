@@ -1,3 +1,26 @@
+#articleUserProfile {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 20%;
+  width: 50vw;
+
+  align-items: center;
+
+  border: 2px solid #e5e5e5;
+}
+
 #userProfile {
-  margin-left: 5rem;
+  width: 80%;
+  display: flex;
+  gap: 2rem;
+}
+
+.userPhoto {
+  width: 100%;
+  border-radius: 50%;
+}
+
+#buttons {
+  display: flex;
+  gap: 2rem;
 }
