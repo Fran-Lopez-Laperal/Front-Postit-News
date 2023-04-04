@@ -56,7 +56,7 @@ const News = (orderBy) => {
         </button>
       </section>
       <div className="news">
-        {news.map(({ id, title, createdAt, image }) => (
+        {news.map(({ id, title, createdAt, image, idNew }) => (
           <article
             className="news__card"
             key={id}
@@ -88,7 +88,7 @@ const News = (orderBy) => {
             </section>
             <footer className="news__card__footer">
               <strong>{createdAt}</strong>
-              <Link style={{ textDecoration: "none" }}>
+              <Link to={`/new/${idNew}`} style={{ textDecoration: "none" }}>
                 {" "}
                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
               </Link>
