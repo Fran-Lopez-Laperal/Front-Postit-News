@@ -1,5 +1,6 @@
 .register-container {
   min-height: 100vh;
+  min-width: 100vh;
 }
 
 .articleRegister {
