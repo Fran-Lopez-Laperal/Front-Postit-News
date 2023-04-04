@@ -49,4 +49,5 @@
 
 .header__section__search__article--img {
   width: 50px;
+  border-radius: 50%;
 }

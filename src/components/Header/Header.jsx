@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.jpg";
 
 import "./Header.css";
 import { Auth } from "../Auth/Auth";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+
 
 const Header = () => {
+
+  const {user} = useContext(AuthContext)
+  let userImg = `http://localhost:4000/images/${user?.avatar}`;
+
+
   return (
     <div className="header">
       <section className="header__section__search">
@@ -26,7 +33,7 @@ const Header = () => {
           <figure className="">
             <img
               className="header__section__search__article--img"
-              src={avatar}
+              src={userImg}
               alt=""
             />
           </figure>
