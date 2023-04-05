@@ -22,7 +22,7 @@ const Header = () => {
         <img className="logo" src={logo}  alt="logo"/>
         </Link>  
         
-       {/*  <article className="header__section__search__article">
+        <article className="header__section__search__article">
           <input
             className="header__section__search--input"
             type="search"
@@ -37,7 +37,7 @@ const Header = () => {
               alt=""
             />
           </figure>
-        </article> */}
+        </article>
         <section className="buttons-header">
         <Auth></Auth>
         </section>
