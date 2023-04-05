@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react";
 import { createNewService } from "../service";
 import { useNavigate } from "react-router-dom";
@@ -5,17 +6,20 @@ import { Auth } from "../Auth/Auth";
 import { AuthContext } from "../../context/AuthContext";
 import { loginUserService } from "../service";
 import Login from "../Login/Login";
+
 //import {categories} from "../ListCategories/ListCategories";
 import "./CreateNew.css";
 import HomePage from "../HomePage/HomePage";
 
 const CreateNew = () => {
+
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [introduction, setIntroduction] = useState("");
   const [text, setText] = useState("");
+
   const [category, setCategory] = useState("");
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
@@ -30,10 +34,12 @@ const CreateNew = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     if (!token) {
       setError("Debe iniciar sesión para crear una noticia.");
       return;
     }
+
 
     setLoading(true);
     try {
@@ -46,6 +52,7 @@ const CreateNew = () => {
       formDataNew.append("photo", photo);
 
       await createNewService({ formDataNew, token });
+
 
       if (!error) {
         navigate("/");
