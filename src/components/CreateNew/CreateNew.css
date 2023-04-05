@@ -1,0 +1,74 @@
+.form-container-createNew {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+  
+  
+  
+}
+
+.h1-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #6bded7;
+}
+
+.form-createNew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.title,
+.introduction,
+.text,
+.category,
+.photo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.text textarea {
+  height: 200px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #6bded7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6bded7;
+}

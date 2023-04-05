@@ -46,6 +46,7 @@ const CreateNew = () => {
 
   return (
     <div className='form-container-createNew'>
+      <h1 className='h1-title'>Crea tu noticia</h1>
       <form className='form-createNew' onSubmit={handleSubmit}>
         <div className='title'>
           <label htmlFor="title">Título:</label>
