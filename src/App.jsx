@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import Spinner from "./components/Spinner/Spinner";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
+import CreateNew from "./components/CreateNew/CreateNew";
 
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/politica-privacidad" element={<PrivacityPolicy />} />
             <Route path="/politica-cookies" element={<PrivacityCookies />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/crear-noticia" element={<CreateNew />} />
           </Routes>
           <Outlet />
           <Footer />

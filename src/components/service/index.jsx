@@ -89,3 +89,23 @@ export const editUserService = async ({ name, email, bio, token }) => {
     throw new Error(json.message);
   }
 };
+
+export const createNewService = async ({formDataNew}
+) => {
+ 
+  const response = await fetch(`http://localhost:4000/news`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+    },
+    body: formDataNew,
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
