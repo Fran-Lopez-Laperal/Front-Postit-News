@@ -88,9 +88,8 @@ export const editUserService = async ({ name, email, bio, token }) => {
   }
 };
 
-export const createNewService = async ({formDataNew}
-) => {
- 
+export const createNewService = async ({ formDataNew, token }) => {
+  
   const response = await fetch(`http://localhost:4000/news`, {
     method: "POST",
     headers: {
