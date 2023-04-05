@@ -44,6 +44,8 @@ const News = (orderBy) => {
     setNews(sortOldNews);
   };
 
+  console.log(news)
+
   return (
     <>
       <section className="homePage__section__buttons">

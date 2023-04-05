@@ -20,7 +20,7 @@ const NewsDetail = () => {
       try {
         const newDetail = await getNewDetailDataService(idNew)
         setNews(newDetail)
-        
+
       } catch (error) {
         setError(error)
       }
@@ -30,12 +30,23 @@ const NewsDetail = () => {
 
   }, [idNew])
 
+  if (!news) {
+    return null
+  }
+
 
   console.log(news)
   return (
-    <div className='newsDetail' >
-      <h1></h1>
-    </div>
+    <section className='newsDetail' >
+      {news.map(({ title, id,image }) => (
+        <article key={id}>
+          <p>{title}</p>
+          <figure>
+            <img src={`url(http://localhost:4000/images/${image}`} alt="" />
+          </figure>
+        </article>
+      ))}
+    </section>
   )
 }
 

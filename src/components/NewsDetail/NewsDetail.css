@@ -1,3 +1,13 @@
 .newsDetail{
     margin: auto 100px 50px 100px;
 }
+
+.news__card{
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.282);
+    object-fit: contain;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 20px;
+}
