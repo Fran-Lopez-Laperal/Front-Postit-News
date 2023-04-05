@@ -37,7 +37,7 @@ const App = () => {
             <Route path="/registro" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Profile />} />
-            <Route path="/:idNew" element={<NewsDetail />} />
+            <Route path="news/:idNew" element={<NewsDetail />} />
             {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
             <Route path="/politica-privacidad" element={<PrivacityPolicy />} />
             <Route path="/politica-cookies" element={<PrivacityCookies />} />

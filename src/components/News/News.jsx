@@ -18,7 +18,6 @@ const News = (orderBy) => {
         const result = await getNewsDataService();
         setNews(result);
         // setLoading(false);
-        console.log(result);
       } catch (error) {
         setError(error.message);
         // setLoading(false);
@@ -88,7 +87,7 @@ const News = (orderBy) => {
             </section>
             <footer className="news__card__footer">
               <strong>{createdAt}</strong>
-              <Link to={`/new/${idNew}`} style={{ textDecoration: "none" }}>
+              <Link to={`news/${idNew}`} style={{ textDecoration: "none" }}>
                 {" "}
                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
               </Link>

@@ -38,7 +38,6 @@ export const getMyUserDataService = async ({ token }) => {
   });
 
   const json = await response.json();
-  console.log(json);
   if (!response.ok) {
     throw new Error(json.message);
   }
@@ -63,7 +62,6 @@ export const getNewsDataService = async () => {
     method: "GET",
   });
   const json = await response.json();
-  console.log(json);
   if (!response.ok) {
     throw new Error(json.message);
   }
@@ -109,3 +107,20 @@ export const createNewService = async ({formDataNew}
 
   return json.data;
 };
+
+
+
+export const getNewDetailDataService = async(idNew) =>  {
+  const response = await fetch(`http://localhost:4000/news/${idNew}`, {
+    method: 'GET'
+  })
+
+  const json = await response.json();
+  console.log(json)
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json.data.ownNew;
+}
+
