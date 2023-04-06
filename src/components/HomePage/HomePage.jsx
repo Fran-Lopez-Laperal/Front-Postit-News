@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import './HomePage.css'
 import News from '../News/News'
 import {Link} from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext';
 
-const FloatingButton= () => {
+const FloatingButton = () => {
+  const { isLogged } = useContext(AuthContext);
+  if (!isLogged) return null;
+
   return (
     <div className="floating-button">
       <Link to="/crear-noticia">+</Link>
       <Link to="/crear-noticia">Crear Noticia</Link>
-      
     </div>
   );
 };
+
 
 const HomePage = () => {
 

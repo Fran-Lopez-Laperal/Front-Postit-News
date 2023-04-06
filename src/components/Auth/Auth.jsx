@@ -12,7 +12,9 @@ export const Auth = () => {
       <p>
         Hola <Link to="/perfil">{user.name}</Link>{" "}
       </p>
-      <button onClick={() => logout()}>Cerrar sesión</button>{" "}
+      <Link to="/" onClick={() => logout()}>
+        <button>Cerrar sesión</button>
+      </Link>
     </section>
   ) : (
     <>
