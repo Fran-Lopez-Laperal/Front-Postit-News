@@ -16,6 +16,7 @@ const ButtonsProfile = ({
   email,
   bio,
   setError,
+  setClickInImg,
 }) => {
   const navigate = useNavigate();
   const { token, setUser } = useContext(AuthContext);
@@ -40,7 +41,7 @@ const ButtonsProfile = ({
       setError(error.message);
     }
   };
-  const handleDeleteUSer = async () => {
+  const handleDeleteUser = async () => {
     try {
       await deleteUserService({ token });
       navigate("/");
@@ -55,6 +56,7 @@ const ButtonsProfile = ({
         <>
           <button
             onClick={() => {
+              setClickInImg(false);
               handleSendChanges();
             }}
           >
@@ -64,6 +66,7 @@ const ButtonsProfile = ({
           <button
             onClick={() => {
               setHandleEditUser(false);
+              setClickInImg(false);
             }}
           >
             Cancelar
@@ -81,7 +84,7 @@ const ButtonsProfile = ({
 
       <button
         onClick={() => {
-          handleDeleteUSer();
+          handleDeleteUser();
         }}
       >
         Eliminar

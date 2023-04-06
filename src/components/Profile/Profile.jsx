@@ -2,28 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./Profile.css";
 
-import posit from "../../assets/posit.png";
 import ButtonsProfile from "../ButtonsProfile/ButtonsProfile";
+import ImageProfile from "../ImageProfile/ImageProfile";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [handleEditUser, setHandleEditUser] = useState(false);
 
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [bio, setBio] = useState(user.bio);
+  const [name, setName] = useState(user?.name);
+  const [email, setEmail] = useState(user?.email);
+  const [bio, setBio] = useState(user?.bio);
 
   const [modifyInputName, setModifyInputName] = useState(false);
   const [modifyInputEmail, setModifyInputEmail] = useState(false);
   const [modifyInputBio, setModifyInputBio] = useState(false);
 
+  const [clickInImg, setClickInImg] = useState(false);
+
   const [error, setError] = useState("");
-
-  let userImg;
-
-  user?.avatar !== null
-    ? (userImg = `http://localhost:4000/images/${user?.avatar}`)
-    : (userImg = posit);
 
   const disabled = "disabled";
 
@@ -94,15 +90,11 @@ const Profile = () => {
             </ul>
             {error ? <p className="error">{error}</p> : null}
           </section>
-          <section className="imgProfile">
-            <figure>
-              <img
-                className="userPhoto"
-                src={userImg}
-                alt={`foto-de-${user.name}`}
-              />
-            </figure>
-          </section>
+          <ImageProfile
+            handleEditUser={handleEditUser}
+            clickInImg={clickInImg}
+            setClickInImg={setClickInImg}
+          />
         </section>
         <ButtonsProfile
           setHandleEditUser={setHandleEditUser}
@@ -111,6 +103,7 @@ const Profile = () => {
           email={email}
           bio={bio}
           setError={setError}
+          setClickInImg={setClickInImg}
         />
       </article>
     </>
