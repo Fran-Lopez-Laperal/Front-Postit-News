@@ -133,3 +133,13 @@ export const deleteUserService = async ({ token }) => {
     throw new Error(json.message);
   }
 };
+
+export const editAvatarUserService = async ({ token, formData }) => {
+  const response = await fetch(`http://localhost:4000/users/avatar`, {
+    method: "PUT",
+    headers: {
+      Authorization: token,
+    },
+    body: formData,
+  });
+};
