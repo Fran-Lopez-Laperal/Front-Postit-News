@@ -3,44 +3,21 @@ import { AuthContext } from "../../context/AuthContext";
 import "./Profile.css";
 
 import posit from "../../assets/posit.png";
-import { editUserService } from "../service";
+import ButtonsProfile from "../ButtonsProfile/ButtonsProfile";
 
 const Profile = () => {
-  const { user, token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [handleEditUser, setHandleEditUser] = useState(false);
-  const [name, setName] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
+  const [error, setError] = useState("");
 
   let userImg = `http://localhost:4000/images/${user?.avatar}`;
 
   const disabled = "disabled";
 
-  // const Input = ({ state, inputName, setValue }) => {
-  //   console.log(name);
-  //   return handleEditUser ? (
-  //     <input
-  //       type={inputName}
-  //       id={inputName}
-  //       name={inputName}
-  //       value={state}
-  //       onChange={(e) => {
-  //         setValue(e.target.value);
-  //       }}
-  //     />
-  //   ) : (
-  //     <input
-  //       type={inputName}
-  //       id={inputName}
-  //       name={inputName}
-  //       value={user[inputName]}
-  //       disabled
-  //     />
-  //   );
-  // };
-
-  console.log(name);
-
+  //falta refrescar el user cuando se modifican los datos
   return user ? (
     <>
       <article id="articleUserProfile">
@@ -55,7 +32,7 @@ const Profile = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={name === "" ? user.name : name}
+                    placeholder={user.name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 ) : (
@@ -75,7 +52,7 @@ const Profile = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={email === "" ? user.email : email}
+                    placeholder={user.email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 ) : (
@@ -90,9 +67,19 @@ const Profile = () => {
               </li>
               <li>
                 <label name="email"> Bibliografía </label>
-                <textarea id="bio" name="bio" value={user.bio} disabled />
+                {handleEditUser ? (
+                  <textarea
+                    id="bio"
+                    name="bio"
+                    placeholder={user.bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  />
+                ) : (
+                  <textarea id="bio" name="bio" value={user.bio} disabled />
+                )}
               </li>
             </ul>
+            {error ? <p className="error">{error}</p> : null}
           </section>
           <section className="imgProfile">
             {user.avatar ? (
@@ -110,28 +97,14 @@ const Profile = () => {
             )}
           </section>
         </section>
-        <section id="buttons">
-          {handleEditUser ? (
-            <button
-              onClick={() => {
-                setHandleEditUser(false);
-                editUserService({ name, email, bio, token });
-              }}
-            >
-              Guardar cambios
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setHandleEditUser(true);
-              }}
-            >
-              Editar
-            </button>
-          )}
-
-          <button>Eliminar</button>
-        </section>
+        <ButtonsProfile
+          setHandleEditUser={setHandleEditUser}
+          handleEditUser={handleEditUser}
+          name={name}
+          email={email}
+          bio={bio}
+          setError={setError}
+        />
       </article>
     </>
   ) : null;
