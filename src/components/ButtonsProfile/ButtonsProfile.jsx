@@ -1,4 +1,8 @@
-import { deleteUserService, editUserService } from "../service";
+import {
+  deleteUserService,
+  editUserService,
+  getMyUserDataService,
+} from "../service";
 
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
@@ -14,7 +18,7 @@ const ButtonsProfile = ({
   setError,
 }) => {
   const navigate = useNavigate();
-  const { token, logout } = useContext(AuthContext);
+  const { token, setUser } = useContext(AuthContext);
   const handleSendChanges = async () => {
     try {
       await editUserService({
@@ -24,18 +28,21 @@ const ButtonsProfile = ({
         token,
       });
 
+      const newDataUser = await getMyUserDataService({ token });
+
+      console.log(newDataUser);
       navigate("/perfil");
+      setError("");
+      setHandleEditUser(false);
+      setUser(newDataUser);
     } catch (error) {
       console.log(error.message);
       setError(error.message);
-    } finally {
-      setHandleEditUser(false);
     }
   };
   const handleDeleteUSer = async () => {
     try {
       await deleteUserService({ token });
-      logout();
       navigate("/");
     } catch (e) {
       console.log(e.message);
@@ -45,13 +52,23 @@ const ButtonsProfile = ({
   return (
     <section id="buttons">
       {handleEditUser ? (
-        <button
-          onClick={() => {
-            handleSendChanges();
-          }}
-        >
-          Guardar cambios
-        </button>
+        <>
+          <button
+            onClick={() => {
+              handleSendChanges();
+            }}
+          >
+            Guardar cambios
+          </button>
+
+          <button
+            onClick={() => {
+              setHandleEditUser(false);
+            }}
+          >
+            Cancelar
+          </button>
+        </>
       ) : (
         <button
           onClick={() => {

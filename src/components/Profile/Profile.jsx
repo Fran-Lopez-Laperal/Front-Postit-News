@@ -8,12 +8,22 @@ import ButtonsProfile from "../ButtonsProfile/ButtonsProfile";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [handleEditUser, setHandleEditUser] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [bio, setBio] = useState("");
+
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [bio, setBio] = useState(user.bio);
+
+  const [modifyInputName, setModifyInputName] = useState(false);
+  const [modifyInputEmail, setModifyInputEmail] = useState(false);
+  const [modifyInputBio, setModifyInputBio] = useState(false);
+
   const [error, setError] = useState("");
 
-  let userImg = `http://localhost:4000/images/${user?.avatar}`;
+  let userImg;
+
+  user?.avatar !== null
+    ? (userImg = `http://localhost:4000/images/${user?.avatar}`)
+    : (userImg = posit);
 
   const disabled = "disabled";
 
@@ -32,7 +42,8 @@ const Profile = () => {
                     type="text"
                     id="name"
                     name="name"
-                    placeholder={user.name}
+                    onClick={() => setModifyInputName(true)}
+                    value={modifyInputName ? name : user.name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 ) : (
@@ -52,7 +63,8 @@ const Profile = () => {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder={user.email}
+                    onClick={() => setModifyInputEmail(true)}
+                    value={modifyInputEmail ? email : user.email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 ) : (
@@ -66,12 +78,13 @@ const Profile = () => {
                 )}
               </li>
               <li>
-                <label name="email"> Bibliografía </label>
+                <label name="bio"> Bibliografía </label>
                 {handleEditUser ? (
                   <textarea
                     id="bio"
                     name="bio"
-                    placeholder={user.bio}
+                    onClick={() => setModifyInputBio(true)}
+                    value={modifyInputBio ? bio : user.bio}
                     onChange={(e) => setBio(e.target.value)}
                   />
                 ) : (
@@ -82,19 +95,13 @@ const Profile = () => {
             {error ? <p className="error">{error}</p> : null}
           </section>
           <section className="imgProfile">
-            {user.avatar ? (
-              <figure>
-                <img
-                  className="userPhoto"
-                  src={userImg}
-                  alt={`foto-de-${user.name}`}
-                />
-              </figure>
-            ) : (
-              <figure>
-                <img className="userPhoto" src={posit} alt="usuario-sin-foto" />
-              </figure>
-            )}
+            <figure>
+              <img
+                className="userPhoto"
+                src={userImg}
+                alt={`foto-de-${user.name}`}
+              />
+            </figure>
           </section>
         </section>
         <ButtonsProfile
