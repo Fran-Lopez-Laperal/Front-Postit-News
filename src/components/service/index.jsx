@@ -75,10 +75,9 @@ export const editUserService = async ({ name, email, bio, token }) => {
     method: "PUT",
     headers: {
       Authorization: token,
+      "Content-Type": "application/json",
     },
-    body: name,
-    email,
-    bio,
+    body: JSON.stringify({ name, email, bio }),
   });
 
   const json = await response.json();
@@ -88,10 +87,7 @@ export const editUserService = async ({ name, email, bio, token }) => {
   }
 };
 
-
 export const createNewService = async ({ formDataNew, token }) => {
-  
-
   const response = await fetch(`http://localhost:4000/news`, {
     method: "POST",
     headers: {
@@ -109,19 +105,31 @@ export const createNewService = async ({ formDataNew, token }) => {
   return json.data;
 };
 
-
-
-export const getNewDetailDataService = async(idNew) =>  {
+export const getNewDetailDataService = async (idNew) => {
   const response = await fetch(`http://localhost:4000/news/${idNew}`, {
-    method: 'GET'
-  })
+    method: "GET",
+  });
 
   const json = await response.json();
-  console.log(json)
+  console.log(json);
 
   if (!response.ok) {
     throw new Error(json.message);
   }
   return json.data.ownNew;
-}
+};
 
+export const deleteUserService = async ({ token }) => {
+  const response = await fetch(`http://localhost:4000/users`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
