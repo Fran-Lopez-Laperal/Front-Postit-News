@@ -9,9 +9,10 @@ export const Auth = () => {
 
   return user ? (
     <section className="p-buttonclose-auth">
-      <p>
-        Hola <Link to="/perfil">{user.name}</Link>{" "}
-      </p>
+      <Link to="/perfil" onClick={() => {user.name}}>
+       <p> Hola {user.name}</p>
+      </Link>
+      
       <Link to="/" onClick={() => logout()}>
         <button>Cerrar sesión</button>
       </Link>
