@@ -1,6 +1,6 @@
 
 import React, { useState, useContext } from "react";
-import { createNewService } from "../service";
+import { createNewService, getCategoriesService } from "../service";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "../Auth/Auth";
 import { AuthContext } from "../../context/AuthContext";
@@ -48,10 +48,13 @@ const CreateNew = () => {
       formDataNew.append("title", title);
       formDataNew.append("introduction", introduction);
       formDataNew.append("text", text);
-      formDataNew.append("category", category);
+      //formDataNew.append("category", category);
       formDataNew.append("photo", photo);
 
-      await createNewService({ formDataNew, token });
+      const prueba = await getCategoriesService();
+      console.log(prueba);
+
+      //await createNewService({ formDataNew, token });
 
 
       if (!error) {
@@ -101,19 +104,16 @@ const CreateNew = () => {
             required
           />
         </div>
-        {/* <div className= 'category'>
+        {/* <div className="category">
           <label htmlFor="category">Categoría:</label>
-          <select
-            id="category"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-            required
-          >
-            <option value="">Seleccione una categoría</option>
-            <ListaCategories />
+          <select id="category" value={selectedCategory} required>
+            <option value={getCategoriesService}>
+              Seleccione una categoría
+            </option>
+          
           </select>
         </div> */}
-        <div className="category">
+        {/* <div className="category">
           <label htmlFor="category">Categoría:</label>
           <input
             type="text"
@@ -122,7 +122,7 @@ const CreateNew = () => {
             onChange={(event) => setCategory(event.target.value)}
             required
           />
-        </div>
+        </div> */}
         <div className="photo">
           <label htmlFor="photo">Foto:</label>
           <input
