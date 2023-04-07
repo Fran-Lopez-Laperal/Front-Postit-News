@@ -26,7 +26,7 @@ const CreateNew = () => {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
 
   /* const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
