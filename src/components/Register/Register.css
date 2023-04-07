@@ -1,8 +1,10 @@
 .register-container {
   min-height: 100vh;
   display: flex;
-    justify-content: center;
-      align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto 100px 50px 100px;
+  
 }
 
 .articleRegister {
