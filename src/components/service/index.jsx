@@ -148,15 +148,12 @@ export const getCategoriesService = async () => {
   const response = await fetch(`http://localhost:4000/news/categories`, {
     method: "GET",
   });
+
   const json = await response.json();
-  console.log(json.data); 
-  
+
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json.data;
-
- 
-  
-}
+  return json.categories;
+};
 //comprobar que esté bien con Inés

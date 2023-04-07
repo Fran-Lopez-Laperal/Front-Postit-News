@@ -1,5 +1,4 @@
-
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { createNewService, getCategoriesService } from "../service";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "../Auth/Auth";
@@ -11,8 +10,11 @@ import Login from "../Login/Login";
 import "./CreateNew.css";
 import HomePage from "../HomePage/HomePage";
 
-const CreateNew = () => {
+const categories = await getCategoriesService();
 
+console.log(categories);
+
+const CreateNew = () => {
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ const CreateNew = () => {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  //const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   /* const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -34,12 +36,10 @@ const CreateNew = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     if (!token) {
       setError("Debe iniciar sesión para crear una noticia.");
       return;
     }
-
 
     setLoading(true);
     try {
@@ -48,14 +48,12 @@ const CreateNew = () => {
       formDataNew.append("title", title);
       formDataNew.append("introduction", introduction);
       formDataNew.append("text", text);
-      //formDataNew.append("category", category);
+      formDataNew.append("category", selectedCategory);
       formDataNew.append("photo", photo);
 
-      const prueba = await getCategoriesService();
-      console.log(prueba);
+      console.log("selected", selectedCategory);
 
-      //await createNewService({ formDataNew, token });
-
+      await createNewService({ formDataNew, token });
 
       if (!error) {
         navigate("/");
@@ -104,15 +102,22 @@ const CreateNew = () => {
             required
           />
         </div>
-        {/* <div className="category">
+        <div className="category">
           <label htmlFor="category">Categoría:</label>
-          <select id="category" value={selectedCategory} required>
-            <option value={getCategoriesService}>
-              Seleccione una categoría
-            </option>
-          
+          <select
+            id="category"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            required
+          >
+            {categories.map((category) => (
+              <option key={category.id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
           </select>
-        </div> */}
+        </div>
+
         {/* <div className="category">
           <label htmlFor="category">Categoría:</label>
           <input
