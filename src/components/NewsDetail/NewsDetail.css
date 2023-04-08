@@ -1,13 +1,206 @@
 .newsDetail{
-    margin: auto 100px 50px 100px;
+    margin: 5px 100px 50px 100px;
+    min-height: 100vh;
 }
 
-.news__card{
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.282);
-    object-fit: contain;
+.newsDetails__article__figure{
+    height: 600px;
     border-radius: 5px;
+}
+
+.newsDetails__article__figure__section {
+    color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    padding: 20px;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    width: 95%;
+    justify-content: space-between;
+}
+
+.newsDetails__article__figure__section--button{
+    margin-top: 0px;
+    background: transparent;
+}
+
+.newsDetails__article__figure__section--button:hover{
+    background: none;
+}
+
+.newsDetails__article__figure__section--button:hover > i{
+    color: var(--corporation);
+
+}
+
+.newsDetails__article__figure__section--p{
+    font-size: 40px;
+    color: white;
+}
+
+
+.main-container {
+display: flex;
+justify-content: center;
+align-items: flex-start;
+}
+
+
+.expandable-button {
+    position: relative;
+    width: 8em;
+    height: 8em;
+    border:  1px solid ;
+    border-radius: 50%;
+    background-color: black;
+    transition:  0.15s ease-out;
+    cursor: pointer;
+    box-shadow: 0 10px 50px 5px ;
+}
+
+.expandable-button .fill-block {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.expandable-button .close-icon {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.expandable-button .close-icon .fa { 
+    position: absolute;
+    top: 100%;
+    transition: 0.15s;
+}
+
+.expandable-button:hover {
+    box-shadow: 1 15px 100px 10px #10182022;
+}
+
+.expandable-button .expansion-item {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    height: 1em;
+    width: 1em;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    text-decoration: none;
+    color: #101820;
+    transition: 0.25s;
+    box-shadow: 0 5px 80px 5px #10182044;
+}
+
+
+.expandable-button .expansion-item .expansion-content {
+    display: none;
+    transition: 0.15s;
+    animation: fadeOut 0.5s linear forwards;
+
+} 
+
+.expandable-button .expansion-item:nth-of-type(1) {
+    transform: translateX(calc(-60% + -25px)) translateY(-50%);
+}
+.expandable-button .expansion-item:nth-of-type(2) {
+    transform: translateX(calc(-57% + 0px)) translateY(-50%);
+}
+.expandable-button .expansion-item:nth-of-type(3) {
+    transform: translateX(calc(-54% + 25px)) translateY(-50%);
+}
+
+.expandable-button.expanded {
+    width: 5em;
+    height: 5em;
+}
+
+.expandable-button.expanded:hover{
+    box-shadow: 1 10px 50px 5px #10182022;
+}
+
+.expandable-button.expanded .close-icon .fa {
+    top: 50%;
+    transform: translateY(-50%);
+    transition-delay: 0.25s;
+}
+
+
+.expandable-button.expanded .expansion-item {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    top: -50%;
+    pointer-events: fill;
+    transform: translateX(-0.5rem);
+}
+
+.expandable-button.expanded .expansion-item:hover{
+    top: -60%;
+}
+
+.expandable-button.expanded .expansion-item .expansion-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 0.25s linear forwards;
+    padding: 5px;
+}
+
+
+.expandable-button.expanded .expansion-item:nth-last-of-type(1){
+    left: calc(-7.5rem - -5%);
+    transition-delay: 0.05s;
+}
+
+.expandable-button.expanded .expansion-item:nth-last-of-type(1){
+    animation-delay: 0.1s;
+}
+.expandable-button.expanded .expansion-item:nth-last-of-type(2){
+    left: calc(0rem - 0%);
+    transition-delay: 0.1s;
+}
+
+.expandable-button.expanded .expansion-item:nth-last-of-type(2){
+    animation-delay: 0.2s;
+}
+.expandable-button.expanded .expansion-item:nth-last-of-type(3){
+    left: calc(7.5rem - 5%);
+    transition-delay: 0.15s;
+}
+
+.expandable-button.expanded .expansion-item:nth-last-of-type(3){
+    animation-delay: 0.3s;
+}
+
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
 }

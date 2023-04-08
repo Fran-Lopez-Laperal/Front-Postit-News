@@ -10,7 +10,6 @@ const News = (orderBy) => {
   const [error, setError] = useState(null);
   // const [loading, setLoading] = useState(true)
 
-  console.log(news.image);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +43,6 @@ const News = (orderBy) => {
     setNews(sortOldNews);
   };
 
-  console.log(news)
 
   return (
     <>
@@ -80,10 +78,10 @@ const News = (orderBy) => {
                 </section>
 
                 <button className="news__card__section_info__button">
-                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
                 </button>
                 <button className="news__card__section_info__button">
-                  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                  <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
                 </button>
               </figure>
             </section>
@@ -91,7 +89,7 @@ const News = (orderBy) => {
               <strong>{createdAt}</strong>
               <Link to={`news/${idNew}`} style={{ textDecoration: "none" }}>
                 {" "}
-                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <i className="fa fa-angle-double-right" aria-hidden="true"></i>
               </Link>
             </footer>
           </article>

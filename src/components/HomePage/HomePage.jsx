@@ -12,7 +12,7 @@ const FloatingButton = () => {
   return (
     <div className="floating-button">
       <Link to="/crear-noticia">
-        <i class="fa fa-plus-square" aria-hidden="true"></i>
+        <i className="fa fa-plus-square" aria-hidden="true"></i>
       </Link>
       <Link to="/crear-noticia">Crear Noticia</Link>
     </div>

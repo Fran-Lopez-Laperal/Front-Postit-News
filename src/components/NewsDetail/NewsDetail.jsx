@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react'
 
 
 import './NewsDetail.css'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getNewDetailDataService } from '../service'
 
 const NewsDetail = () => {
 
   const [news, setNews] = useState(null)
   const [error, setError] = useState(null)
+  const [expanded, setExpanded] = useState(false)
 
   const { idNew } = useParams()
 
 
+  const handleExpandedButton = () => {
+    setExpanded(!expanded)
+  }
+
   useEffect(() => {
 
     const fetchNew = async () => {
-      console.log(idNew); //
       try {
         const newDetail = await getNewDetailDataService(idNew)
         setNews(newDetail)
@@ -35,15 +39,50 @@ const NewsDetail = () => {
   }
 
 
-  console.log(news)
   return (
     <section className='newsDetail' >
-      {news.map(({ title, id,image }) => (
-        <article key={id}>
-          <p>{title}</p>
-          <figure>
-            <img src={`url(http://localhost:4000/images/${image}`} alt="" />
+      {news.map(({ title, id, image }) => (
+        <article className='newsDetails__article' key={id}>
+          <figure className='newsDetails__article__figure' style={{
+            backgroundImage: `url(http://localhost:4000/images/${image})`,
+            position: "relative",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+          }}>
+            <section className='newsDetails__article__figure__section'>
+              <button className='newsDetails__article__figure__section--button'><i className="fa fa-arrow-left fa-3x" aria-hidden="true"></i></button>
+              <p className='newsDetails__article__figure__section--p'>Detalis</p>
+            </section>
+
           </figure>
+          <section className='newsDetails__article__section--buttonOptions'>
+            <div className='main-container'>
+              <div className='btn-container'>
+                <button onClick={handleExpandedButton} className={expanded ? 'expandable-button expanded' : 'expandable-button' }>
+                  <div className='fill-block'></div>
+                  <div className='close-icon'>
+                    <div className=" fa fa-times" aria-hidden="true"></div>
+                  </div>
+                  <Link to={'/'} className='expansion-item'>
+                    <div className='expansion-content'>
+                      <div className='icon fa fa-share-alt'></div>
+                    </div>
+                  </Link>
+                  <Link to={'/'} className='expansion-item'>
+                    <div className='expansion-content'>
+                      <div className='icon fa fa-facebook'></div>
+                    </div>
+                  </Link>
+                  <Link to={'/'} className='expansion-item'>
+                    <div className='expansion-content'>
+                      <div className='icon fa fa-globe'></div>
+                    </div>
+                  </Link>
+                </button>
+              </div>
+            </div>
+          </section>
         </article>
       ))}
     </section>
