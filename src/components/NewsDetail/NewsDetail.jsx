@@ -18,6 +18,10 @@ const NewsDetail = () => {
     setExpanded(!expanded)
   }
 
+  const handleCloseExpandedButton = () => {
+    setExpanded(!expanded)
+  }
+
   useEffect(() => {
 
     const fetchNew = async () => {
@@ -41,7 +45,7 @@ const NewsDetail = () => {
 
   return (
     <section className='newsDetail' >
-      {news.map(({ title, id, image }) => (
+      {news.map(({ title, id, image, createdAt,introduction,text }) => (
         <article className='newsDetails__article' key={id}>
           <figure className='newsDetails__article__figure' style={{
             backgroundImage: `url(http://localhost:4000/images/${image})`,
@@ -59,22 +63,22 @@ const NewsDetail = () => {
           <section className='newsDetails__article__section--buttonOptions'>
             <div className='main-container'>
               <div className='btn-container'>
-                <button onClick={handleExpandedButton} className={expanded ? 'expandable-button expanded' : 'expandable-button' }>
+                <button onClick={handleExpandedButton} className={expanded ? 'expandable-button expanded' : 'expandable-button'}>
                   <div className='fill-block'></div>
                   <div className='close-icon'>
                     <div className=" fa fa-times" aria-hidden="true"></div>
                   </div>
-                  <Link to={'/'} className='expansion-item'>
+                  <Link to={''} className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-share-alt'></div>
                     </div>
                   </Link>
-                  <Link to={'/'} className='expansion-item'>
+                  <Link to={'mailto:""'} className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-facebook'></div>
                     </div>
                   </Link>
-                  <Link to={'/'} className='expansion-item'>
+                  <Link to={''} className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-globe'></div>
                     </div>
@@ -82,6 +86,23 @@ const NewsDetail = () => {
                 </button>
               </div>
             </div>
+          </section>
+          <section className='newsDetails__article__section__info'>
+            <article className='newsDetails__article__section__info'>
+              <header>
+                <h5 className='newsDetails__article__section__info--date'>{new Date(createdAt).toDateString('es')}</h5>
+              </header>
+              <section className= {'newsDetails__article__section__info__user'} >
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+              <h3>OWNUSER</h3>
+              </section>
+              <section className='newsDetails__article__section__info__text'>
+                <h2>{introduction}</h2>
+                <p>{text}</p>
+              </section>
+            </article>
+
+
           </section>
         </article>
       ))}
