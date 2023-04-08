@@ -99,6 +99,7 @@ const NewsDetail = () => {
               <section className='newsDetails__article__section__info__text'>
                 <h2>{introduction}</h2>
                 <p>{text}</p>
+                
               </section>
             </article>
 
