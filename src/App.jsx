@@ -14,7 +14,6 @@ import Register from "./components/Register/Register";
 import Spinner from "./components/Spinner/Spinner";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import CreateNew from "./components/CreateNew/CreateNew";
-
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
 
@@ -31,7 +30,7 @@ const App = () => {
       ) : (
         <main>
           <Header />
-          <NavBar />
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/registro" element={<Register />} />

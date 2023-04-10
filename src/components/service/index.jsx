@@ -155,34 +155,57 @@ export const getCategoriesService = async () => {
   }
   return json.categories;
 };
-//comprobar que esté bien con Inés
 
 export const getOldNewsService = async () => {
-  const response = await fetch('http://localhost:4000/news/old', {
-    method: "GET"
+  const response = await fetch("http://localhost:4000/news/old", {
+    method: "GET",
   });
 
   const json = await response.json();
 
-  if(!response.ok) {
-    throw new Error(json.message)
+  if (!response.ok) {
+    throw new Error(json.message);
   }
-  console.log(json.data.news)
+
   return json.data.news;
-}
+};
 
-getOldNewsService()
+getOldNewsService();
 
-export const getVoteNews = async (token,idNew, vote) => {
-  const response = await fetch(`http://localhost:4000/news/${idNew}/vote/${vote}`, {
-    method: "GET",
-    headers: {
-      Authorization: token,
+// export const getVoteNews = async (token, idNew, vote) => {
+//   const response = await fetch(
+//     `http://localhost:4000/news/${idNew}/vote/${vote}`,
+//     {
+//       method: "GET",
+//       headers: {
+//         Authorization: token,
+//       },
+//     }
+//   );
+
+//   const json = await response.json();
+//   console.log(json);
+// };
+
+// getVoteNews(
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjgxMTE2ODM3LCJleHAiOjE2ODE3MjE2Mzd9.iv_RB0DIaHfFQcoZaGvcuStgqpM4b5mo53wfaHzJ_jw",
+//   4,
+//   "like"
+// );
+
+export const filterNewsByCategoryService = async (idCategory) => {
+  const response = await fetch(
+    `http://localhost:4000/news/filter/${idCategory}`,
+    {
+      method: "GET",
     }
-  })
+  );
 
-  const json = await response.json()
-  console.log(json)
-}
+  const json = await response.json();
 
-getVoteNews( 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjgxMTE2ODM3LCJleHAiOjE2ODE3MjE2Mzd9.iv_RB0DIaHfFQcoZaGvcuStgqpM4b5mo53wfaHzJ_jw', 4, 'like')
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.newsWithFilter;
+};
