@@ -3,13 +3,16 @@ import { getNewsDataService } from "../service";
 // import imgNew from "../../assets/descarga.png";
 import avatar from "../../assets/avatar.jpg";
 import "./News.css";
-import { Link } from "react-router-dom";
+import OldNews from "../OldNews/OldNews";
+import NewsCard from "../NewsCard/NewsCard";
+import { useNavigate } from "react-router-dom";
 
-const News = (orderBy) => {
+const News = () => {
   const [news, setNews] = useState([]);
   const [error, setError] = useState(null);
+  const [show, setShow] = useState(false)
   // const [loading, setLoading] = useState(true)
-
+const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,57 +30,35 @@ const News = (orderBy) => {
 
 
 
+const handleShowNews = () => {
+  navigate('/')
+}
+
+  const handleShowOldNews = () => {
+    setShow(!show)
+  }
 
   return (
     <>
       <section className="homePage__section__buttons">
-        <button className="homePage__button">
+        <button className="homePage__button" onClick={handleShowOldNews}>
           Noticias mas antiguas
         </button>
-        <button className="homePage__button">
+        <button className="homePage__button" onClick={handleShowNews}>
           Noticias actuales
         </button>
       </section>
       <div className="news">
-        {news.map(({ id, title, createdAt, image, idNew }) => (
-          <article
-            className="news__card"
-            key={id}
-            style={{
-              backgroundImage: `url(http://localhost:4000/images/${image})`,
-              position: "relative",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <header className="news__card__header">
-              <h4>{title}</h4>
-            </header>
-            <section className="news__card__section_info">
-              <figure className="news__card__section__figure">
-                <section className="news__card__section_info--user">
-                  <img className="news__card__img" src={avatar} alt="" />
-                  <figcaption>User</figcaption>
-                </section>
+      
+        {show ? <OldNews />
+          : (
+           
+            news.map(({ id, title, createdAt, image, idNew }) => (
+              <NewsCard key={id} id={id} title={title} createdAt={createdAt} image={image} idNew={idNew} />
+            ))
+          )
+        }
 
-                <button className="news__card__section_info__button">
-                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                </button>
-                <button className="news__card__section_info__button">
-                  <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                </button>
-              </figure>
-            </section>
-            <footer className="news__card__footer">
-              <strong>{createdAt}</strong>
-              <Link to={`news/${idNew}`} style={{ textDecoration: "none" }}>
-                {" "}
-                <i className="fa fa-angle-double-right" aria-hidden="true"></i>
-              </Link>
-            </footer>
-          </article>
-        ))}
       </div>
     </>
   );

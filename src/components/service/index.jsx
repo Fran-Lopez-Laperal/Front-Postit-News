@@ -157,7 +157,21 @@ export const getCategoriesService = async () => {
 };
 //comprobar que esté bien con Inés
 
+export const getOldNewsService = async () => {
+  const response = await fetch('http://localhost:4000/news/old', {
+    method: "GET"
+  });
 
+  const json = await response.json();
+
+  if(!response.ok) {
+    throw new Error(json.message)
+  }
+  console.log(json.data.news)
+  return json.data.news;
+}
+
+getOldNewsService()
 
 export const getVoteNews = async (token,idNew, vote) => {
   const response = await fetch(`http://localhost:4000/news/${idNew}/vote/${vote}`, {

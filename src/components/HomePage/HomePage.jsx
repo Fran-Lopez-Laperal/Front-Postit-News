@@ -4,6 +4,7 @@ import './HomePage.css'
 import News from '../News/News'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
+import OldNews from '../OldNews/OldNews';
 
 const FloatingButton = () => {
   const { isLogged } = useContext(AuthContext);
@@ -22,19 +23,14 @@ const FloatingButton = () => {
 
 const HomePage = () => {
 
- const [orderBy, setOrderBy] = useState('latest')
-
-  const handleOrder =  (newsOrder) => {
-    setOrderBy(newsOrder)
-    console.log('hola')
-  }
 
   return (
 
     <>
       <section className='homePage'>
         <section className='homePage__section__news'>
-          <News orderBy={orderBy}/>
+      
+          <News/>
         </section>
         
         <FloatingButton />
