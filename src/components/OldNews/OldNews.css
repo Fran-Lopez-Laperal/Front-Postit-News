@@ -1,4 +1,4 @@
-.news{
+.oldNews{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 2fr));
     grid-auto-rows: 18rem;  
