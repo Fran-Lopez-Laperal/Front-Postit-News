@@ -25,32 +25,16 @@ const News = (orderBy) => {
     fetchData();
   }, []);
 
-  const sortByDate = (a, b) => {
-    return new Date(a.createdAt) - new Date(b.createdAt);
-  };
 
-  const handleOldNews = () => {
-    const sortOldNews = [...news].sort(
-      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-    );
-    setNews(sortOldNews);
-  };
-
-  const handleTodayNews = () => {
-    const sortOldNews = [...news].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
-    setNews(sortOldNews);
-  };
 
 
   return (
     <>
       <section className="homePage__section__buttons">
-        <button className="homePage__button" onClick={handleOldNews}>
+        <button className="homePage__button">
           Noticias mas antiguas
         </button>
-        <button className="homePage__button" onClick={handleTodayNews}>
+        <button className="homePage__button">
           Noticias actuales
         </button>
       </section>
