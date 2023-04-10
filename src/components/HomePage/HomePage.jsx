@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 
-import './HomePage.css'
-import News from '../News/News'
-import {Link} from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext';
-import OldNews from '../OldNews/OldNews';
+import "./HomePage.css";
+import News from "../News/News";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import OldNews from "../OldNews/OldNews";
+import { FilterNews } from "../FilterNews/FilterNews";
+import NavBar from "../NavBar/NavBar";
 
 const FloatingButton = () => {
   const { isLogged } = useContext(AuthContext);
@@ -20,23 +22,21 @@ const FloatingButton = () => {
   );
 };
 
-
 const HomePage = () => {
-
+  const [filter, setFilter] = useState(false);
+  const [idCategory, setIdCategory] = useState(null);
 
   return (
-
     <>
-      <section className='homePage'>
-        <section className='homePage__section__news'>
-      
-          <News/>
+      <section className="homePage">
+        <NavBar setFilter={setFilter} setIdCategory={setIdCategory} />
+        <section className="homePage__section__news">
+          {filter ? <FilterNews idCategory={idCategory} /> : <News />}
         </section>
-        
+
         <FloatingButton />
       </section>
-
     </>
-  )
-}
-export default HomePage
+  );
+};
+export default HomePage;

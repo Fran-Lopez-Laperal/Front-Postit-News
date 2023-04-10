@@ -1,35 +1,54 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import './NavBar.css'
+import { getCategoriesService } from "../service/index.jsx";
 
-const NavBar = () => {
+import "./NavBar.css";
 
-  const [showMenu, setShowMenu] = useState(false)
-  const [icon, setIcon] = useState('fa fa-arrow-right')
+let categories = await getCategoriesService();
+
+const NavBar = ({ setIdCategory, setFilter }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [icon, setIcon] = useState("fa fa-arrow-right");
+  const navigate = useNavigate();
 
   const handleOpneMenu = () => {
-    setShowMenu(!showMenu)
-    setIcon(showMenu ? 'fa fa-arrow-right' : 'fa fa-arrow-left')
-  }
+    setShowMenu(!showMenu);
+    setIcon(showMenu ? "fa fa-arrow-right" : "fa fa-arrow-left");
+  };
 
   const handleCloseMenu = () => {
-    setShowMenu(!showMenu)
-    setIcon('fa fa-arrow-right')
-  }
+    setShowMenu(!showMenu);
+    setIcon("fa fa-arrow-right");
+  };
+
+  const handleFilterNews = (id) => {
+    setIdCategory(id);
+    setFilter(true);
+    navigate("/");
+  };
 
   return (
     <>
-
-
       <nav className={`navBar ${showMenu ? "navBar__expand" : ""}`}>
-        <button className='navBar__button' onClick={handleOpneMenu}>
+        <button className="navBar__button" onClick={handleOpneMenu}>
           <i className={icon} aria-hidden="true"></i>
         </button>
         <menu>
-          <ul className='navBar__menu__ul'>
-          
-            <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
+          <ul className="navBar__menu__ul">
+            {categories.map((category) => (
+              <li
+                className="navBar__menu__ul__li"
+                key={category.id}
+                onClick={(e) => {
+                  handleFilterNews(category.id);
+                }}
+              >
+                {category.name}
+              </li>
+            ))}
+            {/* <li className='navBar__menu__ul__li' onClick={handleCloseMenu}>
             <div className='navBar__menu__ul__li_iconMenu'>
             <i className="fa fa-users" aria-hidden="true"></i>
               </div>
@@ -73,14 +92,12 @@ const NavBar = () => {
               </div>
 
               <Link to='/registro' style={{ textDecoration: 'none' }}>Economía</Link>
-            </li>
+            </li> */}
           </ul>
         </menu>
       </nav>
     </>
+  );
+};
 
-
-  )
-}
-
-export default NavBar
+export default NavBar;
