@@ -19,7 +19,7 @@ const ButtonsProfile = ({
   setClickInImg,
 }) => {
   const navigate = useNavigate();
-  const { token, setUser } = useContext(AuthContext);
+  const { token, setUser, logout } = useContext(AuthContext);
   const handleSendChanges = async () => {
     try {
       await editUserService({
@@ -44,6 +44,7 @@ const ButtonsProfile = ({
   const handleDeleteUser = async () => {
     try {
       await deleteUserService({ token });
+      logout();
       navigate("/");
     } catch (e) {
       console.log(e.message);
