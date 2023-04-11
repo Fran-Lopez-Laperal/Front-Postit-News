@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState} from "react";
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.jpg";
 
@@ -9,10 +9,13 @@ import { AuthContext } from "../../context/AuthContext";
 
 
 const Header = () => {
-
   const {user} = useContext(AuthContext)
   let userImg = `http://localhost:4000/images/${user?.avatar}`;
-
+  const {newsFilterFunction} = useContext(AuthContext);
+  const filterFunction =({target})=>{
+    /* setFilter(target.value) */
+    newsFilterFunction(target.value)
+  }
 
   return (
     <div className="header">
@@ -27,8 +30,9 @@ const Header = () => {
             className="header__section__search--input"
             type="search"
             placeholder="Busca un tipo de noticia"
-            name=""
+            name="search"
             id=""
+            onChange={filterFunction}
           />
           <figure className="">
             <img

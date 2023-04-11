@@ -27,7 +27,6 @@ const HomePage = () => {
   const [idCategory, setIdCategory] = useState(null);
 
   return (
-    <>
       <section className="homePage">
         <NavBar setFilter={setFilter} setIdCategory={setIdCategory} />
         <section className="homePage__section__news">
@@ -36,7 +35,7 @@ const HomePage = () => {
 
         <FloatingButton />
       </section>
-    </>
+    
   );
 };
 export default HomePage;

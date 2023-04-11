@@ -8,6 +8,7 @@ export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
+  const [newsFilter, setNewsFilter] = useState([])
 
   useEffect(() => {
     localStorage.setItem("token", token);
@@ -33,6 +34,10 @@ export const AuthProviderComponent = ({ children }) => {
     //setIsLogged(true);
   };
 
+  const newsFilterFunction= (filterString)=>{
+    setNewsFilter(filterString)
+  }
+
   const logout = () => {
     setToken("");
     setUser(null);
@@ -42,7 +47,7 @@ export const AuthProviderComponent = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, user, isLogged, login, logout, setUser }}
+      value={{ token, user, isLogged, login, logout, setUser, newsFilterFunction, newsFilter }}
     >
       {children}
     </AuthContext.Provider>

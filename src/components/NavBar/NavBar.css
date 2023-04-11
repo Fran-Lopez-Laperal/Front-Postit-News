@@ -2,10 +2,10 @@
     display: flex;
     justify-content: start;
     background-color: var(--corporation);
-    width: 70px;
+    width: 20px;
     min-height: 80vh;
     border-radius: 5px;
-    top: 100px;
+    top: 105px;
     overflow: hidden;
     position:fixed;
     z-index: 2;

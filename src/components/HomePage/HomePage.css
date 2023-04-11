@@ -1,5 +1,5 @@
 .homePage{
-  margin: auto 100px 50px 100px;
+  margin: auto 10px 50px 10px;
 }
 .homePage__section__buttons{
   display: flex;
@@ -16,7 +16,7 @@
 
 .homePage__section__news{
   min-height: 100vh;
-
+  margin-left: 30px;
 }
 
 .floating-button {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from '../../context/AuthContext';
 import { getNewsDataService } from "../service";
 // import imgNew from "../../assets/descarga.png";
 import avatar from "../../assets/avatar.jpg";
@@ -9,16 +10,20 @@ import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const [news, setNews] = useState([]);
+  const [newsWithFilter, setNewsWhitFilter] = useState([])
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false)
+  const {newsFilter} = useContext(AuthContext)
   // const [loading, setLoading] = useState(true)
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
+  console.log(news)
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
+        setNewsWhitFilter(result)
         // setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -28,7 +33,17 @@ const navigate = useNavigate()
     fetchData();
   }, []);
 
+  const filterNews = (newsFilter)=>{
+    const arrayFiltered = news.filter(e=> 
+      (e.title).includes(newsFilter) || 
+      (e.introduction).includes(newsFilter) ||
+      (e.text).includes(newsFilter) )
+    setNewsWhitFilter(arrayFiltered)
+  }
 
+  useEffect(()=>{
+    filterNews(newsFilter)
+  },[newsFilter])
 
 const handleShowNews = () => {
   navigate('/')
@@ -52,8 +67,7 @@ const handleShowNews = () => {
       
         {show ? <OldNews />
           : (
-           
-            news.map(({ id, title, createdAt, image, idNew }) => (
+            newsWithFilter.map(({ id, title, createdAt, image, idNew }) => (
               <NewsCard key={id} id={id} title={title} createdAt={createdAt} image={image} idNew={idNew} />
             ))
           )
