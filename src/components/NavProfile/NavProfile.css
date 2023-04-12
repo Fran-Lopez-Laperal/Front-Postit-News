@@ -1,0 +1,31 @@
+.navProfile {
+  border: 1px solid black;
+
+  width: 100%;
+}
+
+#figure-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navProfile_menu {
+  background-color: var(--corporation);
+  border: 1px solid black;
+  width: 100%;
+}
+
+#img-profile {
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: contain;
+}
+
+.navProfile_menu_ul_li {
+  list-style: none;
+}
+
+.link-profile {
+  text-decoration: none;
+}

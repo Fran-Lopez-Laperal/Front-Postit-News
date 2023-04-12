@@ -9,7 +9,6 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ setFilter }) => {
   const { user } = useContext(AuthContext);
-  let userImg = `http://localhost:4000/images/${user?.avatar}`;
   const { newsFilterFunction } = useContext(AuthContext);
   const filterFunction = ({ target }) => {
     /* setFilter(target.value) */
@@ -36,13 +35,6 @@ const Header = ({ setFilter }) => {
             id=""
             onChange={filterFunction}
           />
-          <figure className="">
-            <img
-              className="header__section__search__article--img"
-              src={userImg}
-              alt=""
-            />
-          </figure>
         </article>
         <section className="buttons-header">
           <Auth></Auth>

@@ -57,3 +57,17 @@
     display: none;
   }
 }
+
+.buttons-header {
+  min-width: 10%;
+  max-width: 20%;
+  min-height: 80%;
+  max-height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 1rem;
+
+  position: relative;
+}
