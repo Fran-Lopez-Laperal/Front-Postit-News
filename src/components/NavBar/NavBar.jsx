@@ -8,7 +8,7 @@ import "./NavBar.css";
 
 let categories = await getCategoriesService();
 
-const NavBar = ({ setIdCategory, setFilter }) => {
+const NavBar = ({ setIdCategory, setFilter, setCategoryName }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [icon, setIcon] = useState("fa fa-arrow-right");
   const navigate = useNavigate();
@@ -23,10 +23,12 @@ const NavBar = ({ setIdCategory, setFilter }) => {
     setIcon("fa fa-arrow-right");
   };
 
-  const handleFilterNews = (id) => {
+  const handleFilterNews = (id, name) => {
     setIdCategory(id);
+    setCategoryName(name);
     setFilter(true);
     navigate("/");
+    handleCloseMenu();
   };
 
   return (
@@ -41,8 +43,8 @@ const NavBar = ({ setIdCategory, setFilter }) => {
               <li
                 className="navBar__menu__ul__li"
                 key={category.id}
-                onClick={(e) => {
-                  handleFilterNews(category.id);
+                onClick={() => {
+                  handleFilterNews(category.id, category.name);
                 }}
               >
                 {category.name}
