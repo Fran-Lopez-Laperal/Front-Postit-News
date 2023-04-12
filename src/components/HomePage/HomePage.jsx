@@ -22,20 +22,27 @@ const FloatingButton = () => {
   );
 };
 
-const HomePage = () => {
-  const [filter, setFilter] = useState(false);
+const HomePage = ({ setFilter, filter }) => {
   const [idCategory, setIdCategory] = useState(null);
+  const [categoryName, setCategoryName] = useState("");
 
   return (
-      <section className="homePage">
-        <NavBar setFilter={setFilter} setIdCategory={setIdCategory} />
-        <section className="homePage__section__news">
-          {filter ? <FilterNews idCategory={idCategory} /> : <News />}
-        </section>
-
-        <FloatingButton />
+    <section className="homePage">
+      <NavBar
+        setFilter={setFilter}
+        setIdCategory={setIdCategory}
+        setCategoryName={setCategoryName}
+      />
+      <section className="homePage__section__news">
+        {filter ? (
+          <FilterNews idCategory={idCategory} categoryName={categoryName} />
+        ) : (
+          <News />
+        )}
       </section>
-    
+
+      <FloatingButton />
+    </section>
   );
 };
 export default HomePage;

@@ -10,10 +10,6 @@ import Login from "../Login/Login";
 import "./CreateNew.css";
 import HomePage from "../HomePage/HomePage";
 
-const categories = await getCategoriesService();
-
-console.log(categories);
-
 const CreateNew = () => {
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -22,16 +18,31 @@ const CreateNew = () => {
   const [introduction, setIntroduction] = useState("");
   const [text, setText] = useState("");
 
-  const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
 
   /* const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   }; */
   //evento para al seleccionar en el select la categoría se cambie el valor
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  useEffect(() => {
+    const fetchGetAllCategories = async () => {
+      try {
+        const allCategories = await getCategoriesService();
+        setCategories(allCategories);
+        setSelectedCategory(allCategories[0].id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchGetAllCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

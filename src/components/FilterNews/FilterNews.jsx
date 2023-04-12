@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { filterNewsByCategoryService } from "../service";
 import NewsCard from "../NewsCard/NewsCard";
 
-export const FilterNews = ({ idCategory }) => {
+export const FilterNews = ({ idCategory, categoryName }) => {
   const [newsWithFilter, setNewsWithFilter] = useState([]);
+
   useEffect(() => {
     const fetchFilterByCategory = async () => {
       const filteredNews = await filterNewsByCategoryService(idCategory);
@@ -11,9 +12,10 @@ export const FilterNews = ({ idCategory }) => {
     };
     fetchFilterByCategory();
   }, [idCategory]);
+
   return (
     <>
-      <h2> Has filtrado </h2>
+      <h2> Estas son las noticias relacionadas con {categoryName}</h2>
       <ul>
         {newsWithFilter.map(({ id, title, createdAt, image, idNew }) => (
           <NewsCard
@@ -26,8 +28,6 @@ export const FilterNews = ({ idCategory }) => {
           />
         ))}
       </ul>
-
-      <p>{idCategory}</p>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from "../../context/AuthContext";
 import { getNewsDataService } from "../service";
 // import imgNew from "../../assets/descarga.png";
 import avatar from "../../assets/avatar.jpg";
@@ -10,20 +10,20 @@ import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const [news, setNews] = useState([]);
-  const [newsWithFilter, setNewsWhitFilter] = useState([])
+  const [newsWithFilter, setNewsWhitFilter] = useState([]);
   const [error, setError] = useState(null);
-  const [show, setShow] = useState(false)
-  const {newsFilter} = useContext(AuthContext)
+  const [show, setShow] = useState(false);
+  const { newsFilter } = useContext(AuthContext);
   // const [loading, setLoading] = useState(true)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  console.log(news)
+  console.log(news);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
-        setNewsWhitFilter(result)
+        setNewsWhitFilter(result);
         // setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -33,25 +33,27 @@ const News = () => {
     fetchData();
   }, []);
 
-  const filterNews = (newsFilter)=>{
-    const arrayFiltered = news.filter(e=> 
-      (e.title).includes(newsFilter) || 
-      (e.introduction).includes(newsFilter) ||
-      (e.text).includes(newsFilter) )
-    setNewsWhitFilter(arrayFiltered)
-  }
+  const filterNews = (newsFilter) => {
+    const arrayFiltered = news.filter(
+      (e) =>
+        e.title.includes(newsFilter) ||
+        e.introduction.includes(newsFilter) ||
+        e.text.includes(newsFilter)
+    );
+    setNewsWhitFilter(arrayFiltered);
+  };
 
-  useEffect(()=>{
-    filterNews(newsFilter)
-  },[newsFilter])
+  useEffect(() => {
+    filterNews(newsFilter);
+  }, [newsFilter]);
 
-const handleShowNews = () => {
-  navigate('/')
-}
+  const handleShowNews = () => {
+    navigate("/");
+  };
 
   const handleShowOldNews = () => {
-    setShow(!show)
-  }
+    setShow(!show);
+  };
 
   return (
     <>
@@ -64,15 +66,20 @@ const handleShowNews = () => {
         </button>
       </section>
       <div className="news">
-      
-        {show ? <OldNews />
-          : (
-            newsWithFilter.map(({ id, title, createdAt, image, idNew }) => (
-              <NewsCard key={id} id={id} title={title} createdAt={createdAt} image={image} idNew={idNew} />
-            ))
-          )
-        }
-
+        {show ? (
+          <OldNews />
+        ) : (
+          newsWithFilter.map(({ id, title, createdAt, image, idNew }) => (
+            <NewsCard
+              key={id}
+              id={id}
+              title={title}
+              createdAt={createdAt}
+              image={image}
+              idNew={idNew}
+            />
+          ))
+        )}
       </div>
     </>
   );
