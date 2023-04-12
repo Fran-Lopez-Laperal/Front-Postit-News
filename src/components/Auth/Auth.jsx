@@ -2,30 +2,27 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Auth.css";
+import registerIcon from "../../assets/icono-login.png";
+
 import Profile from "../Profile/Profile";
+import { NavProfile } from "../NavProfile/NavProfile";
 
 export const Auth = () => {
   const { user, logout } = useContext(AuthContext);
 
   return user ? (
-    <section className="p-buttonclose-auth">
-      <Link to="/perfil" onClick={() => {user.name}}>
-        Hola {user.name}
-      </Link>
-      
-      <Link to="/" onClick={() => logout()}>
-        <button>Cerrar sesión</button>
-      </Link>
-    </section>
+    <NavProfile />
   ) : (
     <>
       <section className="buttons-auth-header">
         <button className="button-register-auth-header">
-          <Link to="/registro">Register</Link>
+          <Link to="/registro">Regístrate</Link>
         </button>
 
         <button className="button-login-auth-header">
-          <Link to="/login">Login</Link>
+          <Link to="/login">
+            <img id="registerIcon" src={registerIcon} alt="icono-login" />
+          </Link>
         </button>
       </section>
     </>

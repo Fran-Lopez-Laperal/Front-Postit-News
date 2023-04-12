@@ -1,8 +1,7 @@
 .buttons-auth-header {
   display: flex;
   flex-direction: row;
-  gap:2rem;
-  
+  gap: 2rem;
 }
 
 .button-register-auth-header,
@@ -25,13 +24,13 @@
   text-decoration: none;
 }
 
-.button-register-auth-header>a,
-.button-login-auth-header>a {
+.button-register-auth-header > a,
+.button-login-auth-header > a {
   text-decoration: none;
   color: #fff;
 }
 
-.p-buttonclose-auth{
+.p-buttonclose-auth {
   display: flex;
   flex-direction: column;
   color: white;
@@ -45,4 +44,8 @@
 
 .p-buttonclose-auth button {
   margin-bottom: 1rem;
+}
+
+#registerIcon {
+  width: 2rem;
 }

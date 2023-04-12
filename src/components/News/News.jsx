@@ -22,6 +22,7 @@ const News = () => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
+        console.log(result);
         setNews(result);
         setNewsWhitFilter(result);
         // setLoading(false);
