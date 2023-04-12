@@ -93,7 +93,7 @@ const NewsDetail = () => {
                 <h5 className='newsDetails__article__section__info--date'>{new Date(createdAt).toDateString('es')}</h5>
               </header>
               <section className= {'newsDetails__article__section__info__user'} >
-              <i class="fa fa-user-o" aria-hidden="true"></i>
+              <i className="fa fa-user-o" aria-hidden="true"></i>
               <h3>OWNUSER</h3>
               </section>
               <section className='newsDetails__article__section__info__text'>

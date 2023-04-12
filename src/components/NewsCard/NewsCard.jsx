@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import "./NewsCard.css";
 
-const NewsCard = ({ id, title, createdAt, image, idNew }) => {
+const NewsCard = ({ id, title, createdAt, image,  }) => {
   image = image ?? false;
 
   return (
@@ -44,7 +44,7 @@ const NewsCard = ({ id, title, createdAt, image, idNew }) => {
         </section>
         <footer className="news__card__footer">
           <strong>{createdAt}</strong>
-          <Link to={`news/${idNew}`} style={{ textDecoration: "none" }}>
+          <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
             {" "}
             <i className="fa fa-angle-double-right" aria-hidden="true"></i>
           </Link>
