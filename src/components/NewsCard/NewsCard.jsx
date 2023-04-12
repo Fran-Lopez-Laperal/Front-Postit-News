@@ -33,13 +33,6 @@ const NewsCard = ({ id, title, createdAt, image,  }) => {
               <img className="news__card__img" src={avatar} alt="" />
               <figcaption>User</figcaption>
             </section>
-
-            <button className="news__card__section_info__button">
-              <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
-            </button>
-            <button className="news__card__section_info__button">
-              <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
-            </button>
           </figure>
         </section>
         <footer className="news__card__footer">

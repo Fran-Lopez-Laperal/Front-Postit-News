@@ -67,7 +67,7 @@ export const getNewsDataService = async () => {
   }
   return json.data;
 };
-getNewsDataService();
+
 
 export const editUserService = async ({ name, email, bio, token }) => {
   console.log(name, email, bio);
@@ -170,28 +170,23 @@ export const getOldNewsService = async () => {
   return json.data.news;
 };
 
-getOldNewsService();
 
-// export const getVoteNews = async (token, idNew, vote) => {
-//   const response = await fetch(
-//     `http://localhost:4000/news/${idNew}/vote/${vote}`,
-//     {
-//       method: "GET",
-//       headers: {
-//         Authorization: token,
-//       },
-//     }
-//   );
+export const getVoteNews = async (token, id, vote) => {
+  const response = await fetch(
+    `http://localhost:4000/news/${id}/vote/${vote}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 
-//   const json = await response.json();
-//   console.log(json);
-// };
+  const json = await response.json();
+  return json
+};
 
-// getVoteNews(
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjgxMTE2ODM3LCJleHAiOjE2ODE3MjE2Mzd9.iv_RB0DIaHfFQcoZaGvcuStgqpM4b5mo53wfaHzJ_jw",
-//   4,
-//   "like"
-// );
+
 
 export const filterNewsByCategoryService = async (idCategory) => {
   const response = await fetch(
