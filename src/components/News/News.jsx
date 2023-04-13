@@ -49,7 +49,14 @@ const News = () => {
   }, [newsFilter]);
 
   const handleShowNews = () => {
-    navigate("/");
+    const today = new Date().toISOString().slice(0,10);
+
+    const filterTodayNews = newsWithFilter.filter((newsItem) => {
+      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0,10);
+      return createdAt === today;
+    });
+
+    setNewsWhitFilter(filterTodayNews);
   };
 
   const handleShowOldNews = () => {
