@@ -79,7 +79,7 @@ const NewsDetail = () => {
   if (!news) {
     return null
   }
-
+console.log(news)
 
   return (
     <section className='newsDetail' >

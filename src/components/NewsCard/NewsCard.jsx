@@ -5,9 +5,14 @@ import { Link } from "react-router-dom";
 
 import "./NewsCard.css";
 
-const NewsCard = ({ id, title, createdAt, image,  }) => {
+const NewsCard = ({ id, title, createdAt, image, ownerName, ownerAvatar, totalLikes }) => {
+  let userImg = `http://localhost:4000/images/${ownerAvatar}`;
   image = image ?? false;
 
+
+
+  
+  console.log(userImg)
   return (
     <>
       <article
@@ -30,8 +35,8 @@ const NewsCard = ({ id, title, createdAt, image,  }) => {
         <section className="news__card__section_info">
           <figure className="news__card__section__figure">
             <section className="news__card__section_info--user">
-              <img className="news__card__img" src={avatar} alt="" />
-              <figcaption>User</figcaption>
+              <img className="news__card__img" src={userImg} alt="" />
+              <figcaption>{ownerName}</figcaption>
             </section>
           </figure>
         </section>
