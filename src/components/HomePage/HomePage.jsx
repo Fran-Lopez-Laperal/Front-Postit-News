@@ -7,8 +7,9 @@ import { AuthContext } from "../../context/AuthContext";
 import OldNews from "../OldNews/OldNews";
 import { FilterNews } from "../FilterNews/FilterNews";
 import NavBar from "../NavBar/NavBar";
+import FloatingButton from "../FloatingButton/FloatingButton";
 
-const FloatingButton = () => {
+/* const FloatingButton = () => {
   const { isLogged } = useContext(AuthContext);
   if (!isLogged) return null;
 
@@ -20,7 +21,7 @@ const FloatingButton = () => {
       <Link to="/crear-noticia">Crear Noticia</Link>
     </div>
   );
-};
+}; */
 
 const HomePage = ({ setFilter, filter }) => {
   const [idCategory, setIdCategory] = useState(null);

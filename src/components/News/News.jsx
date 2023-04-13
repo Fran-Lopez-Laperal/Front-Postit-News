@@ -57,7 +57,11 @@ const News = () => {
     });
 
     setNewsWhitFilter(filterTodayNews);
+
+    //console.log(filterTodayNews);
+    
   };
+  
 
   const handleShowOldNews = () => {
     setShow(!show);
@@ -67,10 +71,10 @@ const News = () => {
     <>
       <section className="homePage__section__buttons">
         <button className="homePage__button" onClick={handleShowOldNews}>
-          Noticias mas antiguas
+          Noticias pasadas
         </button>
         <button className="homePage__button" onClick={handleShowNews}>
-          Noticias actuales
+          Noticias de hoy
         </button>
       </section>
       <div className="news">
