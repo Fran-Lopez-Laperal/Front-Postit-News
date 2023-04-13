@@ -70,7 +70,8 @@ const News = () => {
         {show ? (
           <OldNews />
         ) : (
-          newsWithFilter.map(({ id, title, createdAt, image }) => (
+          newsWithFilter.map(({ id, title, createdAt, image, name, avatar }) => (
+          
             <NewsCard
               key={id}
               id={id}
@@ -78,6 +79,8 @@ const News = () => {
               createdAt={createdAt}
               image={image}
               idNew={id}
+              ownerName={name}
+              ownerAvatar={avatar}
             />
           ))
         )}
