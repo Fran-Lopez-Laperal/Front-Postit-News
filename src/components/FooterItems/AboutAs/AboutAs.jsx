@@ -1,13 +1,10 @@
 import React from 'react'
+import './AboutAs.css'
 
 const AboutAs = () => {
   return (
-    <>
-      
-        <div>AboutAs</div>
-      
-    </>
-  );
+    <div>Sobre nosotros</div>
+  )
 }
 
 export default AboutAs

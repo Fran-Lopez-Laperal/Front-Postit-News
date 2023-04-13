@@ -1,4 +1,5 @@
 import React from "react";
+import './PrivacityCookies.css'
 
 const PrivacityCookies = () => {
   return (

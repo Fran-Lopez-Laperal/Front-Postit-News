@@ -1,10 +1,10 @@
 import React from "react";
 import "./Footer.css";
-import PrivacityCookies from "../PrivacityCookies/PrivacityCookies";
-import PrivacityPolicy from "../PrivacityPolicy/PrivacityPolicy";
+import PrivacityCookies from "../FooterItems/PrivacityCookies/PrivacityCookies";
+import PrivacityPolicy from "../FooterItems/PrivacityPolicy/PrivacityPolicy";
 import Modal from "../Modal/Modal";
-import AboutAs from "../AboutAs/AboutAs";
-import Contacto from "../Contacto/Contacto";
+import AboutAs from "../FooterItems/AboutAs/AboutAs";
+import Contacto from "../FooterItems/Contacto/Contacto";
 
 const Footer = () => {
   return (
