@@ -1,34 +1,28 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { getNewsDataService } from "../service";
-// import imgNew from "../../assets/descarga.png";
-import avatar from "../../assets/avatar.jpg";
-import "./News.css";
 import OldNews from "../OldNews/OldNews";
 import NewsCard from "../NewsCard/NewsCard";
 import { useNavigate } from "react-router-dom";
+import avatar from "../../assets/avatar.jpg";
+import "./News.css";
 
 const News = () => {
   const [news, setNews] = useState([]);
-  const [newsWithFilter, setNewsWhitFilter] = useState([]);
+  const [newsWithFilter, setNewsWithFilter] = useState([]);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const { newsFilter } = useContext(AuthContext);
-  // const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
 
-  console.log(news);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
-        console.log(result);
         setNews(result);
-        setNewsWhitFilter(result);
-        // setLoading(false);
+        setNewsWithFilter(result);
       } catch (error) {
         setError(error.message);
-        // setLoading(false);
       }
     };
     fetchData();
@@ -41,7 +35,7 @@ const News = () => {
         e.introduction.includes(newsFilter) ||
         e.text.includes(newsFilter)
     );
-    setNewsWhitFilter(arrayFiltered);
+    setNewsWithFilter(arrayFiltered);
   };
 
   useEffect(() => {
@@ -49,21 +43,29 @@ const News = () => {
   }, [newsFilter]);
 
   const handleShowNews = () => {
-    const today = new Date().toISOString().slice(0,10);
+    const today = new Date().toISOString().slice(0, 10);
 
-    const filterTodayNews = newsWithFilter.filter((newsItem) => {
-      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0,10);
+    const filterTodayNews = news.filter((newsItem) => {
+      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
       return createdAt === today;
     });
 
-    setNewsWhitFilter(filterTodayNews);
-
-    //console.log(filterTodayNews);
-    
+    setNewsWithFilter(filterTodayNews);
   };
-  
+
+  const filterOldNews = () => {
+    const today = new Date().toISOString().slice(0, 10);
+
+    const filteredNews = news.filter((newsItem) => {
+      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
+      return createdAt !== today;
+    });
+
+    setNewsWithFilter(filteredNews);
+  };
 
   const handleShowOldNews = () => {
+    filterOldNews();
     setShow(!show);
   };
 
