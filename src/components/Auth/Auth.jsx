@@ -8,7 +8,7 @@ import Profile from "../Profile/Profile";
 import { NavProfile } from "../NavProfile/NavProfile";
 
 export const Auth = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return user ? (
     <NavProfile />
