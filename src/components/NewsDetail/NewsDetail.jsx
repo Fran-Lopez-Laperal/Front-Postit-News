@@ -48,8 +48,6 @@ const NewsDetail = () => {
     try {
       await getVoteNews(token, idNew, vote)
       const updateNew = await getNewDetailDataService(idNew)
-      console.log(updateNew)
-
       setNews(updateNew)
 
     } catch (error) {
@@ -61,7 +59,6 @@ const NewsDetail = () => {
     try {
       await getVoteNews(token, idNew, vote)
       const updateNew = await getNewDetailDataService(idNew)
-      console.log(updateNew)
       setNews(updateNew)
   
 
