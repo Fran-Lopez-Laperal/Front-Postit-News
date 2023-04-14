@@ -2,21 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 
 
 import './NewsDetail.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getNewDetailDataService, getVoteNews } from '../service'
 import { AuthContext } from '../../context/AuthContext'
 
 const NewsDetail = () => {
 
   const { token } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const [news, setNews] = useState(null)
   const [error, setError] = useState(null)
   const [expanded, setExpanded] = useState(false)
-  const [voteLike, setVoteLike] = useState('')
-  const [voteDisLike, setVoteDisLike] = useState('')
-  const [disabledLike, setDisabledLike] = useState(false)
-  const [disabledDislike, setDisabledDislike] = useState(false)
+ 
 
   const { idNew } = useParams()
 
@@ -35,7 +33,7 @@ const NewsDetail = () => {
       try {
         const newDetail = await getNewDetailDataService(idNew)
         setNews(newDetail)
-
+        console.log(action)
       } catch (error) {
         setError(error)
       }
@@ -50,9 +48,6 @@ const NewsDetail = () => {
     try {
       await getVoteNews(token, idNew, vote)
       const updateNew = await getNewDetailDataService(idNew)
-      console.log(updateNew)
-      setVoteLike(vote)
-      setVoteDisLike("")
       setNews(updateNew)
 
     } catch (error) {
@@ -64,9 +59,6 @@ const NewsDetail = () => {
     try {
       await getVoteNews(token, idNew, vote)
       const updateNew = await getNewDetailDataService(idNew)
-      console.log(updateNew)
-      setVoteDisLike(vote)
-      setVoteLike("")
       setNews(updateNew)
   
 
@@ -75,15 +67,23 @@ const NewsDetail = () => {
     }
   }
 
+const handleEdit = () => {
+
+}
+
+const handleDelete = () => {
+
+}
 
   if (!news) {
     return null
   }
-console.log(news)
+
+  
 
   return (
     <section className='newsDetail' >
-      {news.map(({ title, id, image, createdAt, introduction, text }) => (
+      {news.map(({ title, id, image, createdAt, introduction, text, name, nameCategory, userVote, totalLikes, totalDisLikes }) => (
         <article className='newsDetails__article' key={id}>
           <figure className='newsDetails__article__figure' style={{
             backgroundImage: `url(http://localhost:4000/images/${image})`,
@@ -101,48 +101,48 @@ console.log(news)
           <section className='newsDetails__article__section--buttonOptions'>
             <div className='main-container'>
               <div className='btn-container'>
-                <button onClick={handleExpandedButton} className={expanded ? 'expandable-button expanded' : 'expandable-button'}>
+                <div onClick={handleExpandedButton} className={expanded ? 'expandable-button expanded' : 'expandable-button'}>
                   <div className='fill-block'></div>
                   <div className='close-icon'>
                     <div className=" fa fa-times" aria-hidden="true"></div>
                   </div>
-                  <Link to={''} className='expansion-item'>
+                  <button onClick={handleEdit} className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-share-alt'></div>
                     </div>
-                  </Link>
-                  <Link to={'mailto:""'} className='expansion-item'>
+                  </button>
+                  <button onClick={handleDelete} className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-facebook'></div>
                     </div>
-                  </Link>
-                  <Link to={''} className='expansion-item'>
+                  </button>
+                  <button className='expansion-item'>
                     <div className='expansion-content'>
                       <div className='icon fa fa-globe'></div>
                     </div>
-                  </Link>
-                </button>
+                  </button>
+                </div>
               </div>
             </div>
           </section>
           <section className='newsDetails__article__section__info'>
             <article className='newsDetails__article__section__info'>
               <header>
-                <h5 className='newsDetails__article__section__info--date'>{new Date(createdAt).toDateString('es')}</h5>
+                <h5 className='newsDetails__article__section__info--date'>{new Date(createdAt).toLocaleString()}</h5>
               </header>
               <section className='newsDetails__article__section__info__user' >
                 <section className='newsDetails__article__section__info__user--name'>
                   <i className="fa fa-user-o" aria-hidden="true"></i>
-                  <h3>OWNUSER</h3>
+                  <h3>{name}</h3>
                 </section>
                 <section className='newsDetails__article__section__info__votes'>
                   <button className="newsDetails__article__section__info__votes--buttons" onClick={() => handleVoteLike('like')}>
                     <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    {voteLike}
+                    {totalLikes}
                   </button>
                   <button className="newsDetails__article__section__info__votes--buttons" onClick={() => handleVoteDisLike('disLike')}>
                     <i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                    {voteDisLike}
+                    {totalDisLikes}
                   </button>
                 </section>
               </section>

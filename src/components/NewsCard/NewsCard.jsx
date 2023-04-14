@@ -12,7 +12,6 @@ const NewsCard = ({ id, title, createdAt, image, ownerName, ownerAvatar, totalLi
 
 
   
-  console.log(userImg)
   return (
     <>
       <article

@@ -1,3 +1,21 @@
+.inactive{
+    background-color: transparent;
+    color: black;
+}
+.inactive:hover{
+    background: none;
+}
+
+.active:hover{
+    background: none;
+    color: black;
+}
+
+.active{
+    background-color: red;
+    color: white;
+}
+
 .newsDetail{
     margin: 5px 100px 50px 100px;
     min-height: 100vh;
@@ -58,10 +76,9 @@
 }
 
 .newsDetails__article__section__info__user--name{
-    min-width: 200px;
-    width: 210px;
+    min-width: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .newsDetails__article__section__info__text{
@@ -109,17 +126,10 @@
 
 .newsDetails__article__section__info__votes{
     display: flex;
-    align-content: center;
-}
-.newsDetails__article__section__info__votes--buttons{
-    background-color: transparent;
-    color: black;
-    align-items: last baseline;
+    justify-content: space-around;
+    width: 150px;
 }
 
-.newsDetails__article__section__info__votes--buttons:hover{
-    background: none;
-}
 
 .expandable-button .close-icon {
     position: relative;
