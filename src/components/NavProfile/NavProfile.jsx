@@ -1,13 +1,20 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import posit from "../../assets/posit.png";
 
 import "./NavProfile.css";
 
 export const NavProfile = () => {
   const { user, logout } = useContext(AuthContext);
 
-  let userImg = `http://localhost:4000/images/${user?.avatar}`;
+  let userImg;
+
+  if (user?.avatar === null) {
+    userImg = posit;
+  } else {
+    userImg = `http://localhost:4000/images/${user?.avatar}`;
+  }
 
   const [showMenu, setShowMenu] = useState(false);
   //   const [icon, setIcon] = useState("fa fa-arrow-right");
