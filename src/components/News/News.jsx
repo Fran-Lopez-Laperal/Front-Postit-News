@@ -14,13 +14,13 @@ const News = () => {
   const [show, setShow] = useState(false);
   const { newsFilter } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [newsToday, setNewsToday] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
-        setNewsWithFilter(result);
       } catch (error) {
         setError(error.message);
       }
@@ -28,45 +28,40 @@ const News = () => {
     fetchData();
   }, []);
 
-  const filterNews = (newsFilter) => {
-    const arrayFiltered = news.filter(
-      (e) =>
-        e.title.includes(newsFilter) ||
-        e.introduction.includes(newsFilter) ||
-        e.text.includes(newsFilter)
-    );
-    setNewsWithFilter(arrayFiltered);
-  };
-
   useEffect(() => {
+    const filterNews = (newsFilter) => {
+      const arrayFiltered = news.filter(
+        (e) =>
+          e.title.includes(newsFilter) ||
+          e.introduction.includes(newsFilter) ||
+          e.text.includes(newsFilter)
+      );
+      setNewsWithFilter(arrayFiltered);
+    };
     filterNews(newsFilter);
   }, [newsFilter]);
 
-  const handleShowNews = () => {
+  useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
-
     const filterTodayNews = news.filter((newsItem) => {
       const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
       return createdAt === today;
     });
+    setNewsToday(filterTodayNews);
+  }, [news]);
 
-    setNewsWithFilter(filterTodayNews);
-  };
-
-  const filterOldNews = () => {
+  const handleShowNews = () => {
+    setShow(false);
     const today = new Date().toISOString().slice(0, 10);
-
-    const filteredNews = news.filter((newsItem) => {
+    const filterTodayNews = news.filter((newsItem) => {
       const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
-      return createdAt !== today;
+      return createdAt === today;
     });
-
-    setNewsWithFilter(filteredNews);
+    setNewsToday(filterTodayNews);
   };
 
   const handleShowOldNews = () => {
-    filterOldNews();
-    setShow(!show);
+    setShow(true);
   };
 
   return (
@@ -80,23 +75,21 @@ const News = () => {
         </button>
       </section>
       <div className="news">
-        {show ? (
-          <OldNews />
-        ) : (
-          newsWithFilter.map(({ id, title, createdAt, image, name, avatar }) => (
-          
-            <NewsCard
-              key={id}
-              id={id}
-              title={title}
-              createdAt={createdAt}
-              image={image}
-              idNew={id}
-              ownerName={name}
-              ownerAvatar={avatar}
-            />
-          ))
-        )}
+        {show
+          ? <OldNews />
+          : newsToday.map(({ id, title, createdAt, image, name, avatar }) => (
+              <NewsCard
+                key={id}
+                id={id}
+                title={title}
+                createdAt={createdAt}
+                image={image}
+                idNew={id}
+                ownerName={name}
+                ownerAvatar={avatar}
+              />
+            ))
+        }
       </div>
     </>
   );
