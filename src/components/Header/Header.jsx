@@ -7,6 +7,7 @@ import { Auth } from "../Auth/Auth";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
+
 const Header = ({ setFilter }) => {
   const { user } = useContext(AuthContext);
   const { newsFilterFunction } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Header = ({ setFilter }) => {
   };
 
   const handleClickLogo = () => {
-    setFilter(false);
+    window.location.reload();
   };
 
   return (
