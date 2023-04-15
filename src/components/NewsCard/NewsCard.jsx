@@ -8,7 +8,20 @@ import "./NewsCard.css";
 const NewsCard = ({ id, title, createdAt, image, ownerName, ownerAvatar, totalLikes }) => {
   let userImg = `http://localhost:4000/images/${ownerAvatar}`;
   image = image ?? false;
+  
+  const renderDate =(string)=>{
+  
+    let arrayDate = string.substring(0,10).split("-")
+    let now = new Date
+    let day = now.getDate()
+    let month = now.getMonth()+1
+    let year = now.getFullYear()
+    if(year !== Number(arrayDate[0])) return `Hace ${Number(arrayDate[0])- year} años`
+    if(month !== Number(arrayDate[1])) return `Hace ${Number(arrayDate[1])-month} meses`
+    if(day !== Number(arrayDate[2])) return `Hace ${Number(arrayDate[2])- day } días`
 
+    return "Hoy"
+  }
 
 
   
@@ -40,7 +53,7 @@ const NewsCard = ({ id, title, createdAt, image, ownerName, ownerAvatar, totalLi
           </figure>
         </section>
         <footer className="news__card__footer">
-          <strong>{createdAt}</strong>
+          <strong>{renderDate(createdAt)}</strong>
           <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
             {" "}
             <i className="fa fa-angle-double-right" aria-hidden="true"></i>
