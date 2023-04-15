@@ -4,7 +4,7 @@ import avatar from "../../assets/avatar.jpg";
 
 import "./Header.css";
 import { Auth } from "../Auth/Auth";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 
@@ -17,7 +17,8 @@ const Header = ({ setFilter }) => {
   };
 
   const handleClickLogo = () => {
-    window.location.reload();
+    /* window.location.reload(); */
+    Navigate('/')
   };
 
   return (
