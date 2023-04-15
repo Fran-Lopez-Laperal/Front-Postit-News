@@ -65,10 +65,8 @@ export const getNewsDataService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log(json);
   return json.data;
 };
-
 
 export const editUserService = async ({ name, email, bio, token }) => {
   console.log(name, email, bio);
@@ -163,7 +161,6 @@ export const getOldNewsService = async () => {
   });
 
   const json = await response.json();
-  console.log(json)
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -171,7 +168,6 @@ export const getOldNewsService = async () => {
 
   return json.data.news;
 };
-
 
 export const getVoteNews = async (token, id, vote) => {
   const response = await fetch(
@@ -185,10 +181,8 @@ export const getVoteNews = async (token, id, vote) => {
   );
 
   const json = await response.json();
-  return json
+  return json;
 };
-
-
 
 export const filterNewsByCategoryService = async (idCategory) => {
   const response = await fetch(

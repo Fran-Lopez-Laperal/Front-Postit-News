@@ -30,16 +30,21 @@ export const FilterNews = ({ idCategory, categoryName }) => {
           {" "}
           <h2> Estas son las noticias relacionadas con {categoryName}</h2>
           <ul>
-            {newsWithFilter.map(({ id, title, createdAt, image, idNew }) => (
-              <NewsCard
-                key={id}
-                id={id}
-                title={title}
-                createdAt={createdAt}
-                image={image}
-                idNew={idNew}
-              />
-            ))}
+            {newsWithFilter.map(
+              ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+                <NewsCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  createdAt={createdAt}
+                  image={image}
+                  idNew={id}
+                  ownerName={name}
+                  ownerAvatar={avatar}
+                  nameCategory={nameCategory}
+                />
+              )
+            )}
           </ul>
         </section>
       )}

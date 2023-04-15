@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import posit from "../../assets/posit.png";
+import imgForUser from "../../assets/imgForUser.png";
 
 import "./NavProfile.css";
 
@@ -11,7 +12,7 @@ export const NavProfile = () => {
   let userImg;
 
   if (user?.avatar === null) {
-    userImg = posit;
+    userImg = imgForUser;
   } else {
     userImg = `http://localhost:4000/images/${user?.avatar}`;
   }
