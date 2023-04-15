@@ -25,12 +25,13 @@ const OldNews = () => {
     oldNews()
   }, [])
 
-
+console.log(news)
 
   return (
     <div className='oldNews'>
-      {news.map(({ id, title, createdAt, image, idNew }) => (
-        <NewsCard key={id} id={id} title={title} createdAt={createdAt} image={image} idNew={idNew} />
+      {news.map(({ id, title, createdAt, image, idNew, name, avatar, nameCategory }) => (
+        <NewsCard key={id} id={id} title={title} createdAt={createdAt} image={image} idNew={idNew} ownerName={name}
+        ownerAvatar={avatar} nameCategory={nameCategory}/>
       ))}
     </div>
   )

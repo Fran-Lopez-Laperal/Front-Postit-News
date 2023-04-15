@@ -65,6 +65,7 @@ export const getNewsDataService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  console.log(json);
   return json.data;
 };
 

@@ -77,7 +77,7 @@ const News = () => {
       <div className="news">
         {show
           ? <OldNews />
-          : newsToday.map(({ id, title, createdAt, image, name, avatar }) => (
+          : newsToday.map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
               <NewsCard
                 key={id}
                 id={id}
@@ -87,6 +87,7 @@ const News = () => {
                 idNew={id}
                 ownerName={name}
                 ownerAvatar={avatar}
+                nameCategory={nameCategory}
               />
             ))
         }
