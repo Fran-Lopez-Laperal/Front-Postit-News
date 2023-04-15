@@ -21,6 +21,14 @@ const News = () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
+        
+        const today = new Date().toISOString().slice(0, 10);
+        const filterTodayNews = result.filter((newsItem) => {
+          const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
+          return createdAt === today;
+        });
+        const sortedNews = filterTodayNews.sort((a, b) => b.totalLikes - a.totalLikes);
+        setNewsToday(sortedNews);
       } catch (error) {
         setError(error.message);
       }
@@ -41,23 +49,8 @@ const News = () => {
     filterNews(newsFilter);
   }, [newsFilter]);
 
-  useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
-    const filterTodayNews = news.filter((newsItem) => {
-      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
-      return createdAt === today;
-    });
-    setNewsToday(filterTodayNews);
-  }, [news]);
-
   const handleShowNews = () => {
     setShow(false);
-    const today = new Date().toISOString().slice(0, 10);
-    const filterTodayNews = news.filter((newsItem) => {
-      const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
-      return createdAt === today;
-    });
-    setNewsToday(filterTodayNews);
   };
 
   const handleShowOldNews = () => {
@@ -67,12 +60,13 @@ const News = () => {
   return (
     <>
       <section className="homePage__section__buttons">
-        <button className="homePage__button" onClick={handleShowOldNews}>
-          Noticias pasadas
-        </button>
         <button className="homePage__button" onClick={handleShowNews}>
           Noticias de hoy
         </button>
+        <button className="homePage__button" onClick={handleShowOldNews}>
+          Noticias pasadas
+        </button>
+        
       </section>
       <div className="news">
         {show
@@ -95,5 +89,6 @@ const News = () => {
     </>
   );
 };
+
 
 export default News;
