@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import posit from "../../assets/posit.png";
+import imgForUser from "../../assets/imgForUser.png";
 import { AuthContext } from "../../context/AuthContext";
 import { editAvatarUserService, getMyUserDataService } from "../service";
 
@@ -10,7 +10,7 @@ const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
 
   const avatarUserDB = user?.avatar
     ? `http://localhost:4000/images/${user?.avatar}`
-    : posit;
+    : imgForUser;
   const [userImg, setUserImg] = useState(avatarUserDB);
 
   const changeImage = async (e) => {
