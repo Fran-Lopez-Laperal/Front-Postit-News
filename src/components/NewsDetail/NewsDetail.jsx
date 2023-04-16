@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
 
 const NewsDetail = () => {
-  const { token } = useContext(AuthContext);
+  const { token, setFilter } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [news, setNews] = useState(null);
@@ -96,9 +96,17 @@ const NewsDetail = () => {
               }}
             >
               <section className="newsDetails__article__figure__section">
-                <button className="newsDetails__article__figure__section--button">
-                  <i className="fa fa-arrow-left fa-3x" aria-hidden="true"></i>
-                </button>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <button
+                    className="newsDetails__article__figure__section--button"
+                    onClick={setFilter(false)}
+                  >
+                    <i
+                      className="fa fa-arrow-left fa-3x"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </Link>
                 <p className="newsDetails__article__figure__section--p">
                   {title}
                 </p>

@@ -62,9 +62,8 @@ const CreateNew = () => {
       formDataNew.append("category", selectedCategory);
       formDataNew.append("photo", photo);
 
-      console.log("selected", selectedCategory);
-
-      await createNewService({ formDataNew, token });
+      const response = await createNewService({ formDataNew, token });
+      console.log(response);
 
       if (!error) {
         navigate("/");
@@ -91,6 +90,8 @@ const CreateNew = () => {
             type="text"
             id="title"
             value={title}
+            minLength="5"
+            maxLength="50"
             onChange={(event) => setTitle(event.target.value)}
             required
           />
@@ -99,6 +100,8 @@ const CreateNew = () => {
           <label htmlFor="introduction">Introducción:</label>
           <textarea
             id="introduction"
+            minLength="5"
+            maxLength="50"
             value={introduction}
             onChange={(event) => setIntroduction(event.target.value)}
             required
@@ -108,6 +111,8 @@ const CreateNew = () => {
           <label htmlFor="text">Texto:</label>
           <textarea
             id="text"
+            minLength="5"
+            maxLength="500"
             value={text}
             onChange={(event) => setText(event.target.value)}
             required
