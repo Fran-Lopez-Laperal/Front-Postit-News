@@ -32,15 +32,15 @@ const Contacto = () => {
           </div>
           <div className="contact-us-info">
             <h3 className="contact-us-name">Jose Luis Gómez Cano</h3>
-            <p className="contact-us-email">jose@gmail.com</p>
-            <a className="contact-us-link" href="https://github.com/jose" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a className="contact-us-link" href="https://www.linkedin.com/in/jose" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <p className="contact-us-email">joseluis.gomez.cano@hotmail.es</p>
+            <a className="contact-us-link" href="https://github.com/ErReberde1" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a className="contact-us-link" href="https://www.linkedin.com/in/jos%C3%A9-luis-g%C3%B3mez-cano/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
           <div className="contact-us-info">
             <h3 className="contact-us-name">Ines Navarro</h3>
-            <p className="contact-us-email">inesnavarro@gmail.com</p>
-            <a className="contact-us-link" href="https://github.com/ines" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a className="contact-us-link" href="https://www.linkedin.com/in/ines" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <p className="contact-us-email">inesnavarrodev@gmail.com</p>
+            <a className="contact-us-link" href="https://github.com/4cines" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a className="contact-us-link" href="http://linkedin.com/in/navarroinesdev" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </div>
