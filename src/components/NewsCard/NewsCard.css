@@ -7,7 +7,7 @@
     justify-content: end;
     padding: 20px;
     max-width: 300px;
-    min-height: 320px;
+    max-height: 300px;
 }
 
 .news__card::before{

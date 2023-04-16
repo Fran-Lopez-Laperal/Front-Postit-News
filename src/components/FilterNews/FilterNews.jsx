@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { filterNewsByCategoryService } from "../service";
 import NewsCard from "../NewsCard/NewsCard";
 
+import './FilterNews.css'
+
 export const FilterNews = ({ idCategory, categoryName }) => {
   const [newsWithFilter, setNewsWithFilter] = useState([]);
   const [error, setError] = useState(null);
@@ -29,8 +31,8 @@ export const FilterNews = ({ idCategory, categoryName }) => {
         <section>
           {" "}
           <h2> Estas son las noticias relacionadas con {categoryName}</h2>
-          <ul>
-            {newsWithFilter.map(
+          <div className="filterNews">
+          {newsWithFilter.map(
               ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
                 <NewsCard
                   key={id}
@@ -45,7 +47,8 @@ export const FilterNews = ({ idCategory, categoryName }) => {
                 />
               )
             )}
-          </ul>
+          </div>
+           
         </section>
       )}
     </>

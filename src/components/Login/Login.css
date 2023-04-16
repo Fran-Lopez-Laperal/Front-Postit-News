@@ -1,3 +1,7 @@
+.login{
+min-height: 80vh;
+}
+
 .login-container {
   background-color: #f5f5f5;
   padding: 20px;
@@ -7,7 +11,6 @@
   width: 90%;
   margin: 0 auto;
   margin-top: 10rem;
-  
 }
 
 .login-container h1 {
@@ -68,8 +71,8 @@ label {
   text-align: center;
 }
 
-button:hover {
-  background-color: #56c9c1;
+.login-container > button:hover {
+  background-color: #92929240;
 }
 
 .p-error-form {
@@ -94,10 +97,6 @@ button:hover {
 
   .login-container h1 {
     font-size: 36px;
-  }
-
-  form {
-    width: 100%;
   }
 
   .label-input-container {
