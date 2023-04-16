@@ -13,13 +13,22 @@ const AboutAs = () => {
       <div className="about-us-content">
         <div className="about-us-images">
           <img className="about-us-image" src={fran} alt="fotografía-Fran" />
+          <img className="about-us-image" src={guadi} alt="fotografía-Guadi" />
           <img className="about-us-image" src={jose} alt="fotografía-Jose" />
           <img className="about-us-image" src={ines} alt="fotografía-Inés" />
-          <img className="about-us-image" src={guadi} alt="fotografía-Guadi" />
+          
         </div>
         <div className="about-us-text">
           <p className="about-us-description">
-            Somos un equipo de cuatro apasionados por el desarrollo web, juntos hemos creado este proyecto web que refleja nuestro compromiso y dedicación. Nuestro equipo está compuesto por personas con habilidades diversas y complementarias. Esperamos que nuestra dedicación se refleje en este proyecto. Gracias por visitarnos, esperamos que disfrutes navegando en nuestro sitio web tanto como nosotros disfutamos creándolo.
+          Somos un equipo de cuatro apasionados por el desarrollo web, unidos por nuestra experiencia en un bootcamp de programación en Hack A Boss. Juntos hemos creado un proyecto web que refleja nuestra dedicación y compromiso.
+
+Nuestro equipo está compuesto por personas con habilidades diversas y complementarias. Cada uno de nosotros aporta un conjunto único de habilidades, conocimientos y experiencia que se combinan para formar un equipo sólido y efectivo. Desde el diseño hasta el desarrollo y la implementación, trabajamos juntos para crear una experiencia de usuario excepcional.
+
+Nos apasiona la tecnología y nos gusta estar al tanto de las últimas tendencias y mejores prácticas en el campo del desarrollo web. Nuestro objetivo como desarrolladores es crear soluciones digitales innovadoras que hagan la vida más fácil a nuestros usuarios.
+
+En nuestro proyecto, hemos combinado nuestro amor por la tecnología con nuestra pasión por la creatividad. Estamos orgullosos de lo que hemos logrado y esperamos que nuestra pasión y dedicación se reflejen en cada aspecto de nuestra web.
+
+Somos un equipo comprometido con el éxito de nuestro proyecto y estamos emocionados por compartirlo con el mundo. ¡Gracias por visitarnos y esperamos que disfrutes navegando en nuestro sitio web tanto como nosotros disfrutamos creándolo!
           </p>
         </div>
       </div>
