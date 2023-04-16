@@ -10,7 +10,7 @@ const Modal = ({ buttonText,children }) => {
 
   return (
     <>
-      <button onClick={() => setIsVisible(true)}>{buttonText}</button>
+      <button className="modal__button" onClick={() => setIsVisible(true)}>{buttonText}</button>
       {isVisible && (
         <div className="modal-background">
           <div className="modal-content">

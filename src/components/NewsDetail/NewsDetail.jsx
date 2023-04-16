@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getNewDetailDataService, getVoteNews } from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
+import { clamp } from "date-fns";
 
 const NewsDetail = () => {
   const { token } = useContext(AuthContext);
@@ -65,11 +66,13 @@ const NewsDetail = () => {
   if (!news) {
     return null;
   }
+  console.log(news)
 
   return (
     <section className="newsDetail">
       {news.map(
         ({
+          avatar,
           title,
           id,
           image,
@@ -147,7 +150,7 @@ const NewsDetail = () => {
                 </header>
                 <section className="newsDetails__article__section__info__user">
                   <section className="newsDetails__article__section__info__user--name">
-                    <i className="fa fa-user-o" aria-hidden="true"></i>
+                   <img className="newsDetails__article__section__info__user--avatar" src={`http://localhost:4000/images/${avatar}`} />
                     <h3>{name}</h3>
                   </section>
                   <section className="newsDetails__article__section__info__votes">

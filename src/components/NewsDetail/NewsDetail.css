@@ -30,6 +30,11 @@
     border-radius: 5px;
 }
 
+.newsDetails__article__section__info__user--avatar{
+    width: 70px;
+    border-radius: 50%;
+}
+
 .newsDetails__article__figure__section {
     color: white;
     display: flex;
@@ -79,6 +84,8 @@
     min-width: 100px;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
 }
 
 .newsDetails__article__section__info__text{
@@ -91,6 +98,18 @@
     word-spacing: 2px;
     letter-spacing: .1px;
     line-height: 1.2rem;
+}
+
+.newsDetails__article__section__info__votes--buttons{
+    display: flex;
+    background: var(--corporation);
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -129,6 +148,8 @@
     justify-content: space-around;
     width: 150px;
 }
+
+
 
 
 .expandable-button .close-icon {

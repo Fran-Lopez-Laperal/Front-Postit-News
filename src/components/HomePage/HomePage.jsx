@@ -29,11 +29,14 @@ const HomePage = ({ setFilter, filter }) => {
 
   return (
     <section className="homePage">
-      <NavBar
-        setFilter={setFilter}
-        setIdCategory={setIdCategory}
-        setCategoryName={setCategoryName}
-      />
+      <section className="homePage__section__navBar">
+        <NavBar
+          setFilter={setFilter}
+          setIdCategory={setIdCategory}
+          setCategoryName={setCategoryName}
+        />
+      </section>
+
       <section className="homePage__section__news">
         {filter ? (
           <FilterNews idCategory={idCategory} categoryName={categoryName} />

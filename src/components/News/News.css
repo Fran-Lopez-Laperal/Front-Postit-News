@@ -4,3 +4,23 @@
     grid-auto-rows: 18rem;  
     gap: 1rem;
 }
+
+
+.homePage__section__buttons{
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .homePage__button{
+    background: var( --corporationX);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    height: 45px;
+    width: 90%;
+    margin: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+  }
