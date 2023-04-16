@@ -8,7 +8,7 @@ import ines from '../../../assets/images-footer/ines.jpg';
 const Contacto = () => {
   return (
     <div className="contact-us">
-      <h2 className="contact-us-title">Contacto</h2>
+      <h2 className="contact-us-title">Contacta con nosotros</h2>
       <div className="contact-us-content">
         <div className="contact-us-images">
           <img className="contact-us-image" src={fran} alt="Fran" />
