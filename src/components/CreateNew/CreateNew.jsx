@@ -91,7 +91,7 @@ const CreateNew = () => {
             id="title"
             value={title}
             minLength="5"
-            maxLength="50"
+            maxLength="30"
             onChange={(event) => setTitle(event.target.value)}
             required
           />
