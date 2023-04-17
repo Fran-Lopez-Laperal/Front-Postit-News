@@ -33,7 +33,7 @@ console.log(newsWithFilter)
           <h2> Estas son las noticias relacionadas con {categoryName}</h2>
           <div className="filterNews">
           {newsWithFilter.map(
-              ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+              ({ id, title, createdAt, image, userName, avatar, nameCategory }) => (
                 <NewsCard
                   key={id}
                   id={id}
@@ -41,7 +41,7 @@ console.log(newsWithFilter)
                   createdAt={createdAt}
                   image={image}
                   idNew={id}
-                  ownerName={name}
+                  ownerName={userName}
                   ownerAvatar={avatar}
                   nameCategory={nameCategory}
                 />
