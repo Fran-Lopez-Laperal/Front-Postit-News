@@ -16,13 +16,11 @@ export const Auth = () => {
     <>
       <section className="buttons-auth-header">
         <button className="button-register-auth-header">
-          <Link to="/registro">Regístrate</Link>
+          <Link to="/registro">¡Regístrate!</Link>
         </button>
 
         <button className="button-login-auth-header">
-          <Link to="/login">
-            <img id="registerIcon" src={registerIcon} alt="icono-login" />
-          </Link>
+          <Link to="/login">Inicia sesión</Link>
         </button>
       </section>
     </>
