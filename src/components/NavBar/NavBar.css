@@ -32,3 +32,9 @@
     background-color: #56c9c1;
     border-radius: 3px;
 }
+
+@media(max-width: 420px) { 
+    .navBar{
+        display: none;
+    }
+}
