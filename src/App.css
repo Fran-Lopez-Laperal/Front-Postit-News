@@ -2,6 +2,9 @@ html {
   --bg: #d9d9db;
   --bright: #ffffff;
   --corporation: #6bded7;
+  --corporationY: linear-gradient(rgb(94, 255, 244),#6bded7,rgb(122, 255, 246));
+  --corporationX: linear-gradient(to right ,rgb(122, 255, 246),rgb(107, 222, 215),rgb(122, 255, 246));
+  --corporation: #6bded7;
   --error: #c84d4d;
 }
 

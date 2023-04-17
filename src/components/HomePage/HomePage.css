@@ -1,21 +1,17 @@
 .homePage{
-  margin: auto 10px 50px 10px;
-}
-.homePage__section__buttons{
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.homePage__button{
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.235);
-  height: 70px;
-  width: 90%;
-  margin: 10px;
+  min-height: 100vh;
 }
 
 .homePage__section__news{
-  min-height: 100vh;
-  margin-left: 30px;
+  width: 100%;
 }
+
+.homePage__section__navBar{
+  
+}
+
+
+
+
 

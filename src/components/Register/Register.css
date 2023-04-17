@@ -81,7 +81,7 @@ textarea:focus {
 .button-register {
   text-align: center;
 }
-button {
+.button-register > button {
   margin-top: 30px;
   border: none;
   background-color: #6bded7;
@@ -92,7 +92,7 @@ button {
   transition: all 0.3s ease;
   width: fit-content;
 }
-button:hover {
+.button-register > button:hover {
   background-color: #56c9c1;
 }
 .p-error-form {

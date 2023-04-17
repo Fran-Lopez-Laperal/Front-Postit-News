@@ -17,9 +17,9 @@
 }
 
 #img-profile {
-  max-width: 50%;
-  max-height: 50%;
-  object-fit: contain;
+  max-width: 55px;
+  max-height: 55px;
+  border-radius: 50%;
 }
 
 .navProfile_menu_ul_li {

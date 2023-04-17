@@ -30,7 +30,10 @@ const HomePage = () => {
 
   return (
     <section className="homePage">
+<section className="homePage__section__navBar">
       <NavBar setIdCategory={setIdCategory} setCategoryName={setCategoryName} />
+       </section>
+
       <section className="homePage__section__news">
         {filter ? (
           <FilterNews idCategory={idCategory} categoryName={categoryName} />

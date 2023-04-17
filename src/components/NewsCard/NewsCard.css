@@ -5,10 +5,12 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 20px;
+   
     max-width: 300px;
-    min-height: 320px;
+    max-height: 300px;
 }
+
+
 
 .news__card::before{
   content: "";
@@ -22,7 +24,29 @@
   opacity: .4;
 }
 
+.news__card__info{
+    margin-bottom: 10px;
+}
+
+.news__card__info--title {
+    font-weight: 400;
+    color: white;
+}
+
+.news__card__info--date {
+    font-weight: 400;
+    color: rgb(230, 204, 255);
+}
+
 .news__card__header{
+    background-color: #b107ea;
+    border-radius: 5px;
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
     z-index: 1;
     color: white;
 }
@@ -46,31 +70,30 @@ z-index: 1;
 
 .news__card__section_info--user{
     display: flex;
-    align-items: end;
+    align-items: center;
     color: white;
 }
 
 .news__card__section__figure{
     z-index: 1;
     display: flex;
-    align-items: end;
-    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    
     margin-bottom: 5px;
 }
 
 
 
 .news__card__footer{
+    margin-bottom: -10px;
     z-index: 1;
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.news__card__footer > strong {
-    font-size: 15px;
-}
 
 .news__card__footer > a {
     color: white;
@@ -84,4 +107,12 @@ z-index: 1;
 
 .news__card__footer > a:hover {
     background-color: var(--corporation);
+}
+
+.news__card__general__info{
+    background-color:rgba(0, 0, 139, 0.468);
+    border-radius:0px 0px 5px 5px;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
 }

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { filterNewsByCategoryService } from "../service";
 import NewsCard from "../NewsCard/NewsCard";
 
+import './FilterNews.css'
+
 export const FilterNews = ({ idCategory, categoryName }) => {
   const [newsWithFilter, setNewsWithFilter] = useState([]);
   const [error, setError] = useState(null);
@@ -20,7 +22,7 @@ export const FilterNews = ({ idCategory, categoryName }) => {
     };
     fetchFilterByCategory();
   }, [idCategory]);
-
+console.log(newsWithFilter)
   return (
     <>
       {error ? (
@@ -29,9 +31,9 @@ export const FilterNews = ({ idCategory, categoryName }) => {
         <section>
           {" "}
           <h2> Estas son las noticias relacionadas con {categoryName}</h2>
-          <ul>
-            {newsWithFilter.map(
-              ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+          <div className="filterNews">
+          {newsWithFilter.map(
+              ({ id, title, createdAt, image, userName, avatar, nameCategory }) => (
                 <NewsCard
                   key={id}
                   id={id}
@@ -39,13 +41,14 @@ export const FilterNews = ({ idCategory, categoryName }) => {
                   createdAt={createdAt}
                   image={image}
                   idNew={id}
-                  ownerName={name}
+                  ownerName={userName}
                   ownerAvatar={avatar}
                   nameCategory={nameCategory}
                 />
               )
             )}
-          </ul>
+          </div>
+           
         </section>
       )}
     </>
