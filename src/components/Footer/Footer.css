@@ -9,6 +9,7 @@ flex-direction: column;
   right: 0;
   height: 10vh;
   z-index: 9999;
+  position: fixed;
 }
 
 .footer-links {
