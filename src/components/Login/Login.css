@@ -1,12 +1,7 @@
-
 .login {
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-}
-
-#h1-login {
-  margin: 1rem;
 }
 
 .login-container {
@@ -14,18 +9,22 @@
   /* padding: 20px; */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
+  max-width: 50%;
   width: 90%;
   margin: 0 auto;
   height: 100%;
   /* margin-top: 10rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.login-container h1 {
+.login-container h2 {
   text-align: center;
   color: #6bded7;
   margin-bottom: 20px;
   font-size: 28px;
+  margin: 1rem;
 }
 
 .label-input-container {
@@ -42,9 +41,8 @@
   color: #444;
 }
 
-.input-email,
-.input-password {
-  margin: 5px 10px;
+.input-user {
+  margin: 10px 10px;
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -56,8 +54,7 @@
   width: 95%;
 }
 
-.input-email:focus,
-.input-password:focus {
+.input-user {
   outline: none;
   box-shadow: 0 0 5px #6bded7;
 }
@@ -92,9 +89,9 @@
 
 @media only screen and (min-width: 768px) {
   .login-container {
-    width: 500px;
+    width: 60%;
     margin: 50px auto;
-    max-width: none;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,8 +107,8 @@
     flex-direction: column;
   }
 
-  .input-email,
-  .input-password {
+  .input-user {
+    margin: 10px 15px;
     font-size: 18px;
   }
   .button-container {

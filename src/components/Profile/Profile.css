@@ -1,10 +1,17 @@
-#articleUserProfile {
+li {
+  list-style: none;
+}
+
+.login-container {
+  max-width: 80% !important;
+  margin-bottom: 50px !important;
+}
+
+.dataProfile {
   display: flex;
   flex-direction: column;
-  margin: 3rem auto;
-  width: 70vw;
   align-items: center;
-  height: 90vh
+  gap: 1rem;
 }
 
 #userProfile {
@@ -15,17 +22,13 @@
   justify-content: center;
 }
 
-.userPhoto {
-  width: 10vw;
-  height: 20vh;
-  border-radius: 100%;
+.containerImgProfile {
+  width: 50px;
+  height: 50px;
 }
 
-#buttons {
-  display: flex;
-  gap: 2rem;
-}
-
-.error {
-  color: red;
+@media only screen and (min-width: 768px) {
+  .login-container {
+    margin-bottom: 100px !important;
+  }
 }

@@ -25,16 +25,20 @@ const Profile = () => {
 
   //falta refrescar el user cuando se modifican los datos
   return user ? (
-    <>
-      <article id="articleUserProfile">
+    <div className="login">
+      <article className="login-container">
         <section id="userProfile">
           <section className="dataProfile">
             <h2>Bienvenid@ a tu perfil {user.name}</h2>
             <ul>
               <li>
-                <label name="name"> Nombre </label>
+                <label className="label-login" name="name">
+                  {" "}
+                  Nombre{" "}
+                </label>
                 {handleEditUser ? (
                   <input
+                    className="input-user"
                     type="text"
                     id="name"
                     name="name"
@@ -44,6 +48,7 @@ const Profile = () => {
                   />
                 ) : (
                   <input
+                    className="input-user"
                     type="text"
                     id="name"
                     name="name"
@@ -53,9 +58,13 @@ const Profile = () => {
                 )}
               </li>
               <li>
-                <label name="email"> Email </label>
+                <label className="label-login" name="email">
+                  {" "}
+                  Email{" "}
+                </label>
                 {handleEditUser ? (
                   <input
+                    className="input-user"
                     type="email"
                     id="email"
                     name="email"
@@ -65,6 +74,7 @@ const Profile = () => {
                   />
                 ) : (
                   <input
+                    className="input-user"
                     type="email"
                     id="email"
                     name="email"
@@ -74,9 +84,13 @@ const Profile = () => {
                 )}
               </li>
               <li>
-                <label name="bio"> Bibliografía </label>
+                <label className="label-login" name="bio">
+                  {" "}
+                  Bibliografía{" "}
+                </label>
                 {handleEditUser ? (
                   <textarea
+                    className="input-user"
                     id="bio"
                     name="bio"
                     onClick={() => setModifyInputBio(true)}
@@ -84,29 +98,37 @@ const Profile = () => {
                     onChange={(e) => setBio(e.target.value)}
                   />
                 ) : (
-                  <textarea id="bio" name="bio" value={user.bio} disabled />
+                  <textarea
+                    className="input-user"
+                    id="bio"
+                    name="bio"
+                    value={user.bio}
+                    disabled
+                  />
                 )}
               </li>
             </ul>
-            {error ? <p className="error">{error}</p> : null}
+            <ImageProfile
+              handleEditUser={handleEditUser}
+              clickInImg={clickInImg}
+              setClickInImg={setClickInImg}
+            />
+            {error ? <p className="p-error-form ">{error}</p> : null}
           </section>
-          <ImageProfile
+        </section>
+        <section className="button-container">
+          <ButtonsProfile
+            setHandleEditUser={setHandleEditUser}
             handleEditUser={handleEditUser}
-            clickInImg={clickInImg}
+            name={name}
+            email={email}
+            bio={bio}
+            setError={setError}
             setClickInImg={setClickInImg}
           />
         </section>
-        <ButtonsProfile
-          setHandleEditUser={setHandleEditUser}
-          handleEditUser={handleEditUser}
-          name={name}
-          email={email}
-          bio={bio}
-          setError={setError}
-          setClickInImg={setClickInImg}
-        />
       </article>
-    </>
+    </div>
   ) : null;
 };
 
