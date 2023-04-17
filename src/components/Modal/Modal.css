@@ -35,7 +35,6 @@
 }
 
 .modal__button{
-  margin-top: 30px;
   border: none;
   background-color: #6bded7;
   color: #fff;
@@ -48,4 +47,10 @@
 
 .modal__button > button:hover {
   background-color: #56c9c1;
+}
+
+@media(max-width: 420px) {
+  .modal__button{
+    font-size: .7rem;
+  }
 }

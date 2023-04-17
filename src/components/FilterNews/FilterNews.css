@@ -4,3 +4,12 @@
     grid-auto-rows: 18rem;  
     gap: 1rem;
 }
+
+@media(max-width: 420px) {
+    .filterNews{
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+     grid-auto-rows: 10rem;  
+     gap: 1rem;
+    }
+   }

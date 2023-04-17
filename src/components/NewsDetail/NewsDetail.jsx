@@ -25,6 +25,22 @@ const NewsDetail = () => {
     setExpanded(!expanded);
   };
 
+  const renderDate = (string) => {
+    let arrayDate = string.substring(0, 10).split("-");
+    let now = new Date();
+    let day = now.getDate();
+    let month = now.getMonth() + 1;
+    let year = now.getFullYear();
+    if (year !== Number(arrayDate[0]))
+      return `Hace ${Number(arrayDate[0]) - year} años`;
+    if (month !== Number(arrayDate[1]))
+      return `Hace ${Number(arrayDate[1]) - month} meses`;
+    if (day !== Number(arrayDate[2]))
+      return `Hace ${Number(arrayDate[2]) - day} días`;
+
+    return "Hoy";
+  };
+
   useEffect(() => {
     const fetchNew = async () => {
       try {
@@ -59,9 +75,9 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = () => {};
+  const handleEdit = () => { };
 
-  const handleDelete = () => {};
+  const handleDelete = () => { };
 
   if (!news) {
     return null;
@@ -153,12 +169,12 @@ const NewsDetail = () => {
               <article className="newsDetails__article__section__info">
                 <header>
                   <h5 className="newsDetails__article__section__info--date">
-                    {new Date(createdAt).toLocaleString()}
+                    {renderDate(createdAt)}
                   </h5>
                 </header>
                 <section className="newsDetails__article__section__info__user">
                   <section className="newsDetails__article__section__info__user--name">
-                   <img className="newsDetails__article__section__info__user--avatar" src={`http://localhost:4000/images/${avatar}`} />
+                    <img className="newsDetails__article__section__info__user--avatar" src={`http://localhost:4000/images/${avatar}`} />
                     <h3>{name}</h3>
                   </section>
                   <section className="newsDetails__article__section__info__votes">
