@@ -52,9 +52,14 @@ const NewsCard = ({
         }}
       >
         <header className="news__card__header">
-          <h4>{title}</h4>
+          <p>{nameCategory}</p>
         </header>
-        <section className="news__card__section_info">
+        <section className="news__card__general__info">
+        <section className="news__card__info">
+          <p className="news__card__info--title">{title}</p>
+          <p className="news__card__info--date">{renderDate(createdAt)}</p>
+        </section>
+        <footer className="news__card__footer">
           <figure className="news__card__section__figure">
             <section className="news__card__section_info--user">
               <img
@@ -63,17 +68,15 @@ const NewsCard = ({
                 alt=""
               />
               <figcaption>{ownerName}</figcaption>
-              {nameCategory}
             </section>
           </figure>
-        </section>
-        <footer className="news__card__footer">
-          <strong>{renderDate(createdAt)}</strong>
           <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
             {" "}
             <i className="fa fa-angle-double-right" aria-hidden="true"></i>
           </Link>
         </footer>
+        </section>
+       
       </article>
     </>
   );
