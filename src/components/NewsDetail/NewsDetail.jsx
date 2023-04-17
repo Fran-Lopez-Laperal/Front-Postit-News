@@ -5,7 +5,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getNewDetailDataService, getVoteNews } from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
-import { clamp } from "date-fns";
 
 const NewsDetail = () => {
   const { token, setFilter } = useContext(AuthContext);
@@ -75,14 +74,14 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = () => { };
+  const handleEdit = () => {};
 
-  const handleDelete = () => { };
+  const handleDelete = () => {};
 
   if (!news) {
     return null;
   }
-  console.log(news)
+  console.log(news);
 
   return (
     <section className="newsDetail">
@@ -127,7 +126,7 @@ const NewsDetail = () => {
                   </button>
                 </Link>
                 <p className="newsDetails__article__figure__section--p">
-                  {title}
+                  {nameCategory}
                 </p>
               </section>
             </figure>
@@ -174,7 +173,10 @@ const NewsDetail = () => {
                 </header>
                 <section className="newsDetails__article__section__info__user">
                   <section className="newsDetails__article__section__info__user--name">
-                    <img className="newsDetails__article__section__info__user--avatar" src={`http://localhost:4000/images/${avatar}`} />
+                    <img
+                      className="newsDetails__article__section__info__user--avatar"
+                      src={`http://localhost:4000/images/${avatar}`}
+                    />
                     <h3>{name}</h3>
                   </section>
                   <section className="newsDetails__article__section__info__votes">
