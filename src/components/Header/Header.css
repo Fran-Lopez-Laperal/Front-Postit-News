@@ -20,7 +20,9 @@
 }
 
 .logo {
-  height: 90px;
+  height: 70px;
+  border-radius: 50%;
+  
 }
 
 .header__section__search > img {

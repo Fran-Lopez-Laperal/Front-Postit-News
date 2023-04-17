@@ -24,14 +24,20 @@
 }
 
 
-.close-button {
+.modal-close-button {
   position: absolute;
   right: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color:#56c9c1;
-  font-size: 10px;
+  font-size: 20px;
   cursor: pointer;
   z-index: 10000;
+  border:none;
+}
+
+.modal-p-close-button {
+  color: white;
+  
 }
 
 .modal__button{
@@ -43,6 +49,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
+  margin: 30px auto 0 auto;
+  
 }
 
 .modal__button > button:hover {

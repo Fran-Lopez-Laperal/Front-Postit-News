@@ -14,8 +14,8 @@ const Modal = ({ buttonText,children }) => {
       {isVisible && (
         <div className="modal-background">
           <div className="modal-content">
-            <button className="close-button" onClick={handleClose}>
-              X
+            <button className="modal-close-button" onClick={handleClose}>
+              <p className="modal-p-close-button">X</p>
             </button>
             {children}
           </div>

@@ -23,9 +23,9 @@ const Footer = () => {
           <Contacto/>
         </Modal>
       </div>
-      <div className="copyright">
+      {<div className="copyright">
         <p>© 2023 HACK A BOSS</p>
-      </div>
+      </div>}
     </footer>
   );
 };
