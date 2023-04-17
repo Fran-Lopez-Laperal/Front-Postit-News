@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import imgForUser from "../../assets/imgForUser.png";
 import { AuthContext } from "../../context/AuthContext";
 import { editAvatarUserService, getMyUserDataService } from "../service";
+import "./ImageProfile.css";
 
 const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
   const { user, token, setUser } = useContext(AuthContext);
@@ -33,9 +34,9 @@ const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
     }
   };
   return (
-    <section className="imgProfile">
+    <>
       {handleEditUser ? (
-        <figure>
+        <figure className="figure-img">
           <img
             className="userPhoto"
             src={userImg}
@@ -46,7 +47,7 @@ const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
           />
         </figure>
       ) : (
-        <figure>
+        <figure className="figure-img">
           <img
             className="userPhoto"
             src={userImg}
@@ -69,7 +70,7 @@ const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
           <button>Cambiar avatar</button>
         </form>
       ) : null}
-    </section>
+    </>
   );
 };
 
