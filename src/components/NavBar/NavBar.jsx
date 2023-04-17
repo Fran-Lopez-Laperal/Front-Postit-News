@@ -11,8 +11,6 @@ import "./NavBar.css";
 let categories = await getCategoriesService();
 
 const NavBar = ({ setIdCategory, setCategoryName }) => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [icon, setIcon] = useState("fa fa-arrow-right");
   const { setFilter } = useContext(AuthContext);
 
   const navigate = useNavigate();

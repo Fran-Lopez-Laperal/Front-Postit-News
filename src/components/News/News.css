@@ -7,7 +7,6 @@
 
 
 .homePage__section__buttons{
-
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
@@ -28,8 +27,18 @@
   @media(max-width: 420px) {
     .news{
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-     grid-auto-rows: 10rem;  
+     grid-template-columns: repeat(auto-fit, minmax(8rem, 2fr));
+     grid-auto-rows: 16rem;  
      gap: 1rem;
+    }
+
+    .news__container{
+      margin-top: 50px;
+    }
+
+    .homePage__button{
+      font-size: 15px;
+      width: 150px;
+      height: 30px;
     }
    }

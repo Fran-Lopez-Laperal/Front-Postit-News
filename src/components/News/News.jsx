@@ -76,38 +76,42 @@ const News = () => {
 
   return (
     <>
-      <section className="homePage__section__buttons">
-        <button className="homePage__button" onClick={handleShowNews}>
-          Noticias de hoy
-        </button>
-        <button className="homePage__button" onClick={handleShowOldNews}>
-          Noticias pasadas
-        </button>
-      </section>
-      {error ? <p>{error}</p> : null}
 
-      {notNewsToday ? <p>No se han publicado noticias hoy</p> : null}
-      <div className="news">
-        {show ? (
-          <OldNews />
-        ) : (
-          newsToday.map(
-            ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
-              <NewsCard
-                key={id}
-                id={id}
-                title={title}
-                createdAt={createdAt}
-                image={image}
-                idNew={id}
-                ownerName={name}
-                ownerAvatar={avatar}
-                nameCategory={nameCategory}
-              />
+      <section className="news__container">
+        <section className="homePage__section__buttons">
+          <button className="homePage__button" onClick={handleShowNews}>
+            Noticias de hoy
+          </button>
+          <button className="homePage__button" onClick={handleShowOldNews}>
+            Noticias pasadas
+          </button>
+        </section>
+        {error ? <p>{error}</p> : null}
+
+        {notNewsToday ? <p>No se han publicado noticias hoy</p> : null}
+        <div className="news">
+          {show ? (
+            <OldNews />
+          ) : (
+            newsToday.map(
+              ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+                <NewsCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  createdAt={createdAt}
+                  image={image}
+                  idNew={id}
+                  ownerName={name}
+                  ownerAvatar={avatar}
+                  nameCategory={nameCategory}
+                />
+              )
             )
-          )
-        )}
-      </div>
+          )}
+        </div>
+      </section>
+
     </>
   );
 };

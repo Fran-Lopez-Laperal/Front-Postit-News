@@ -1,0 +1,42 @@
+.navbar__movil{
+    width: 100%;
+    height: 40px;
+    background: var(--corporationX);
+    position: absolute;
+}
+
+
+.button-div{
+    margin: 5px;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: 0.65rem;
+    z-index: 20;
+  }
+  
+  .button-div > div {
+      background: #49817d;
+      height: 3px;
+      width: 100%;
+      border-radius: 5px;
+      transition: all .5s;
+      transform-origin: left;
+  }
+
+  .navbar__movil__expand{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--corporationX);
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .navbar__movil__expand__menu{
+    margin-top: 80px;
+  }
