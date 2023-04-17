@@ -22,7 +22,7 @@ export const FilterNews = ({ idCategory, categoryName }) => {
     };
     fetchFilterByCategory();
   }, [idCategory]);
-
+console.log(newsWithFilter)
   return (
     <>
       {error ? (
