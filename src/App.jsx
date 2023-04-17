@@ -16,7 +16,7 @@ import NewsDetail from "./components/NewsDetail/NewsDetail";
 import CreateNew from "./components/CreateNew/CreateNew";
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
 
   useEffect(() => {
     setInterval(() => {
@@ -30,13 +30,10 @@ const App = () => {
         <Spinner />
       ) : (
         <main>
-          <Header setFilter={setFilter} />
+          <Header />
 
           <Routes>
-            <Route
-              path="/"
-              element={<HomePage setFilter={setFilter} filter={filter} />}
-            />
+            <Route path="/" element={<HomePage />} />
             <Route path="/registro" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Profile />} />

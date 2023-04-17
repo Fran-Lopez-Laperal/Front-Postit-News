@@ -12,6 +12,7 @@ const News = () => {
   const [newsWithFilter, setNewsWithFilter] = useState([]);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
+  const [notNewsToday, setNotNewsToday] = useState(false);
   const { newsFilter } = useContext(AuthContext);
   const navigate = useNavigate();
   const [newsToday, setNewsToday] = useState([]);
@@ -21,13 +22,18 @@ const News = () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
-        
+
         const today = new Date().toISOString().slice(0, 10);
         const filterTodayNews = result.filter((newsItem) => {
-          const createdAt = new Date(newsItem.createdAt).toISOString().slice(0, 10);
+          const createdAt = new Date(newsItem.createdAt)
+            .toISOString()
+            .slice(0, 10);
           return createdAt === today;
         });
-        const sortedNews = filterTodayNews.sort((a, b) => b.totalLikes - a.totalLikes);
+
+        const sortedNews = filterTodayNews.sort(
+          (a, b) => b.totalLikes - a.totalLikes
+        );
         setNewsToday(sortedNews);
       } catch (error) {
         setError(error.message);
@@ -47,14 +53,25 @@ const News = () => {
       setNewsWithFilter(arrayFiltered);
     };
     filterNews(newsFilter);
-  }, [newsFilter]);
+    if (newsToday.length === 0) {
+      setNotNewsToday(true);
+    } else {
+      setNotNewsToday(false);
+    }
+  }, [newsFilter, newsToday]);
 
   const handleShowNews = () => {
     setShow(false);
+    if (newsToday.length === 0) {
+      setNotNewsToday(true);
+    } else {
+      setNotNewsToday(false);
+    }
   };
 
   const handleShowOldNews = () => {
     setShow(true);
+    setNotNewsToday(false);
   };
 
   return (
@@ -66,12 +83,16 @@ const News = () => {
         <button className="homePage__button" onClick={handleShowOldNews}>
           Noticias pasadas
         </button>
-        
       </section>
+      {error ? <p>{error}</p> : null}
+
+      {notNewsToday ? <p>No se han publicado noticias hoy</p> : null}
       <div className="news">
-        {show
-          ? <OldNews />
-          : newsToday.map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+        {show ? (
+          <OldNews />
+        ) : (
+          newsToday.map(
+            ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
               <NewsCard
                 key={id}
                 id={id}
@@ -83,12 +104,12 @@ const News = () => {
                 ownerAvatar={avatar}
                 nameCategory={nameCategory}
               />
-            ))
-        }
+            )
+          )
+        )}
       </div>
     </>
   );
 };
-
 
 export default News;

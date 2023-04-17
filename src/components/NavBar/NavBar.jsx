@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 import { getCategoriesService } from "../service/index.jsx";
 
@@ -8,9 +10,11 @@ import "./NavBar.css";
 
 let categories = await getCategoriesService();
 
-const NavBar = ({ setIdCategory, setFilter, setCategoryName }) => {
+const NavBar = ({ setIdCategory, setCategoryName }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [icon, setIcon] = useState("fa fa-arrow-right");
+  const { setFilter } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const hadleButtonClick = () => {

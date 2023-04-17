@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import { loginUserService } from '../service';
+import React, { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { loginUserService } from "../service";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const { login } = useContext(AuthContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login, setFilter } = useContext(AuthContext);
   const navigate = useNavigate();
 
 
@@ -18,10 +19,12 @@ const Login = () => {
     setError("");
 
     try {
-      const token = await loginUserService({ email, password })
+
+      const token = await loginUserService({ email, password });
       console.log(token);
       login(token);
-      navigate('/');
+      setFilter(false);
+      navigate("/");
 
     } catch (error) {
       setError(error.message);

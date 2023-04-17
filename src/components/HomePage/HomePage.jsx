@@ -23,19 +23,16 @@ import FloatingButton from "../FloatingButton/FloatingButton";
   );
 }; */
 
-const HomePage = ({ setFilter, filter }) => {
+const HomePage = () => {
   const [idCategory, setIdCategory] = useState(null);
   const [categoryName, setCategoryName] = useState("");
+  const { filter } = useContext(AuthContext);
 
   return (
     <section className="homePage">
-      <section className="homePage__section__navBar">
-        <NavBar
-          setFilter={setFilter}
-          setIdCategory={setIdCategory}
-          setCategoryName={setCategoryName}
-        />
-      </section>
+<section className="homePage__section__navBar">
+      <NavBar setIdCategory={setIdCategory} setCategoryName={setCategoryName} />
+       </section>
 
       <section className="homePage__section__news">
         {filter ? (
