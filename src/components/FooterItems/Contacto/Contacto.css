@@ -28,7 +28,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 10px; 
   }
   
   .contact-us-text {
@@ -45,11 +45,21 @@
 
   .contact-us-email {
     font-size: 18px;
+    margin-top: 10px;
     margin-bottom: 10px;
     color: #000;
   }
   
+  .logogithub {
+    width:20px;
+    margin-bottom: 20px;;
+  }
   
+  .logolinkedin {
+    width: 20px;
+    margin-left: 2rem;
+    margin-bottom: 20px;;
+  }
   @media (min-width: 768px) {
     .contact-us {
       flex-direction: column;
@@ -63,7 +73,7 @@
     }
 
     .contact-us-info {
-        margin-bottom: 12px;;
+        margin-bottom: 19px;;
     }
   
     .contact-us-content {
@@ -78,13 +88,13 @@
       flex-direction: column;
       align-items: flex-start;
       margin-right: 20px;
-      margin-bottom: 0;
+      margin-bottom: 0px;
     }
   
     .contact-us-image {
       width: 80px;
       height: 80px;
-      margin-bottom: 10px;
+      margin-bottom: 45px;
     }
   
     .contact-us-text {
