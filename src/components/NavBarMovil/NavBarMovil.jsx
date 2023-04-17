@@ -33,7 +33,7 @@ const NavBarMovil = ({ setIdCategory, setCategoryName }) => {
 
   return (
     <>
-      <button className='button-div' onClick={hadleOpenMenu}>
+      <button className='button__div' onClick={hadleOpenMenu}>
         <div></div>
         <div></div>
         <div></div>
