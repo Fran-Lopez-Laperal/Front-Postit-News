@@ -19,6 +19,7 @@ const ButtonsProfile = ({
   bio,
   setError,
   setClickInImg,
+  clickInImg,
 }) => {
   const navigate = useNavigate();
   const { token, setUser, logout } = useContext(AuthContext);
@@ -44,32 +45,40 @@ const ButtonsProfile = ({
     }
   };
   const handleDeleteUser = async () => {
-    try {
-      await deleteUserService({ token });
-      logout();
-      navigate("/");
-    } catch (e) {
-      console.log(e.message);
-      setError(e.message);
+    let confirmDelete = window.confirm(
+      "¿Estás seguro de que quieres eliminar tu perfil?"
+    );
+
+    if (confirmDelete) {
+      try {
+        await deleteUserService({ token });
+        logout();
+        navigate("/");
+      } catch (e) {
+        console.log(e.message);
+        setError(e.message);
+      }
     }
   };
   return (
     <section id="buttons">
+      {handleEditUser && !clickInImg ? (
+        <button
+          onClick={() => {
+            setClickInImg(false);
+            handleSendChanges();
+          }}
+        >
+          Guardar cambios
+        </button>
+      ) : null}
       {handleEditUser ? (
         <>
           <button
             onClick={() => {
-              setClickInImg(false);
-              handleSendChanges();
-            }}
-          >
-            Guardar cambios
-          </button>
-
-          <button
-            onClick={() => {
               setHandleEditUser(false);
               setClickInImg(false);
+              setError("");
             }}
           >
             Cancelar
@@ -90,7 +99,7 @@ const ButtonsProfile = ({
           handleDeleteUser();
         }}
       >
-        Eliminar
+        Eliminar perfil
       </button>
     </section>
   );

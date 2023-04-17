@@ -4,9 +4,10 @@ import "./Profile.css";
 
 import ButtonsProfile from "../ButtonsProfile/ButtonsProfile";
 import ImageProfile from "../ImageProfile/ImageProfile";
+import { editAvatarUserService, getMyUserDataService } from "../service";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, token, setUser } = useContext(AuthContext);
   const [handleEditUser, setHandleEditUser] = useState(false);
 
   const [name, setName] = useState(user?.name);
@@ -21,7 +22,30 @@ const Profile = () => {
 
   const [error, setError] = useState("");
 
-  const disabled = "disabled";
+  const avatarUserDB = user?.avatar
+    ? `http://localhost:4000/images/${user?.avatar}`
+    : imgForUser;
+  const [userImg, setUserImg] = useState(avatarUserDB);
+
+  const changeImage = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("avatar", e.target.avatar.files[0]);
+      await editAvatarUserService({ token, formData });
+
+      const newDataUser = await getMyUserDataService({ token });
+
+      setUser(newDataUser);
+
+      setClickInImg(false);
+
+      setError("");
+    } catch (e) {
+      console.log(e.message);
+      setError(e.message);
+    }
+  };
 
   //falta refrescar el user cuando se modifican los datos
   return user ? (
@@ -108,11 +132,41 @@ const Profile = () => {
                 )}
               </li>
             </ul>
-            <ImageProfile
-              handleEditUser={handleEditUser}
-              clickInImg={clickInImg}
-              setClickInImg={setClickInImg}
-            />
+            {handleEditUser ? (
+              <figure className="figure-img">
+                <img
+                  className="userPhoto"
+                  src={userImg}
+                  alt={`foto-de-${user?.name}`}
+                  onClick={() => {
+                    setClickInImg(true);
+                  }}
+                />
+              </figure>
+            ) : (
+              <figure className="figure-img">
+                <img
+                  className="userPhoto"
+                  src={userImg}
+                  alt={`foto-de-${user?.name}`}
+                />
+              </figure>
+            )}
+            {clickInImg ? (
+              <form encType="multipart/form-data" onSubmit={changeImage}>
+                <input
+                  type="file"
+                  name="avatar"
+                  id="avatar"
+                  accept={"image/*"}
+                  onChange={(e) => {
+                    setUserImg(URL.createObjectURL(e.target.files[0]));
+                  }}
+                />
+
+                <button>Cambiar avatar</button>
+              </form>
+            ) : null}
             {error ? <p className="p-error-form ">{error}</p> : null}
           </section>
         </section>
@@ -125,6 +179,7 @@ const Profile = () => {
             bio={bio}
             setError={setError}
             setClickInImg={setClickInImg}
+            clickInImg={clickInImg}
           />
         </section>
       </article>
