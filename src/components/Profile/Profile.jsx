@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import "./Profile.css";
 
 import ButtonsProfile from "../ButtonsProfile/ButtonsProfile";
-import ImageProfile from "../ImageProfile/ImageProfile";
+import imgForUser from "../../assets/imgForUser.png";
 import { editAvatarUserService, getMyUserDataService } from "../service";
 
 const Profile = () => {

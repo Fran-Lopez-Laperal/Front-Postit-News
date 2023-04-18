@@ -23,7 +23,7 @@ const Header = ({handleCloseClick, setShowNavMovile}) => {
   return (
     <div className="header">
       <section className="header__section__search">
-        <Link to="/" onClick={handleClickLogo}>
+        <Link to="/" /* onClick={handleClickLogo} */>
           <img className="logo" src={logo} alt="logo" />
         </Link>
 

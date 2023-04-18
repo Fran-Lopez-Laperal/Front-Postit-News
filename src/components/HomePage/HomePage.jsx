@@ -11,25 +11,10 @@ import FloatingButton from "../FloatingButton/FloatingButton";
 import NavBarMovil from "../NavBarMovil/NavBarMovil";
 import BackButton from "../BackButton/BackButton";
 
-/* const FloatingButton = () => {
-  const { isLogged } = useContext(AuthContext);
-  if (!isLogged) return null;
-
-  return (
-    <div className="floating-button">
-      <Link to="/crear-noticia">
-        <i className="fa fa-plus-square" aria-hidden="true"></i>
-      </Link>
-      <Link to="/crear-noticia">Crear Noticia</Link>
-    </div>
-  );
-}; */
 
 const HomePage = ({idCategory, setIdCategory, categoryName, setCategoryName}) => {
   const { filter } = useContext(AuthContext);
   const [showNav, setShowNav] = useState(false)
- 
-
 
   useEffect(() => {
 

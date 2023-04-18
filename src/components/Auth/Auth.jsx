@@ -2,9 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Auth.css";
-import registerIcon from "../../assets/icono-login.png";
-
-import Profile from "../Profile/Profile";
 import { NavProfile } from "../NavProfile/NavProfile";
 
 export const Auth = ({ hadleCloseClick, setShowNavMovile }) => {
@@ -12,13 +9,6 @@ export const Auth = ({ hadleCloseClick, setShowNavMovile }) => {
   const navigate = useNavigate()
   const [showButtonsAuth, setShowButtonsAuth] = useState(false)
 
-  const hadleLogin = () => {
-    navigate('/login')
-  }
-
-  const hadleRegister = () => {
-    navigate('/register')
-  }
 
   useEffect(() => {
 

@@ -23,11 +23,6 @@ const CreateNew = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  /* const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  }; */
-  //evento para al seleccionar en el select la categoría se cambie el valor
-
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
@@ -133,17 +128,6 @@ const CreateNew = () => {
             ))}
           </select>
         </div>
-
-        {/* <div className="category">
-          <label htmlFor="category">Categoría:</label>
-          <input
-            type="text"
-            id="category"
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-            required
-          />
-        </div> */}
         <div className="photo">
           <label htmlFor="photo">Foto:</label>
           <input

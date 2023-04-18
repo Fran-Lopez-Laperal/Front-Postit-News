@@ -33,8 +33,6 @@ const ButtonsProfile = ({
       });
 
       const newDataUser = await getMyUserDataService({ token });
-
-      console.log(newDataUser);
       navigate("/perfil");
       setError("");
       setHandleEditUser(false);
@@ -60,6 +58,10 @@ const ButtonsProfile = ({
       }
     }
   };
+
+  
+
+
   return (
     <section id="buttons">
       {handleEditUser && !clickInImg ? (
