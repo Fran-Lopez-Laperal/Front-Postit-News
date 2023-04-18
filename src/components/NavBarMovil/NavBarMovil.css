@@ -18,7 +18,7 @@
     border: 0;
     background: transparent;
     gap: 0.65rem;
-    z-index: 21;
+    z-index: 1001;
   }
   
   .button__div > div {
@@ -36,11 +36,33 @@
     background: var(--corporationX);
     overflow: hidden;
     position: fixed;
-    z-index: 10;
-    margin-top: -5px
-  
+    z-index: 1000;
+    margin-top: -5px;
   }
 
   .navbar__movil__expand__menu{
-    margin-top: 80px;
+    margin-top: 180px;
+  }
+
+  .navbar__movil__expand__menu--button{
+    background-color: transparent;
+    border-radius: none;
+    width: 100%;
+  }
+
+  .navbar__movil__expand__menu--button:hover{
+   color: white;
+  }
+
+  .navbar__movil__expand__menu--ul:nth-child(1){
+    border-top: 1px solid white;
+  }
+
+  .navbar__movil__expand__menu--ul li{
+    border-bottom: 1px solid white;
+    line-height:40px ;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }

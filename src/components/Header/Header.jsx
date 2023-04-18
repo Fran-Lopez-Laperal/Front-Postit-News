@@ -7,7 +7,7 @@ import { Auth } from "../Auth/Auth";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-const Header = () => {
+const Header = ({handleCloseClick, setShowNavMovile}) => {
   const { user } = useContext(AuthContext);
   const { newsFilterFunction } = useContext(AuthContext);
   const filterFunction = ({ target }) => {
@@ -38,7 +38,7 @@ const Header = () => {
           />
         </article>
         <section className="buttons-header">
-          <Auth></Auth>
+          <Auth hadleCloseClick={handleCloseClick} setShowNavMovile={setShowNavMovile}></Auth>
         </section>
       </section>
     </div>

@@ -1,5 +1,4 @@
 .navProfile {
-  border: 1px solid black;
 
   width: 100%;
 }
@@ -28,4 +27,28 @@
 
 .link-profile {
   text-decoration: none;
+}
+
+#img-profile-movil{
+  width: 50px;
+  border-radius: 50%;
+}
+
+.info-profile-movil{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.fa{
+  font-size: 30px;
+}
+
+.logout-profile-movil{
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

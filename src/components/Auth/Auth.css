@@ -49,3 +49,27 @@
 #registerIcon {
   width: 2rem;
 }
+
+
+@media(max-width:420px){
+  .fa{
+    font-size: 45px;
+    color: white;
+  }
+
+  .buttons-auth-header{
+    gap: 1rem;
+  }
+
+  .buttons-auth{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .buttons-auth-icons{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+  }
+}

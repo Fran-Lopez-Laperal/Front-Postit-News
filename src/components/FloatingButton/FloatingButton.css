@@ -36,3 +36,15 @@
     display: block;
     font-size: 0.9rem;
   }
+
+  @media(max-width:420px){
+    .floating-button {
+      bottom: 15vh;
+      font-size: .8rem;
+    }
+    
+    #button-back{
+      left: 0;
+    }
+
+  }

@@ -9,6 +9,7 @@ import { FilterNews } from "../FilterNews/FilterNews";
 import NavBar from "../NavBar/NavBar";
 import FloatingButton from "../FloatingButton/FloatingButton";
 import NavBarMovil from "../NavBarMovil/NavBarMovil";
+import BackButton from "../BackButton/BackButton";
 
 /* const FloatingButton = () => {
   const { isLogged } = useContext(AuthContext);
@@ -61,7 +62,6 @@ const HomePage = ({idCategory, setIdCategory, categoryName, setCategoryName}) =>
           <News />
         )}
       </section>
-
       <FloatingButton />
     </section>
   );
