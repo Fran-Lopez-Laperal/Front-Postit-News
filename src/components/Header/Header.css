@@ -90,16 +90,14 @@
     height: 30px;
   }
   .logo {
+    position: relative;
     height: 170px;
-    position: absolute;
-    bottom: 50px;
-    right: 30%;
+    top: 280px;
+    left: 40%;
   }
 
   .buttons-header {
-    position: absolute;
-    top: -250px;
-    right: 20px;
+    top: -330px;
     height: 10px;
   }
 
