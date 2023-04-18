@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react'
 
 
 import './NavBarMovil.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { getCategoriesService } from '../service';
+import Header from '../Header/Header';
 
 let categories = await getCategoriesService();
 
-const NavBarMovil = ({ setIdCategory, setCategoryName }) => {
+const NavBarMovil = ({ setIdCategory, setCategoryName, setShowNavMovile}) => {
   const { setFilter } = useContext(AuthContext);
   const [openMenu, setOpenMenu] = useState(false)
 
@@ -38,19 +39,24 @@ const NavBarMovil = ({ setIdCategory, setCategoryName }) => {
         <div></div>
         <div></div>
       </button>
+      
       {openMenu ? (
+        
         <nav id='navbar' className={`navbar__movil__expand ${openMenu} ? 'open' : ''`}>
           <menu className='navbar__movil__expand__menu'>
             <ul className='navbar__movil__expand__menu--ul'>
               {categories.map((category) => (
-                <li key={category.id}>
-                  <button
-                    onClick={() => {
-                      handleFilterNews(category.id, category.name);
-                    }}>{category.name}</button>
-
+                <li key={category.id}
+                  className='navbar__movil__expand__menu--button'
+                  onClick={() => {
+                    handleFilterNews(category.id, category.name);
+                  }}>{category.name}
                 </li>
               ))}
+              <Header
+               handleCloseClick={hadleCloseClick}
+               setShowNavMovile={setShowNavMovile}
+                />
             </ul>
           </menu>
         </nav>

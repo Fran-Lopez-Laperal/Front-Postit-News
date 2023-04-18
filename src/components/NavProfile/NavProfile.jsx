@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import posit from "../../assets/posit.png";
 import imgForUser from "../../assets/imgForUser.png";
 
 import "./NavProfile.css";
 
-export const NavProfile = () => {
+export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
   const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   let userImg;
 
@@ -25,20 +26,52 @@ export const NavProfile = () => {
     // setIcon(showMenu ? "fa fa-arrow-right" : "fa fa-arrow-left");
   };
 
+  const handleLogout = () => {
+    logout()
+    hadleCloseClick()
+  }
+
   const handleCloseMenu = () => {
     setShowMenu(false);
     // setIcon("fa fa-arrow-right");
   };
 
   return (
+
+
     <section className="navProfile">
-      <figure
-        id="figure-profile"
-        className=""
-        onClick={showMenu ? handleCloseMenu : handleOpenMenu}
-      >
-        <img id="img-profile" src={userImg} alt="" />
-      </figure>
+      {setShowNavMovile ? (
+        <section className="info-profile-movil">
+          <section className="logout-profile-movil">
+            <Link to="/" onClick={handleLogout}>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+            </Link>
+            <p>Logout</p> 
+          </section>
+
+          <Link to="/perfil">
+            <figure
+              onClick={hadleCloseClick}
+              id="figure-profile-movil"
+            >
+              <img id="img-profile-movil" src={userImg} alt="" />
+            </figure>
+          </Link>
+        </section>
+
+
+
+      ) : (
+
+        <figure
+          id="figure-profile"
+          className=""
+          onClick={showMenu ? handleCloseMenu : handleOpenMenu}
+        >
+          <img id="img-profile" src={userImg} alt="" />
+        </figure>
+      )}
+
       {showMenu && (
         <section className="navProfile_menu">
           <ul className="navProfile_menu_ul">
@@ -48,7 +81,7 @@ export const NavProfile = () => {
               </Link>
             </li>
             <li className="navProfile_menu_ul_li" onClick={handleCloseMenu}>
-              <Link to="/" className="link-profile" onClick={() => logout()}>
+              <Link to="/" className="link-profile" onClick={handleLogout}>
                 Cerrar sesión
               </Link>
             </li>

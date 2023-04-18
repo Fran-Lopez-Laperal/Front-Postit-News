@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -40,8 +40,14 @@ const App = () => {
         <Spinner />
       ) : (
         <main>
-          <Header />
-          {showNavMovile ? <NavBarMovil setIdCategory={setIdCategory} setCategoryName={setCategoryName}/> : ' '}
+          {!showNavMovile ? <Header /> : ' '}
+
+          {showNavMovile ? <NavBarMovil
+            setIdCategory={setIdCategory}
+            setCategoryName={setCategoryName}
+            setShowNavMovile={showNavMovile} />
+            : ' '
+          }
           <Routes>
             <Route path="/" element={<HomePage
               idCategory={idCategory}
@@ -59,7 +65,6 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/crear-noticia" element={<CreateNew />} />
           </Routes>
-          <Outlet />
           <Footer />
         </main>
       )}

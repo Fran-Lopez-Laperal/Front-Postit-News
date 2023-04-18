@@ -1,0 +1,20 @@
+.backButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 15vh;
+    background-color: #6bded7;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 65px;
+    height: 65px;
+    z-index: 10;
+    left: 25px;
+}
+
+.backButton .fa{
+    font-size: 50px;
+}
