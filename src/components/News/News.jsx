@@ -80,10 +80,10 @@ const News = () => {
       <section className="news__container">
         <section className="homePage__section__buttons">
           <button className="homePage__button" onClick={handleShowNews}>
-            Noticias de hoy
+            NOTICIAS DE HOY
           </button>
           <button className="homePage__button" onClick={handleShowOldNews}>
-            Noticias pasadas
+            NOTICIAS PASADAS
           </button>
         </section>
         {error ? <p>{error}</p> : null}

@@ -31,7 +31,7 @@ const Header = ({handleCloseClick, setShowNavMovile}) => {
           <input
             className="header__section__search--input"
             type="search"
-            placeholder="Busca un tipo de noticia"
+            placeholder="Buscador de noticias por palabras"
             name="search"
             id=""
             onChange={filterFunction}
