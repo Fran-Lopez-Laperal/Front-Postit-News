@@ -14,11 +14,21 @@ import Register from "./components/Register/Register";
 import Spinner from "./components/Spinner/Spinner";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import CreateNew from "./components/CreateNew/CreateNew";
+import NavBarMovil from "./components/NavBarMovil/NavBarMovil";
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
+  const [showNavMovile, setShowNavMovile] = useState(false)
+  const [idCategory, setIdCategory] = useState(null);
+  const [categoryName, setCategoryName] = useState("");
   // const [filter, setFilter] = useState(false);
 
   useEffect(() => {
+
+    const responsiveMovil = () => window.innerWidth < 420 ? setShowNavMovile(true) : setShowNavMovile(false)
+    responsiveMovil()
+    window.addEventListener('resize', () => responsiveMovil())
+
+
     setInterval(() => {
       setShowSpinner(true);
     }, 1000);
@@ -31,9 +41,14 @@ const App = () => {
       ) : (
         <main>
           <Header />
-
+          {showNavMovile ? <NavBarMovil setIdCategory={setIdCategory} setCategoryName={setCategoryName}/> : ' '}
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage
+              idCategory={idCategory}
+              setIdCategory={setIdCategory}
+              categoryName={categoryName}
+              setCategoryName={setCategoryName}
+            />} />
             <Route path="/registro" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Profile />} />

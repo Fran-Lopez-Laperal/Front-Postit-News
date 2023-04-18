@@ -24,16 +24,15 @@ import NavBarMovil from "../NavBarMovil/NavBarMovil";
   );
 }; */
 
-const HomePage = () => {
-  const [idCategory, setIdCategory] = useState(null);
-  const [categoryName, setCategoryName] = useState("");
+const HomePage = ({idCategory, setIdCategory, categoryName, setCategoryName}) => {
   const { filter } = useContext(AuthContext);
   const [showNav, setShowNav] = useState(false)
+ 
 
 
   useEffect(() => {
 
-    const responsiveMovil = () => window.innerWidth < 420 ? setShowNav(true) : setShowNav(false)
+    const responsiveMovil = () => window.innerWidth > 420 ? setShowNav(true) : setShowNav(false)
     responsiveMovil()
     window.addEventListener('resize', () => responsiveMovil())
 
@@ -48,9 +47,9 @@ const HomePage = () => {
   return (
     <section className="homePage">
       <section className="homePage__section__navBar">
-        {showNav ? <NavBarMovil setIdCategory={setIdCategory} setCategoryName={setCategoryName}/>
+        {showNav ? <NavBar setIdCategory={setIdCategory} setCategoryName={setCategoryName} />
           :
-          <NavBar setIdCategory={setIdCategory} setCategoryName={setCategoryName} />
+          ' '
         }
 
       </section>
