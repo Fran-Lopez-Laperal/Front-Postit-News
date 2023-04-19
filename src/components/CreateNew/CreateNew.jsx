@@ -1,14 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import { createNewService, getCategoriesService } from "../service";
 import { useNavigate } from "react-router-dom";
-import { Auth } from "../Auth/Auth";
+
 import { AuthContext } from "../../context/AuthContext";
-import { loginUserService } from "../service";
-import Login from "../Login/Login";
 
 //import {categories} from "../ListCategories/ListCategories";
 import "./CreateNew.css";
-import HomePage from "../HomePage/HomePage";
 
 const CreateNew = () => {
   const { token } = useContext(AuthContext);
@@ -29,6 +26,7 @@ const CreateNew = () => {
     const fetchGetAllCategories = async () => {
       try {
         const allCategories = await getCategoriesService();
+        console.log("fetch de allCategories", allCategories);
         setCategories(allCategories);
         setSelectedCategory(allCategories[0].id);
       } catch (error) {
@@ -40,6 +38,7 @@ const CreateNew = () => {
   }, []);
 
   const handleSubmit = async (e) => {
+    console.log("ha entrado en hanleSubmit");
     e.preventDefault();
 
     if (!token) {
@@ -49,6 +48,7 @@ const CreateNew = () => {
 
     setLoading(true);
     try {
+      console.log("Ha entrado en el try");
       const formDataNew = new FormData(e.target);
       //e.target??
       formDataNew.append("title", title);
@@ -68,6 +68,7 @@ const CreateNew = () => {
       setError(error.message);
     } finally {
       setLoading(false);
+      console.log("finally");
     }
   };
 

@@ -17,17 +17,17 @@ import CreateNew from "./components/CreateNew/CreateNew";
 import NavBarMovil from "./components/NavBarMovil/NavBarMovil";
 const App = () => {
   const [showSpinner, setShowSpinner] = useState(false);
-  const [showNavMovile, setShowNavMovile] = useState(false)
+  const [showNavMovile, setShowNavMovile] = useState(false);
   const [idCategory, setIdCategory] = useState(null);
   const [categoryName, setCategoryName] = useState("");
-  // const [filter, setFilter] = useState(false);
 
   useEffect(() => {
-
-    const responsiveMovil = () => window.innerWidth < 420 ? setShowNavMovile(true) : setShowNavMovile(false)
-    responsiveMovil()
-    window.addEventListener('resize', () => responsiveMovil())
-
+    const responsiveMovil = () =>
+      window.innerWidth < 420
+        ? setShowNavMovile(true)
+        : setShowNavMovile(false);
+    responsiveMovil();
+    window.addEventListener("resize", () => responsiveMovil());
 
     setInterval(() => {
       setShowSpinner(true);
@@ -40,21 +40,29 @@ const App = () => {
         <Spinner />
       ) : (
         <main>
-          {!showNavMovile ? <Header /> : ' '}
+          {!showNavMovile ? <Header /> : " "}
 
-          {showNavMovile ? <NavBarMovil
-            setIdCategory={setIdCategory}
-            setCategoryName={setCategoryName}
-            setShowNavMovile={showNavMovile} />
-            : ' '
-          }
-          <Routes>
-            <Route path="/" element={<HomePage
-              idCategory={idCategory}
+          {showNavMovile ? (
+            <NavBarMovil
               setIdCategory={setIdCategory}
-              categoryName={categoryName}
               setCategoryName={setCategoryName}
-            />} />
+              setShowNavMovile={showNavMovile}
+            />
+          ) : (
+            " "
+          )}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  idCategory={idCategory}
+                  setIdCategory={setIdCategory}
+                  categoryName={categoryName}
+                  setCategoryName={setCategoryName}
+                />
+              }
+            />
             <Route path="/registro" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Profile />} />

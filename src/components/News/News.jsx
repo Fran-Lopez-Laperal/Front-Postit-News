@@ -4,7 +4,6 @@ import { getNewsDataService } from "../service";
 import OldNews from "../OldNews/OldNews";
 import NewsCard from "../NewsCard/NewsCard";
 import { useNavigate } from "react-router-dom";
-import avatar from "../../assets/avatar.jpg";
 import "./News.css";
 
 const News = () => {
@@ -52,6 +51,7 @@ const News = () => {
       );
       setNewsWithFilter(arrayFiltered);
     };
+
     filterNews(newsFilter);
     if (newsToday.length === 0) {
       setNotNewsToday(true);
@@ -76,7 +76,6 @@ const News = () => {
 
   return (
     <>
-
       <section className="news__container">
         <section className="homePage__section__buttons">
           <button className="homePage__button" onClick={handleShowNews}>
@@ -111,7 +110,6 @@ const News = () => {
           )}
         </div>
       </section>
-
     </>
   );
 };

@@ -1,30 +1,35 @@
 import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
-import avatar from "../../assets/avatar.jpg";
 
 import "./Header.css";
 import { Auth } from "../Auth/Auth";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-const Header = ({handleCloseClick, setShowNavMovile}) => {
-  const { user } = useContext(AuthContext);
+const Header = ({ handleCloseClick, setShowNavMovile }) => {
+  //setFilter y filter son para filtrar las noticias relacionadas con la categoria del NavBar
+  const { setFilter } = useContext(AuthContext);
+
   const { newsFilterFunction } = useContext(AuthContext);
   const filterFunction = ({ target }) => {
-    /* setFilter(target.value) */
+    // setFilter(target.value);
     newsFilterFunction(target.value);
   };
 
-  const handleClickLogo = () => {
-    /* window.location.reload(); */
-    Navigate("/");
+  const handleDeleteFilterNavbar = () => {
+    setFilter(false);
   };
 
   return (
     <div className="header">
       <section className="header__section__search">
-        <Link to="/" /* onClick={handleClickLogo} */>
-          <img className="logo" src={logo} alt="logo" />
+        <Link to="/">
+          <img
+            className="logo"
+            src={logo}
+            alt="logo"
+            onClick={handleDeleteFilterNavbar}
+          />
         </Link>
 
         <article className="header__section__search__article">
@@ -38,7 +43,10 @@ const Header = ({handleCloseClick, setShowNavMovile}) => {
           />
         </article>
         <section className="buttons-header">
-          <Auth hadleCloseClick={handleCloseClick} setShowNavMovile={setShowNavMovile}></Auth>
+          <Auth
+            hadleCloseClick={handleCloseClick}
+            setShowNavMovile={setShowNavMovile}
+          ></Auth>
         </section>
       </section>
     </div>

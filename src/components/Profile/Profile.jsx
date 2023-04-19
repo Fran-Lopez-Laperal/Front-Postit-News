@@ -34,10 +34,6 @@ const Profile = () => {
       formData.append("avatar", e.target.avatar.files[0]);
       await editAvatarUserService({ token, formData });
 
-      const newDataUser = await getMyUserDataService({ token });
-
-      setUser(newDataUser);
-
       setClickInImg(false);
 
       setError("");
