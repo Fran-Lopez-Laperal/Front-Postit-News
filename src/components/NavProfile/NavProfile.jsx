@@ -8,7 +8,7 @@ import "./NavProfile.css";
 
 export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
   const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   let userImg;
 
@@ -19,50 +19,38 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
   }
 
   const [showMenu, setShowMenu] = useState(false);
-  //   const [icon, setIcon] = useState("fa fa-arrow-right");
 
   const handleOpenMenu = () => {
     setShowMenu(true);
-    // setIcon(showMenu ? "fa fa-arrow-right" : "fa fa-arrow-left");
   };
 
   const handleLogout = () => {
-    logout()
-    hadleCloseClick()
-  }
+    logout();
+    // hadleCloseClick();
+  };
 
   const handleCloseMenu = () => {
     setShowMenu(false);
-    // setIcon("fa fa-arrow-right");
   };
 
   return (
-
-
     <section className="navProfile">
       {setShowNavMovile ? (
         <section className="info-profile-movil">
           <section className="logout-profile-movil">
-            <Link to="/" onClick={handleLogout}>
+            <button onClick={handleLogout}>
               <i className="fa fa-sign-out" aria-hidden="true"></i>
-            </Link>
-            <p>Logout</p> 
+            </button>
+            <p>Logout</p>
           </section>
 
           <Link to="/perfil">
-            <figure
-              onClick={hadleCloseClick}
-              id="figure-profile-movil"
-            >
+            <figure onClick={hadleCloseClick} id="figure-profile-movil">
               <img id="img-profile-movil" src={userImg} alt="" />
             </figure>
           </Link>
         </section>
-
-
-
       ) : (
-
         <figure
           id="figure-profile"
           className=""
@@ -81,9 +69,9 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
               </Link>
             </li>
             <li className="navProfile_menu_ul_li" onClick={handleCloseMenu}>
-              <Link to="/" className="link-profile" onClick={handleLogout}>
+              <button className="link-profile" onClick={handleLogout}>
                 Cerrar sesión
-              </Link>
+              </button>
             </li>
           </ul>
         </section>

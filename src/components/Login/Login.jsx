@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       const token = await loginUserService({ email, password });
-      console.log(token);
+
       login(token);
       setFilter(false);
       navigate("/");

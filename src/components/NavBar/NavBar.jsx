@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -8,16 +8,22 @@ import { getCategoriesService } from "../service/index.jsx";
 
 import "./NavBar.css";
 
-let categories = await getCategoriesService();
-
 const NavBar = ({ setIdCategory, setCategoryName }) => {
   const { setFilter } = useContext(AuthContext);
+  const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
 
-  const hadleButtonClick = () => {
-    
-  }
+  let categoriesFromBack;
+
+  useEffect(() => {
+    const getCategoriesServiceFunction = async () => {
+      categoriesFromBack = await getCategoriesService();
+      setCategories(categoriesFromBack);
+    };
+
+    getCategoriesServiceFunction();
+  }, []);
 
   const handleFilterNews = (id, name) => {
     setIdCategory(id);
@@ -33,12 +39,14 @@ const NavBar = ({ setIdCategory, setCategoryName }) => {
           <ul className="navBar__menu__ul">
             {categories.map((category) => (
               <li key={category.id} className="navBar__menu__ul__li">
-              <button
-              className="navBar__menu__ul__li--button"
-                onClick={() => {
-                  handleFilterNews(category.id, category.name);
-                }}>{category.name}</button>
-                
+                <button
+                  className="navBar__menu__ul__li--button"
+                  onClick={() => {
+                    handleFilterNews(category.id, category.name);
+                  }}
+                >
+                  {category.name}
+                </button>
               </li>
             ))}
           </ul>
