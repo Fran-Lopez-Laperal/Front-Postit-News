@@ -116,9 +116,9 @@ const News = () => {
               image={image}
               idNew={id}
               ownerName={name}
-              ownerAv
+              ownerAvatar={avatar}
+              nameCategory={nameCategory}
               />)))
-          
           }
         </div>
       </section>
