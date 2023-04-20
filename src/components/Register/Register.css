@@ -52,8 +52,7 @@ label {
 }
 
 textarea {
-  resize: vertical;
-  /* ajusta el tamaño vertical de la textarea */
+  resize: none;
 }
 
 @media screen and (max-width: 420px) {
