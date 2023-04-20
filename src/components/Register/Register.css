@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  height: 65vh;
+  height: 67.5vh;
 }
 
 .articleRegister {
@@ -34,6 +34,20 @@ form {
 .formImg {
   width: 80%;
   align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.formImg img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+#selectedPhoto {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 fieldset {
@@ -52,16 +66,28 @@ label {
 }
 
 textarea {
-  resize: none;
+  resize: vertical;
 }
+
+.button-register{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
 
 @media screen and (max-width: 420px) {
   .register-container {
-      
-      margin-top: 50px;
-      height: 75vh;
-    }
+    margin-top: 50px;
+    height: 82vh;
   }
+
+  .formImg {
+    width: 100%;
+  }
+}
+
 @media (max-width: 700px) {
   .register {
     width: 80%;
