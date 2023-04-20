@@ -1,8 +1,12 @@
 .homePage{
   display: flex;
+  min-height: 85vh;
   /* min-height: 100vh; */
 }
 
+.homePage__section__buttons{
+  margin-top: 90px;
+}
 .homePage__section__news{
   width: 100%;
 }
@@ -12,6 +16,14 @@
 }
 
 
+@media(max-width:420px){
+  .homePage__section__navBar{
+    width: 0px !important;
+  }
 
+  .homePage__section__buttons{
+    margin-top: 50px;
+  }
+}
 
 

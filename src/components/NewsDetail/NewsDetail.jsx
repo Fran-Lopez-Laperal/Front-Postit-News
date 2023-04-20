@@ -108,7 +108,7 @@ const NewsDetail = () => {
                   ? `url(http://localhost:4000/images/${image})`
                   : `url(${imgForNew})`,
                 position: "relative",
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
               }}
@@ -120,7 +120,7 @@ const NewsDetail = () => {
                     onClick={setFilter(false)}
                   >
                     <i
-                      className="fa fa-arrow-left fa-3x"
+                      className="arrow fa fa-arrow-left fa-3x"
                       aria-hidden="true"
                     ></i>
                   </button>
@@ -168,7 +168,7 @@ const NewsDetail = () => {
               <article className="newsDetails__article__section__info">
                 <header>
                   <h5 className="newsDetails__article__section__info--date">
-                    {renderDate(createdAt)}
+                  <strong className="strong">Publicada:</strong> {renderDate(createdAt)}
                   </h5>
                 </header>
                 <section className="newsDetails__article__section__info__user">
@@ -196,7 +196,7 @@ const NewsDetail = () => {
                     </button>
                   </section>
                 </section>
-                <hr />
+                <hr  />
                 <section className="newsDetails__article__section__info__text">
                   <h2>{introduction}</h2>
                   <p>{text}</p>

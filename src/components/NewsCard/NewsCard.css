@@ -10,7 +10,9 @@
     max-height: 300px;
 }
 
+.icon > a > i{
 
+}
 
 .news__card::before{
   content: "";
@@ -97,12 +99,12 @@ z-index: 1;
 
 .news__card__footer > a {
     color: white;
-        background-color: rgba(128, 128, 128, 0.2);
-        border-radius: 10px;
-      width: 25px;
-        font-size: 25px;
-        display: flex;
-        justify-content: center;
+    background-color: rgba(128, 128, 128, 0.2);
+    border-radius: 10px;
+width: 25px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 .news__card__footer > a:hover {
@@ -115,4 +117,11 @@ z-index: 1;
     width: 100%;
     padding: 10px;
     position: absolute;
+}
+
+
+@media(max-width:420px) {
+    .news__card__header > p{
+        font-size: 12px;
+    }
 }

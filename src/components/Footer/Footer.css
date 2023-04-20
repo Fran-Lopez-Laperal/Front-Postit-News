@@ -10,7 +10,7 @@ flex-direction: column;
   /* margin-top: -140px; */
   height: 90px;
   z-index: 9999;
-  position: fixed;
+  position:static;
   border-radius: 5px;
   box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.563);
 }

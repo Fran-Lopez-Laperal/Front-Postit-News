@@ -38,7 +38,8 @@ const NewsCard = ({
   return (
     <>
       <article
-        className="news__card"
+
+        className="news__card "
         key={id}
         style={{
           backgroundImage: image
@@ -55,28 +56,31 @@ const NewsCard = ({
           <p>{nameCategory}</p>
         </header>
         <section className="news__card__general__info">
-        <section className="news__card__info">
-          <p className="news__card__info--title">{title}</p>
-          <p className="news__card__info--date">{renderDate(createdAt)}</p>
-        </section>
-        <footer className="news__card__footer">
-          <figure className="news__card__section__figure">
-            <section className="news__card__section_info--user">
-              <img
-                className="news__card__img"
-                src={ownerAvatar ? userImg : imgForUser}
-                alt=""
-              />
-              <figcaption>{ownerName}</figcaption>
+          <section className="news__card__info">
+            <p className="news__card__info--title">{title}</p>
+            <p className="news__card__info--date">{renderDate(createdAt)}</p>
+          </section>
+          <footer className="news__card__footer">
+            <figure className="news__card__section__figure">
+              <section className="news__card__section_info--user">
+                <img
+                  className="news__card__img"
+                  src={ownerAvatar ? userImg : imgForUser}
+                  alt=""
+                />
+                <figcaption>{ownerName}</figcaption>
+              </section>
+            </figure>
+            <section className="icon">
+              <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
+                {" "}
+                <i className=" fa fa-angle-double-right" aria-hidden="true"></i>
+              </Link>
             </section>
-          </figure>
-          <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
-            {" "}
-            <i className="fa fa-angle-double-right" aria-hidden="true"></i>
-          </Link>
-        </footer>
+
+          </footer>
         </section>
-       
+
       </article>
     </>
   );
