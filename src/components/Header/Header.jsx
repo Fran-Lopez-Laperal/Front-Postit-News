@@ -23,9 +23,9 @@ const Header = ({ handleCloseClick, setShowNavMovile }) => {
   return (
     <div className="header">
       <section className="header__section__search">
-        <Link to="/">
+        <Link to="/" className="logo">
           <img
-            className="logo"
+            
             src={logo}
             alt="logo"
             onClick={handleDeleteFilterNavbar}

@@ -35,9 +35,9 @@ export const Auth = ({ hadleCloseClick, setShowNavMovile }) => {
               <p>Registro</p>
             </section>
 
-            <section>
+            <section className="buttons-auth-icons">
               <Link
-                className="buttons-auth-icons"
+                
                 onClick={hadleCloseClick}
                 to="/login"
               >
