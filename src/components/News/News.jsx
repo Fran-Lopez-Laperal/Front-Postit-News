@@ -10,7 +10,7 @@ const News = () => {
   const [news, setNews] = useState([]);
   const [newsWithFilter, setNewsWithFilter] = useState([]);
   const [error, setError] = useState(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState("");
   const [notNewsToday, setNotNewsToday] = useState(false);
   const { newsFilter } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -45,9 +45,9 @@ const News = () => {
     const filterNews = (newsFilter) => {
       const arrayFiltered = news.filter(
         (e) =>
-          e.title.includes(newsFilter) ||
-          e.introduction.includes(newsFilter) ||
-          e.text.includes(newsFilter)
+          e.title.includes(newsFilter.toLowerCase()) ||
+          e.introduction.toLowerCase().includes(newsFilter.toLowerCase()) ||
+          e.text.includes(newsFilter.toLowerCase())
       );
       setNewsWithFilter(arrayFiltered);
     };
@@ -61,7 +61,7 @@ const News = () => {
   }, [newsFilter, newsToday]);
 
   const handleShowNews = () => {
-    setShow(false);
+    setShow("news");
     if (newsToday.length === 0) {
       setNotNewsToday(true);
     } else {
@@ -70,7 +70,7 @@ const News = () => {
   };
 
   const handleShowOldNews = () => {
-    setShow(true);
+    setShow("old");
     setNotNewsToday(false);
   };
 
@@ -89,9 +89,9 @@ const News = () => {
 
         {notNewsToday ? <p>No se han publicado noticias hoy</p> : null}
         <div className="news">
-          {show ? (
+          {show == "old" ? (
             <OldNews />
-          ) : (
+          ) : show == "news" ?(
             newsToday.map(
               ({ id, title, createdAt, image, name, avatar, nameCategory }) => (
                 <NewsCard
@@ -107,7 +107,19 @@ const News = () => {
                 />
               )
             )
-          )}
+          ): (newsWithFilter.map(({ id, title, createdAt, image, name, avatar }) => (
+            <NewsCard
+              key={id}
+              id={id}
+              title={title}
+              createdAt={createdAt}
+              image={image}
+              idNew={id}
+              ownerName={name}
+              ownerAv
+              />)))
+          
+          }
         </div>
       </section>
     </>
