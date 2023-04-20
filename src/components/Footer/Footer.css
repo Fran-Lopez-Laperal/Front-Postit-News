@@ -4,11 +4,15 @@ align-items: center;
 justify-content: space-around;
 flex-direction: column;
   background: var(--corporationX);
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 3px;
+  left: 4px;
+  right: 4px;
+  /* margin-top: -140px; */
   height: 90px;
   z-index: 9999;
+  position: fixed;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.563);
 }
 
 .footer-links {

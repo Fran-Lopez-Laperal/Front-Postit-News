@@ -8,10 +8,18 @@ html {
   --error: #c84d4d;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* main {
   min-height: 100vh;
   display: grid;
   gap: 1rem;
   grid-template-rows: auto 1fr auto;
 } */
+
+
 

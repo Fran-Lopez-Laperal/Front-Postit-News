@@ -1,12 +1,15 @@
 .navBar{
     background: var(--corporationY);
-    height: 100%;
     border-radius: 5px;
+    margin-top: 12px;
+    box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.563);
+    width: 100%;
 }
 
 .navBar__menu{
-   width: 150px;
+   width: 100%;
    overflow: hidden;
+  
 }
 
 .navBar__menu__ul {
@@ -14,7 +17,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    justify-content: space-between;
+    
 }
+
 
 .navBar__menu__ul__li--button{
     display: flex;
@@ -26,11 +32,19 @@
     margin-top: 0px;
     background: transparent;
     border: none;
+    margin-bottom: 0.9rem;
+    
+    
 }
 
 .navBar__menu__ul__li--button:hover{
     background-color: #56c9c1;
     border-radius: 3px;
+}
+
+.navBar__menu__ul__li--p{
+    color: white;
+    text-transform: uppercase;
 }
 
 @media(max-width: 420px) { 

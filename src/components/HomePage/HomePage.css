@@ -1,6 +1,6 @@
 .homePage{
   display: flex;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .homePage__section__news{
@@ -8,7 +8,7 @@
 }
 
 .homePage__section__navBar{
-  
+  width: 15rem;
 }
 
 

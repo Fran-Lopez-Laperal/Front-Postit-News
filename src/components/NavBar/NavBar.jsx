@@ -45,7 +45,7 @@ const NavBar = ({ setIdCategory, setCategoryName }) => {
                     handleFilterNews(category.id, category.name);
                   }}
                 >
-                  {category.name}
+                  <p className="navBar__menu__ul__li--p">{category.name}</p>
                 </button>
               </li>
             ))}
