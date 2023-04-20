@@ -31,32 +31,31 @@ const Login = () => {
     <div className="login">
       <section className="login-container">
         <h2 id="h2-login">Inicia sesión</h2>
-        <form onSubmit={handleForm}>
-          <section className="label-input-container">
-            <label className="label-login" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="input-user"
-              type="email"
-              id="email"
-              name="email"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
+        <form className="form-login" onSubmit={handleForm}>
+          <label className="label-login" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="input-user"
+            type="email"
+            id="email"
+            name="email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-            <label className="label-login" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="input-user"
-              type="password"
-              id="password"
-              name="password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </section>
+          <label className="label-login" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="input-user"
+            type="password"
+            id="password"
+            name="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
           <section className="button-container">
             <button>Entrar</button>
           </section>
