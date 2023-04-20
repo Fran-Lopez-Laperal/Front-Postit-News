@@ -21,7 +21,7 @@ const News = () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
-
+        setNewsWithFilter(result)
         const today = new Date().toISOString().slice(0, 10);
         const filterTodayNews = result.filter((newsItem) => {
           const createdAt = new Date(newsItem.createdAt)
@@ -34,6 +34,7 @@ const News = () => {
           (a, b) => b.totalLikes - a.totalLikes
         );
         setNewsToday(sortedNews);
+        
       } catch (error) {
         setError(error.message);
       }
