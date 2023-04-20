@@ -1,7 +1,8 @@
 .login {
   display: flex;
   align-items: center;
- min-height: 90vh;
+  justify-content: center;
+  min-height: 90vh;
 }
 
 .login-container {
@@ -27,9 +28,12 @@
   margin: 1rem;
 }
 
-.label-input-container {
+.form-login {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .label-login {
@@ -51,7 +55,7 @@
   background-color: #fff;
   color: #333;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  width: 95%;
+  width: 70%;
 }
 
 .input-user {
