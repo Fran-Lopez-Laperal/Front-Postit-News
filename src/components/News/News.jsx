@@ -108,7 +108,7 @@ const News = () => {
                 />
               )
             )
-          ): (newsWithFilter.map(({ id, title, createdAt, image, name, avatar }) => (
+          ): (newsWithFilter.map(({ id, title, createdAt, image, nameCategory, avatar }) => (
             <NewsCard
               key={id}
               id={id}
