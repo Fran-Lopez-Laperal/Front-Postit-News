@@ -46,7 +46,7 @@ const News = () => {
       const arrayFiltered = news.filter(
         (e) =>
           e.title.includes(newsFilter.toLowerCase()) ||
-          e.introduction.toLowerCase().includes(newsFilter.toLowerCase()) ||
+          e.introduction.includes(newsFilter.toLowerCase()) ||
           e.text.includes(newsFilter.toLowerCase())
       );
       setNewsWithFilter(arrayFiltered);
