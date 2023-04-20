@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  height: 67.5vh;
+  min-height: 90vh;
 }
 
 .articleRegister {
@@ -79,8 +78,7 @@ textarea {
 
 @media screen and (max-width: 420px) {
   .register-container {
-    margin-top: 50px;
-    height: 82vh;
+   margin-bottom: -20px;
   }
 
   .formImg {

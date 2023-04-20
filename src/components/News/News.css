@@ -1,11 +1,15 @@
 .news{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 2fr));
     grid-auto-rows: 18rem;  
     gap: 1rem;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 8px;
 }
+
+/* .news > article:nth-of-type(1){
+  width: 1000px;
+} */
 
 
 .homePage__section__buttons{
@@ -34,9 +38,6 @@
      gap: 1rem;
     }
 
-    .news__container{
-      margin-top: 50px;
-    }
 
     .homePage__button{
       font-size: 15px;

@@ -27,6 +27,11 @@ li {
   height: 50px;
 }
 
+.figure-img > img{
+  width: 150px;
+  border-radius: 50%;
+}
+
 @media only screen and (min-width: 768px) {
   .login-container {
     margin-bottom: 100px !important;

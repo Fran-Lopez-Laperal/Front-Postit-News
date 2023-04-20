@@ -22,13 +22,13 @@ export const FilterNews = ({ idCategory, categoryName }) => {
     fetchFilterByCategory();
   }, [idCategory]);
   return (
-    <>
+    <section className="filter__news">
       {error ? (
-        <p>{error}</p>
+        <p className="error__category">{error}</p>
       ) : (
         <section>
           {" "}
-          <h2> Estas son las noticias relacionadas con {categoryName}</h2>
+        
           <div className="filterNews">
             {newsWithFilter.map(
               ({
@@ -56,6 +56,6 @@ export const FilterNews = ({ idCategory, categoryName }) => {
           </div>
         </section>
       )}
-    </>
+    </section>
   );
 };

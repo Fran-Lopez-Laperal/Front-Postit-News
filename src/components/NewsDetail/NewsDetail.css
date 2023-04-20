@@ -11,13 +11,25 @@
     color: black;
 }
 
+.fa{
+    color: black;
+    font-size: 20px;
+}
+
 .active{
     background-color: red;
     color: white;
 }
 
+.strong{
+    color: black;
+    font-weight: 400;
+}
+
 .newsDetail{
     min-height: 100vh;
+    margin: 70px;
+    margin-top: 100px;
 }
 
 .newsDetails__article {
@@ -37,16 +49,25 @@
 .newsDetails__article__figure__section {
     color: white;
     display: flex;
-    align-items: center;
+    align-items: self-end;
     position: absolute;
     top: 50px;
-    width: 95%;
+    width:100%;
     justify-content: space-between;
 }
 
+.newsDetails__article__figure__section--p{
+   background-color:  #b107ea;
+  border-radius: 10px;
+  padding: 10px;
+  
+}
+
 .newsDetails__article__figure__section--button{
-    margin-top: 0px;
+    color: var(--corporation);
+    margin-top: 50px;
     background: transparent;
+    border: none;
 }
 
 .newsDetails__article__figure__section--button:hover{
@@ -54,7 +75,7 @@
 }
 
 .newsDetails__article__figure__section--button:hover > i{
-    color: var(--corporation);
+    color:  #b107ea;
 
 }
 
@@ -79,7 +100,6 @@
     font-size: 25px;
     background-color: darkgoldenrod;
     border-radius: 5px;
-    padding: 2px;
     position: absolute;
     bottom:0;
     left: 0;
@@ -119,6 +139,10 @@
     margin-top: 50px;
 }
 
+hr{
+    margin-top: 10px;
+}
+
 .newsDetails__article__section__info__text > p {
     margin-top: 10px;
     color: black;
@@ -137,6 +161,7 @@
     font-size: 25px;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
 }
 
 
@@ -332,4 +357,45 @@
         width: 5em;  
         height: 5em;
    }
+
+   .newsDetail{
+    margin: 0px !important;
+    }
+
+    .arrow{
+        color: var(--corporation);
+        font-size: 40px;
+    }
+
+    .arrow:hover{
+       color: #b107ea;
+    }
+
+    .newsDetails__article__figure__section{
+        align-items:self-end;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .newsDetails__article__section__info {
+        margin-top: 5px;
+        padding: 10px;
+    }
+
+    .newsDetails__article__figure {
+        height: 350px;
+    }
+
+    .newsDetails__article__section__info{
+        margin-top: 20px;
+    }
+
+
+     
+    .newsDetails__article__section__info__votes--buttons > .fa {
+        font-size: 25px;
+    }
+
+    
+
   }

@@ -6,3 +6,10 @@
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
 }
+
+@media(max-width:420px){
+  *{
+    padding: 0px;
+    
+  }
+}

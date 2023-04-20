@@ -3,15 +3,15 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    bottom: 12vh;
+    bottom: 20vh;
     right: 20px;
     background-color: #6bded7;
     color: white;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-    font-size: 1.2rem;
+    font-size: 1rem;
     z-index: 10;
   }
   
@@ -40,7 +40,7 @@
   @media(max-width:420px){
     .floating-button {
       bottom: 15vh;
-      font-size: .8rem;
+      font-size: .6rem;
     }
     
     #button-back{
