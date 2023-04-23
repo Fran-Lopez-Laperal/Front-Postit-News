@@ -1,0 +1,13 @@
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  #buttons {
+    flex-wrap: nowrap;
+    margin: 0;
+  }
+}
