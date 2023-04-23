@@ -6,7 +6,6 @@ import {
 
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import "./ButtonsProfile.css";
@@ -58,9 +57,6 @@ const ButtonsProfile = ({
       }
     }
   };
-
-  
-
 
   return (
     <section id="buttons">
