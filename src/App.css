@@ -2,15 +2,34 @@ html {
   --bg: #d9d9db;
   --bright: #ffffff;
   --corporation: #6bded7;
-  --corporationY: linear-gradient(rgb(94, 255, 244),#6bded7,rgb(122, 255, 246));
-  --corporationX: linear-gradient(to right ,rgb(122, 255, 246),rgb(107, 222, 215),rgb(122, 255, 246));
+  --corporationY: linear-gradient(
+    rgb(94, 255, 244),
+    #6bded7,
+    rgb(122, 255, 246)
+  );
+  --corporationX: linear-gradient(
+    to right,
+    rgb(122, 255, 246),
+    rgb(107, 222, 215),
+    rgb(122, 255, 246)
+  );
   --corporation: #6bded7;
   --error: #c84d4d;
 }
 
+html {
+  height: 100%;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-
+main {
+  /* flex: 1; */
+}
 
 /* main {
   min-height: 100vh;
@@ -18,6 +37,3 @@ html {
   gap: 1rem;
   grid-template-rows: auto 1fr auto;
 } */
-
-
-

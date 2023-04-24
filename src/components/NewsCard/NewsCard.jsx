@@ -30,15 +30,13 @@ const NewsCard = ({
     if (month !== Number(arrayDate[1]))
       return `Hace ${Number(arrayDate[1]) - month} meses`;
     if (day !== Number(arrayDate[2]))
-      return `Hace ${Number(arrayDate[2]) - day} días`;
-
+      return `Hace ${Number(day - arrayDate[2])} días`;
     return "Hoy";
   };
 
   return (
     <>
       <article
-
         className="news__card "
         key={id}
         style={{
@@ -77,10 +75,8 @@ const NewsCard = ({
                 <i className=" fa fa-angle-double-right" aria-hidden="true"></i>
               </Link>
             </section>
-
           </footer>
         </section>
-
       </article>
     </>
   );

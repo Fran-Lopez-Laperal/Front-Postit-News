@@ -50,26 +50,27 @@
   width: 2rem;
 }
 
-
-@media(max-width:420px){
-  .fa{
+@media (max-width: 420px) {
+  .fa {
     font-size: 45px;
     color: white;
   }
 
-  .buttons-auth-header{
-    gap: 1rem;
+  .buttons-auth-header {
+    gap: 2rem;
   }
 
-  .buttons-auth{
+  .buttons-auth {
     display: flex;
     justify-content: space-between;
   }
 
-  .buttons-auth-icons{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
+  .buttons-auth-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 10px;
   }
 }

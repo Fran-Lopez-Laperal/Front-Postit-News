@@ -15,17 +15,17 @@ const Footer = () => {
         </Modal>
         <Modal buttonText="Política de Privacidad">
           <PrivacityPolicy />
-        </Modal >
+        </Modal>
         <Modal buttonText="Sobre nosotros">
           <AboutAs />
         </Modal>
         <Modal buttonText="Contacto">
-          <Contacto/>
+          <Contacto />
         </Modal>
       </div>
-      {<div className="copyright">
+      {/* {<div className="copyright">
         <p>© 2023 HACK A BOSS</p>
-      </div>}
+      </div>} */}
     </footer>
   );
 };

@@ -23,25 +23,22 @@
   z-index: 10000;
 }
 
-
 .modal-close-button {
   position: absolute;
   right: 10px;
   border-radius: 3px;
-  background-color:#56c9c1;
+  background-color: #56c9c1;
   font-size: 20px;
   cursor: pointer;
   z-index: 10000;
-  border:none;
-  
+  border: none;
 }
 
 .modal-p-close-button {
   color: white;
-  
 }
 
-.modal__button{
+.modal__button {
   border: none;
   background-color: transparent;
   color: #fff;
@@ -50,17 +47,16 @@
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
-  margin: 30px auto 0 auto;
+  /* margin: 30px auto 0 auto; */
   padding: 6px;
-  
 }
 
 .modal__button > button:hover {
   background-color: #56c9c1;
 }
 
-@media(max-width: 420px) {
-  .modal__button{
-    font-size: .7rem;
+@media (max-width: 420px) {
+  .modal__button {
+    font-size: 0.7rem;
   }
 }
