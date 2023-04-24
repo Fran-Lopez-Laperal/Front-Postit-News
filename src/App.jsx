@@ -39,42 +39,47 @@ const App = () => {
       {!showSpinner ? (
         <Spinner />
       ) : (
-        <main>
-          {!showNavMovile ? <Header /> : " "}
+        <>
+          <main>
+            {!showNavMovile ? <Header /> : " "}
 
-          {showNavMovile ? (
-            <NavBarMovil
-              setIdCategory={setIdCategory}
-              setCategoryName={setCategoryName}
-              setShowNavMovile={showNavMovile}
-            />
-          ) : (
-            " "
-          )}
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  idCategory={idCategory}
-                  setIdCategory={setIdCategory}
-                  categoryName={categoryName}
-                  setCategoryName={setCategoryName}
-                />
-              }
-            />
-            <Route path="/registro" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/perfil" element={<Profile />} />
-            <Route path="news/:idNew" element={<NewsDetail />} />
-            {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
-            <Route path="/politica-privacidad" element={<PrivacityPolicy />} />
-            <Route path="/politica-cookies" element={<PrivacityCookies />} />
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/crear-noticia" element={<CreateNew />} />
-          </Routes>
+            {showNavMovile ? (
+              <NavBarMovil
+                setIdCategory={setIdCategory}
+                setCategoryName={setCategoryName}
+                setShowNavMovile={showNavMovile}
+              />
+            ) : (
+              " "
+            )}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    idCategory={idCategory}
+                    setIdCategory={setIdCategory}
+                    categoryName={categoryName}
+                    setCategoryName={setCategoryName}
+                  />
+                }
+              />
+              <Route path="/registro" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/perfil" element={<Profile />} />
+              <Route path="news/:idNew" element={<NewsDetail />} />
+              {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
+              <Route
+                path="/politica-privacidad"
+                element={<PrivacityPolicy />}
+              />
+              <Route path="/politica-cookies" element={<PrivacityCookies />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/crear-noticia" element={<CreateNew />} />
+            </Routes>
+          </main>
           <Footer />
-        </main>
+        </>
       )}
     </>
   );
