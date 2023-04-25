@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/AuthContext";
 const Header = ({ handleCloseClick, setShowNavMovile }) => {
   //setFilter y filter son para filtrar las noticias relacionadas con la categoria del NavBar
   const { setFilter } = useContext(AuthContext);
-
+  const { filter } = useContext(AuthContext);
   const { newsFilterFunction } = useContext(AuthContext);
   const filterFunction = ({ target }) => {
     // setFilter(target.value);
