@@ -43,15 +43,14 @@ const Profile = () => {
     }
   };
 
-  //falta refrescar el user cuando se modifican los datos
   return user ? (
     <div className="login">
       <article className="login-container">
         <section id="userProfile">
           <section className="dataProfile">
             <h2>Bienvenid@ a tu perfil {user.name}</h2>
-            <ul>
-              <li>
+            <ul className="ul-data">
+              <li className="li-data">
                 <label className="label-login" name="name">
                   {" "}
                   Nombre{" "}
@@ -77,7 +76,7 @@ const Profile = () => {
                   />
                 )}
               </li>
-              <li>
+              <li className="li-data">
                 <label className="label-login" name="email">
                   {" "}
                   Email{" "}
@@ -103,7 +102,7 @@ const Profile = () => {
                   />
                 )}
               </li>
-              <li>
+              <li className="li-data">
                 <label className="label-login" name="bio">
                   {" "}
                   Bibliografía{" "}

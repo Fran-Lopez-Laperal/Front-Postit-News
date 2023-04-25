@@ -1,29 +1,27 @@
-.homePage{
+.homePage {
   display: flex;
   min-height: 85vh;
   /* min-height: 100vh; */
 }
 
-.homePage__section__buttons{
+.homePage__section__buttons {
   margin-top: 90px;
 }
-.homePage__section__news{
+.homePage__section__news {
+  min-height: 95vh;
   width: 100%;
 }
 
-.homePage__section__navBar{
+.homePage__section__navBar {
   width: 15rem;
 }
 
-
-@media(max-width:420px){
-  .homePage__section__navBar{
+@media (max-width: 420px) {
+  .homePage__section__navBar {
     width: 0px !important;
   }
 
-  .homePage__section__buttons{
+  .homePage__section__buttons {
     margin-top: 50px;
   }
 }
-
-

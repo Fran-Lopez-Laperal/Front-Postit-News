@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 95vh;
 }
 
 .articleRegister {
@@ -37,6 +37,25 @@ form {
   justify-content: center;
 }
 
+.formText {
+  gap: 0.5rem;
+}
+
+.input-register {
+  margin: 10px 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  width: 95%;
+  outline: none;
+  box-shadow: 0 0 5px #6bded7;
+}
+
 .formImg img {
   max-width: 100%;
   max-height: 100%;
@@ -44,8 +63,9 @@ form {
 }
 
 #selectedPhoto {
-  width: 50px;
-  height: 50px;
+  margin-top: 20px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
@@ -68,17 +88,32 @@ textarea {
   resize: vertical;
 }
 
-.button-register{
+.button-register {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
 }
 
+.button-register-class {
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #6bded7;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  margin: 30px auto 0 auto;
+}
 
 @media screen and (max-width: 420px) {
   .register-container {
-   margin-bottom: -20px;
+    margin-bottom: -20px;
+  }
+  .articleRegister {
+    margin-top: 80px;
+    margin-bottom: 50px;
   }
 
   .formImg {
@@ -86,10 +121,19 @@ textarea {
   }
 }
 
-@media (max-width: 700px) {
+@media (min-width: 421px) {
   .register {
     width: 80%;
     height: auto;
     margin: auto;
+  }
+
+  .articleRegister {
+    margin-top: 140px;
+    margin-bottom: 50px;
+  }
+
+  .formImg {
+    margin-left: 30px;
   }
 }

@@ -36,11 +36,7 @@ export const Auth = ({ hadleCloseClick, setShowNavMovile }) => {
             </section>
 
             <section className="buttons-auth-icons">
-              <Link
-                
-                onClick={hadleCloseClick}
-                to="/login"
-              >
+              <Link onClick={hadleCloseClick} to="/login">
                 <i className="fa fa-user-circle-o" aria-hidden="true"></i>
               </Link>
               <p>Login</p>

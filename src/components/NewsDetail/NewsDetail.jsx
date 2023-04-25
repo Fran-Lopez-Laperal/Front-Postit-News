@@ -35,7 +35,7 @@ const NewsDetail = () => {
     if (month !== Number(arrayDate[1]))
       return `Hace ${Number(arrayDate[1]) - month} meses`;
     if (day !== Number(arrayDate[2]))
-      return `Hace ${Number(arrayDate[2]) - day} días`;
+      return `Hace ${day - Number(arrayDate[2])} días`;
 
     return "Hoy";
   };
@@ -168,7 +168,8 @@ const NewsDetail = () => {
               <article className="newsDetails__article__section__info">
                 <header>
                   <h5 className="newsDetails__article__section__info--date">
-                  <strong className="strong">Publicada:</strong> {renderDate(createdAt)}
+                    <strong className="strong">Publicada:</strong>{" "}
+                    {renderDate(createdAt)}
                   </h5>
                 </header>
                 <section className="newsDetails__article__section__info__user">
@@ -196,7 +197,7 @@ const NewsDetail = () => {
                     </button>
                   </section>
                 </section>
-                <hr  />
+                <hr />
                 <section className="newsDetails__article__section__info__text">
                   <h2>{introduction}</h2>
                   <p>{text}</p>
