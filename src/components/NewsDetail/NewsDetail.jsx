@@ -80,12 +80,19 @@ const NewsDetail = () => {
 
   const handleDelete = async(id) => {
 
-    const res = await deleteNewsService(token, id)
+    let accept = confirm("Vas a borrar la foto con id "+id )
 
-    if (res.status != "ok") return alert("Hubo un error al eliminar la noticia")
-    
-    alert("Noticia eliminada")
-    navigate("/")
+    if (accept){
+      const res = await deleteNewsService(token, id)
+  
+      if (res.status != "ok") return alert("Hubo un error al eliminar la noticia")
+      
+      alert("Noticia eliminada")
+      navigate("/")
+    }else {
+      alert("no has borrado nada")
+    }
+
 
   };
 
