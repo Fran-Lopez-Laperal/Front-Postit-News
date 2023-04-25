@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { getCategoriesService } from "../service";
 import Header from "../Header/Header";
+import logo from "../../assets/logo.png";
+
 
 const NavBarMovil = ({ setIdCategory, setCategoryName, setShowNavMovile }) => {
   4;
@@ -76,7 +78,11 @@ const NavBarMovil = ({ setIdCategory, setCategoryName, setShowNavMovile }) => {
           </menu>
         </nav>
       ) : (
-        <nav className="navbar__movil"></nav>
+        <nav className="navbar__movil">
+          <Link to={'/'}>
+            <img src={logo} alt="" />
+          </Link>
+        </nav>
       )}
     </>
   );

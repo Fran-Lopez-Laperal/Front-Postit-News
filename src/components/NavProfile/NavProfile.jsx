@@ -28,10 +28,11 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
       {setShowNavMovile ? (
         <section className="info-profile-movil">
           <section className="logout-profile-movil">
-            <button onClick={handleLogout}>
+            <button className="logout-movil" onClick={handleLogout}>
+            
               <i className="fa fa-sign-out" aria-hidden="true"></i>
             </button>
-            <p>Logout</p>
+            <p>Cerrar sesión</p>
           </section>
 
           <Link to="/perfil">
@@ -41,18 +42,18 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
           </Link>
         </section>
       ) : (
-        <>
+        <section className="figure-profile-links">
           <Link to="/perfil">
             <figure id="figure-profile" title="Ver perfil">
               <img id="img-profile" src={userImg} alt="" />
             </figure>
           </Link>
-          <Link>
+       
             <button className="button-logout" onClick={handleLogout}>
               Cerrar sesión
             </button>
-          </Link>{" "}
-        </>
+         
+        </section>
       )}
     </section>
   );

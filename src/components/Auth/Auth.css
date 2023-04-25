@@ -62,7 +62,8 @@
 
   .buttons-auth {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-evenly;
   }
 
   .buttons-auth-icons {

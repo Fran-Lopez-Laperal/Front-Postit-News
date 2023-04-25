@@ -1,9 +1,11 @@
 .navbar__movil {
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: var(--corporationX);
   position: fixed;
   z-index: 20;
+  display: flex;
+  justify-content: center;
 }
 
 .button__div {
@@ -54,6 +56,14 @@
 
 .navbar__movil__expand__menu--ul:nth-child(1) {
   border-top: 1px solid white;
+}
+
+
+.navbar__movil > a > img {
+  margin-top: 3px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
 }
 
 .navbar__movil__expand__menu--ul li {

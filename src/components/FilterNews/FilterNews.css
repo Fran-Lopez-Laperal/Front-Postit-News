@@ -1,7 +1,7 @@
 .filterNews{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 2fr));
-    grid-auto-rows: 18rem;  
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 2fr));
+    grid-auto-rows: 16rem;  
     gap: 1rem;
 }
 
@@ -28,8 +28,8 @@
      gap: 1rem;
     }
     .filter__news{
-        margin-top: 60px;
-        
+        margin-top: 65px;
+        margin-left: 10px;
     }
 
    }
