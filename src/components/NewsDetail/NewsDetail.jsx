@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import "./NewsDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getNewDetailDataService, getVoteNews } from "../service";
+import { deleteNewsService, getNewDetailDataService, getVoteNews } from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
 
@@ -74,9 +74,20 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
 
-  const handleDelete = () => {};
+  };
+
+  const handleDelete = async(id) => {
+
+    const res = await deleteNewsService(token, id)
+
+    if (res.status != "ok") return alert("Hubo un error al eliminar la noticia")
+    
+    alert("Noticia eliminada")
+    navigate("/")
+
+  };
 
   if (!news) {
     return null;
@@ -150,7 +161,7 @@ const NewsDetail = () => {
                         <div className="icon fa fa-share-alt"></div>
                       </div>
                     </button>
-                    <button onClick={handleDelete} className="expansion-item">
+                    <button onClick={()=>handleDelete(id)} className="expansion-item">
                       <div className="expansion-content">
                         <div className="icon fa fa-facebook"></div>
                       </div>

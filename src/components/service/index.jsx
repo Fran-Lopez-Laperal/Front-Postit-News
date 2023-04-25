@@ -191,3 +191,18 @@ export const filterNewsByCategoryService = async (idCategory) => {
 
   return json.newsWithFilter;
 };
+
+export const deleteNewsService = async (token, id ) => {
+  const response = await fetch(`http://localhost:4000/news/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+  return json
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
