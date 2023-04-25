@@ -114,7 +114,12 @@
 .newsDetails__article__section__info{
     margin-top: 10px;
 }
-
+.newsDetails__article__section__edit{
+    position: aboslute;
+    width: 60%;
+    height: 50%;
+    margin: 5vh auto
+}
 .newsDetails__article__section__info--date{
     font-size: 15px;
     color: rgba(128, 128, 128, 0.572);

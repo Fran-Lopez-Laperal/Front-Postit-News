@@ -5,15 +5,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteNewsService, getNewDetailDataService, getVoteNews } from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
+import { getCategoriesService } from "../service";
 
 const NewsDetail = () => {
   const { token, setFilter } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const [edit, setEdit] = useState(false)
   const [news, setNews] = useState(null);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
-
+  const [category, setCategory] = useState()
+  const [categories, setCategories] = useState([]);
+  const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
 
   const handleExpandedButton = () => {
@@ -54,6 +57,20 @@ const NewsDetail = () => {
     fetchNew();
   }, [idNew]);
 
+  useEffect(() => {
+    const fetchGetAllCategories = async () => {
+      try {
+        const allCategories = await getCategoriesService();
+      
+        setCategories(allCategories);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchGetAllCategories();
+  }, []);
+
   const handleVoteLike = async (vote) => {
     try {
       await getVoteNews(token, idNew, vote);
@@ -74,8 +91,11 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = () => {
-
+  const handleEdit = (e) => {
+    
+    setNews({...news, 
+        [e.target.name] : e.target.value})
+    
   };
 
   const handleDelete = async(id) => {
@@ -96,10 +116,22 @@ const NewsDetail = () => {
 
   };
 
+  const editFunction = ()=>{
+      setEdit(!edit)
+      console.log(edit)
+  }
+
+  const handleSubmit =()=>{
+    console.log("hola")
+
+
+  }
   if (!news) {
     return null;
   }
   console.log(news);
+
+  
 
   return (
     <section className="newsDetail">
@@ -135,7 +167,7 @@ const NewsDetail = () => {
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <button
                     className="newsDetails__article__figure__section--button"
-                    onClick={setFilter(false)}
+                    onClick={()=>setFilter(false)}
                   >
                     <i
                       className="arrow fa fa-arrow-left fa-3x"
@@ -163,7 +195,7 @@ const NewsDetail = () => {
                     <div className="close-icon">
                       <div className=" fa fa-times" aria-hidden="true"></div>
                     </div>
-                    <button onClick={handleEdit} className="expansion-item">
+                    <button onClick={editFunction} className="expansion-item">
                       <div className="expansion-content">
                         <div className="icon fa fa-share-alt"></div>
                       </div>
@@ -222,9 +254,85 @@ const NewsDetail = () => {
                 </section>
               </article>
             </section>
-          </article>
-        )
-      )}
+            {edit ? <section className="newsDetails__article__section__edit">
+                <h1>Edita tu noticia</h1>
+                  <form
+                    encType="multipart/form-data"
+                    onSubmit={handleSubmit}
+                  >
+                    <div>
+                      <label htmlFor="title">Título:</label>
+                      <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        minLength="5"
+                        maxLength="30"
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div >
+                      <label htmlFor="introduction">Introducción:</label>
+                      <textarea
+                        id="introduction"
+                        minLength="5"
+                        maxLength="50"
+                        value={introduction}
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div >
+                      <label htmlFor="text">Texto:</label>
+                      <textarea
+                        id="text"
+                        minLength="5"
+                        maxLength="500"
+                        value={text}
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div >
+                      <label htmlFor="category">Categoría:</label>
+                      <select
+                        id="category"
+                        value={category}
+                        onChange={()=>setCategory(e.target.value)}
+                        required
+                      >
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div >
+                      <label htmlFor="photo">Foto:</label>
+                      <input
+                        type="file"
+                        id="photo"
+                        onChange={()=>setPhoto(e.target.file[0])}
+                      />
+                      {photo ? (
+                        <img
+                          id="selectedPhoto"
+                          src={URL.createObjectURL(photo)}
+                          alt="foto-seleccionada"
+                        />
+                      ) : null}
+                    </div>
+                    <div>
+                      <button type="submit">Editar noticia</button>
+                    </div>
+                  </form>
+                        </section> : null}
+                      </article>
+
+                    )
+                  )}
     </section>
   );
 };
