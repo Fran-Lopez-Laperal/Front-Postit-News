@@ -57,9 +57,12 @@
 .navbar__movil__expand__menu--ul:nth-child(1) {
   border-top: 1px solid white;
 }
+.navbar__movil > button {
+  border: none;
+  background: none;
+}
 
-
-.navbar__movil > a > img {
+.navbar__movil > button > img {
   margin-top: 3px;
   width: 55px;
   height: 55px;
