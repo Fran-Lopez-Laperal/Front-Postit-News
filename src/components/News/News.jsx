@@ -103,7 +103,7 @@ const News = () => {
     <OldNews />
   ) : show == "news" ?(
     newsToday.length > 0 ? (
-      sortByDate(newsToday).map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+      newsToday.map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
         <NewsCard
           key={id}
           id={id}
