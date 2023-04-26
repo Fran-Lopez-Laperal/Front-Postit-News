@@ -69,10 +69,10 @@ const NewsCard = ({
                 <figcaption>{ownerName}</figcaption>
               </section>
             </figure>
-            <section className="icon">
+            <section className="icon-link-detail">
               <Link to={`news/${id}`} style={{ textDecoration: "none" }}>
                 {" "}
-                <i className=" fa fa-angle-double-right" aria-hidden="true"></i>
+                <i id="fa-link" className=" fa fa-angle-double-right" aria-hidden="true"></i>
               </Link>
             </section>
           </footer>

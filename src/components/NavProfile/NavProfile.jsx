@@ -30,7 +30,7 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
           <section className="logout-profile-movil">
             <button className="logout-movil" onClick={handleLogout}>
             
-              <i className="fa fa-sign-out" aria-hidden="true"></i>
+              <i id="fa-logout" className="fa fa-sign-out" aria-hidden="true"></i>
             </button>
             <p>Cerrar sesión</p>
           </section>

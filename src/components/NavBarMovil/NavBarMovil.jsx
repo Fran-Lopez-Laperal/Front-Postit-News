@@ -79,9 +79,9 @@ const NavBarMovil = ({ setIdCategory, setCategoryName, setShowNavMovile }) => {
         </nav>
       ) : (
         <nav className="navbar__movil">
-          <Link to={'/'}>
+          <button onClick={() => window.location.href = "/"}>
             <img src={logo} alt="" />
-          </Link>
+          </button>
         </nav>
       )}
     </>

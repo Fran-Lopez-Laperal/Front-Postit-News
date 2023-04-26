@@ -197,17 +197,17 @@ const NewsDetail = () => {
                     </div>
                     <button onClick={editFunction} className="expansion-item">
                       <div className="expansion-content">
-                        <div className="icon fa fa-share-alt"></div>
+                        <div id="fa-detail" className="fa fa-edit"></div>
                       </div>
                     </button>
                     <button onClick={()=>handleDelete(id)} className="expansion-item">
                       <div className="expansion-content">
-                        <div className="icon fa fa-facebook"></div>
+                        <div id="fa-detail" className="fa fa-trash"></div>
                       </div>
                     </button>
                     <button className="expansion-item">
                       <div className="expansion-content">
-                        <div className="icon fa fa-globe"></div>
+                        <div id="fa-detail" className="fa fa-share"></div>
                       </div>
                     </button>
                   </div>
