@@ -20,7 +20,6 @@ const Header = ({ handleCloseClick, setShowNavMovile }) => {
     setFilter(false);
   };
   
-
   return (
     <div className="header">
       <section className="header__section__search">
