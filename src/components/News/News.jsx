@@ -15,21 +15,13 @@ const News = () => {
   const { newsFilter } = useContext(AuthContext);
   const navigate = useNavigate();
   const [newsToday, setNewsToday] = useState([]);
-  const [sortedNewsByDate, setSortedNewsByDate] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getNewsDataService();
         setNews(result);
-
-        // Ordenar las noticias por fecha en orden descendente
-        const sortedNews = [...result].sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        setSortedNewsByDate(sortedNews);
-
-        setNewsWithFilter(result);
+        setNewsWithFilter(result)
         const today = new Date().toISOString().slice(0, 10);
         const filterTodayNews = result.filter((newsItem) => {
           const createdAt = new Date(newsItem.createdAt)
@@ -38,10 +30,11 @@ const News = () => {
           return createdAt === today;
         });
 
-        const sortedTodayNews = filterTodayNews.sort(
+        const sortedNews = filterTodayNews.sort(
           (a, b) => b.totalLikes - a.totalLikes
         );
-        setNewsToday(sortedTodayNews);
+        setNewsToday(sortedNews);
+        
       } catch (error) {
         setError(error.message);
       }
@@ -80,11 +73,16 @@ const News = () => {
   const handleShowOldNews = () => {
     setShow("old");
     setNotNewsToday(false);
-    const sortedNews = newsWithFilter.sort((a, b) => {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    });
-    setNewsWithFilter(sortedNews);
   };
+
+  const sortByDate = (newsArray) => {
+    return newsArray.sort((a, b) => {
+      const dateA = new Date(a.createdAt);
+      const dateB = new Date(b.createdAt);
+      return dateB - dateA;
+    });
+  };
+
 
   return (
     <>
@@ -98,88 +96,51 @@ const News = () => {
           </button>
         </section>
         {error ? <p>{error}</p> : null}
+
         {notNewsToday ? <p>No se han publicado noticias hoy</p> : null}
         <div className="news">
-          {show == "old"
-            ? newsWithFilter.map(
-                ({
-                  id,
-                  title,
-                  createdAt,
-                  image,
-                  name,
-                  nameCategory,
-                  avatar,
-                }) => (
-                  <NewsCard
-                    key={id}
-                    id={id}
-                    title={title}
-                    createdAt={createdAt}
-                    image={image}
-                    idNew={id}
-                    ownerName={name}
-                    ownerAvatar={avatar}
-                    nameCategory={nameCategory}
-                  />
-                )
-              )
-            : show == "news"
-            ? newsToday.map(
-                ({
-                  id,
-                  title,
-                  createdAt,
-                  image,
-                  name,
-                  avatar,
-                  nameCategory,
-                }) => (
-                  <NewsCard
-                    key={id}
-                    id={id}
-                    title={title}
-                    createdAt={createdAt}
-                    image={image}
-                    idNew={id}
-                    ownerName={name}
-                    ownerAvatar={avatar}
-                    nameCategory={nameCategory}
-                  />
-                )
-              )
-            : newsWithFilter
-                .sort((a, b) => {
-                  return new Date(b.createdAt) - new Date(a.createdAt);
-                })
-                .map(
-                  ({
-                    id,
-                    title,
-                    createdAt,
-                    image,
-                    name,
-                    nameCategory,
-                    avatar,
-                  }) => (
-                    <NewsCard
-                      key={id}
-                      id={id}
-                      title={title}
-                      createdAt={createdAt}
-                      image={image}
-                      idNew={id}
-                      ownerName={name}
-                      ownerAvatar={avatar}
-                      nameCategory={nameCategory}
-                    />
-                  )
-                )}
-        </div>
+  {show == "old" ? (
+    <OldNews />
+  ) : show == "news" ?(
+    newsToday.length > 0 ? (
+      sortByDate(newsToday).map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+        <NewsCard
+          key={id}
+          id={id}
+          title={title}
+          createdAt={createdAt}
+          image={image}
+          idNew={id}
+          ownerName={name}
+          ownerAvatar={avatar}
+          nameCategory={nameCategory}
+        />
+      ))
+    ) : (
+      <p>No se han publicado noticias hoy</p>
+    )
+  ): (newsWithFilter.length > 0 ? (
+    sortByDate(newsWithFilter).map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
+      <NewsCard
+        key={id}
+        id={id}
+        title={title}
+        createdAt={createdAt}
+        image={image}
+        idNew={id}
+        ownerName={name}
+        ownerAvatar={avatar}
+        nameCategory={nameCategory}
+      />
+    ))
+  ) : (
+    <p>No se encontraron noticias</p>
+  ))}
+</div>
+
       </section>
     </>
   );
 };
-
 
 export default News;
