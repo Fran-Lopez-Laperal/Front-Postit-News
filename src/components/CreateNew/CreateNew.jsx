@@ -73,6 +73,7 @@ const CreateNew = () => {
   };
 
   return (
+    <section className="createNew">
     <div className="form-container-createNew">
       <h1 className="h1-title">Crea tu noticia</h1>
       <form
@@ -137,11 +138,13 @@ const CreateNew = () => {
             onChange={(event) => setPhoto(event.target.files[0])}
           />
           {photo ? (
+            <figure className="createNew-figure">
             <img
               id="selectedPhoto"
               src={URL.createObjectURL(photo)}
               alt="foto-seleccionada"
             />
+            </figure>
           ) : null}
         </div>
         <div className="button-form-createNew">
@@ -149,6 +152,7 @@ const CreateNew = () => {
         </div>
       </form>
     </div>
+    </section>
   );
 };
 

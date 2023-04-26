@@ -7,7 +7,7 @@ const Spinner = () => {
 
     return (
         <div className='spinner'>
-            <h1>Cargando postIt...</h1>
+            <h1>Cargando post`s...</h1>
             <section>
                 <div className="loadingio-spinner-typing-ac3c7lg80za">
                     <div className="ldio-4377nt4dsyr">

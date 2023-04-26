@@ -167,7 +167,7 @@ const NewsDetail = () => {
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <button
                     className="newsDetails__article__figure__section--button"
-                    onClick={()=>setFilter(false)}
+                    onClick={() => setFilter(false)}
                   >
                     <i
                       className="arrow fa fa-arrow-left fa-3x"
@@ -200,7 +200,10 @@ const NewsDetail = () => {
                         <div id="fa-detail" className="fa fa-edit"></div>
                       </div>
                     </button>
-                    <button onClick={()=>handleDelete(id)} className="expansion-item">
+                    <button
+                      onClick={() => handleDelete(id)}
+                      className="expansion-item"
+                    >
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-trash"></div>
                       </div>
@@ -254,85 +257,93 @@ const NewsDetail = () => {
                 </section>
               </article>
             </section>
-            {edit ? <section className="newsDetails__article__section__edit">
-                <h1>Edita tu noticia</h1>
-                  <form
-                    encType="multipart/form-data"
-                    onSubmit={handleSubmit}
-                  >
-                    <div>
-                      <label htmlFor="title">Título:</label>
-                      <input
-                        type="text"
-                        id="title"
-                        value={title}
-                        minLength="5"
-                        maxLength="30"
-                        onChange={handleEdit}
-                        required
-                      />
-                    </div>
-                    <div >
-                      <label htmlFor="introduction">Introducción:</label>
-                      <textarea
-                        id="introduction"
-                        minLength="5"
-                        maxLength="50"
-                        value={introduction}
-                        onChange={handleEdit}
-                        required
-                      />
-                    </div>
-                    <div >
-                      <label htmlFor="text">Texto:</label>
-                      <textarea
-                        id="text"
-                        minLength="5"
-                        maxLength="500"
-                        value={text}
-                        onChange={handleEdit}
-                        required
-                      />
-                    </div>
-                    <div >
-                      <label htmlFor="category">Categoría:</label>
-                      <select
-                        id="category"
-                        value={category}
-                        onChange={()=>setCategory(e.target.value)}
-                        required
-                      >
-                        {categories.map((category) => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div >
-                      <label htmlFor="photo">Foto:</label>
-                      <input
-                        type="file"
-                        id="photo"
-                        onChange={()=>setPhoto(e.target.file[0])}
-                      />
-                      {photo ? (
-                        <img
-                          id="selectedPhoto"
-                          src={URL.createObjectURL(photo)}
-                          alt="foto-seleccionada"
+            {edit ? (
+              <section className="newsDetails__article__section__edit">
+                <section className="createNew">
+                  <div className="form-container-createNew">
+                    <h1 className="h1-title">Edita tu noticia</h1>
+                    <form
+                      className="form-createNew"
+                      encType="multipart/form-data"
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="title">
+                        <label htmlFor="title">Título:</label>
+                        <input
+                          type="text"
+                          id="title"
+                          value={title}
+                          minLength="5"
+                          maxLength="30"
+                          onChange={handleEdit}
+                          required
                         />
-                      ) : null}
-                    </div>
-                    <div>
-                      <button type="submit">Editar noticia</button>
-                    </div>
-                  </form>
-                        </section> : null}
-                      </article>
-
-                    )
-                  )}
+                      </div>
+                      <div className="introduction">
+                        <label htmlFor="introduction">Introducción:</label>
+                        <textarea
+                          id="introduction"
+                          minLength="5"
+                          maxLength="50"
+                          value={introduction}
+                          onChange={handleEdit}
+                          required
+                        />
+                      </div>
+                      <div className="text">
+                        <label htmlFor="text">Texto:</label>
+                        <textarea
+                          id="text"
+                          minLength="5"
+                          maxLength="2500"
+                          value={text}
+                          onChange={handleEdit}
+                          required
+                        />
+                      </div>
+                      <div className="category">
+                        <label htmlFor="category">Categoría:</label>
+                        <select
+                          id="category"
+                          value={category}
+                          onChange={() => setCategory(e.target.value)}
+                          required
+                        >
+                          {categories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="photo">
+                        <label htmlFor="photo">Foto:</label>
+                        <input
+                          type="file"
+                          id="photo"
+                          onChange={() => setPhoto(e.target.file[0])}
+                        />
+                        {photo ? (
+                          <figure className="createNew-figure">
+                            <img
+                              id="selectedPhoto"
+                              src={URL.createObjectURL(photo)}
+                              alt="foto-seleccionada"
+                            />
+                          </figure>
+                        ) : null}
+                      </div>
+                      <div className="button-form-createNew">
+                        <button type="submit">Editar noticia</button>
+                      </div>
+                    </form>
+                  </div>
+                </section>
+              </section>
+            ) : null}
+          </article>
+        )
+      )}
     </section>
   );
 };

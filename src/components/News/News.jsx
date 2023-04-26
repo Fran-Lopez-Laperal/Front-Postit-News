@@ -89,10 +89,10 @@ const News = () => {
       <section className="news__container">
         <section className="homePage__section__buttons">
           <button className="homePage__button" onClick={handleShowNews}>
-            PÓSITS DE HOY
+            POST´S DE HOY
           </button>
           <button className="homePage__button" onClick={handleShowOldNews}>
-            PÓSITS PASADOS
+            POST´S PASADOS
           </button>
         </section>
         {error ? <p>{error}</p> : null}
@@ -117,7 +117,7 @@ const News = () => {
         />
       ))
     ) : (
-      <p>No se han publicado noticias hoy</p>
+      null
     )
   ): (newsWithFilter.length > 0 ? (
     sortByDate(newsWithFilter).map(({ id, title, createdAt, image, name, avatar, nameCategory }) => (
