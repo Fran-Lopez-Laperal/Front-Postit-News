@@ -50,7 +50,7 @@
   margin-top: 10px;
 }
 
-.fa {
+#fa-logout {
   font-size: 30px;
   color: black;
 }
@@ -65,14 +65,14 @@
 
 
 @media(max-width:420px){
-  .fa{
-    background: transparent !important;
-    font-size: 30px !important;
-    color: white !important;
+  #fa-logout{
+    background: transparent;
+    font-size: 30px ;
+    color: white ;
   }
 
   .logout-movil{
-    background: transparent !important;
+    background: transparent;
     border: none;
   }
 }

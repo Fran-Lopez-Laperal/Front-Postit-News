@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 420px) {
-  .fa {
+  #fa-auth {
     font-size: 45px;
     color: white;
   }

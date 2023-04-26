@@ -10,8 +10,21 @@
     max-height: 300px;
 }
 
-.icon > a > i{
+.icon-link-detail{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.icon-link-detail:hover{
+    background-color: var(--corporation);
+}
+
+#fa-link{
+    font-size: 35px;
 }
 
 .news__card::before{
@@ -74,6 +87,8 @@ z-index: 1;
     display: flex;
     align-items: center;
     color: white;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 .news__card__section__figure{
@@ -81,11 +96,9 @@ z-index: 1;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    
+    width: 40%;
     margin-bottom: 5px;
 }
-
-
 
 .news__card__footer{
     margin-bottom: -10px;
