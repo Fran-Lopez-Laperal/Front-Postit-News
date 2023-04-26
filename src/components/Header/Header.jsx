@@ -23,7 +23,7 @@ const Header = ({ handleCloseClick, setShowNavMovile }) => {
   return (
     <div className="header">
       <section className="header__section__search">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={() => window.location.href = "/" }>
           <img
             className="logo-header"
             src={logo}
