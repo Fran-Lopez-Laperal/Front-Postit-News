@@ -1,3 +1,12 @@
+.createNew {
+  min-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
 .form-container-createNew {
   display: flex;
   flex-direction: column;
@@ -7,26 +16,24 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  margin: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 8rem;
+  margin-top: 80px;
 }
 
 .h1-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #6bded7;
 }
 
 .form-createNew {
-  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  
 }
-
+.createNew-figure{
+  display: flex;
+  justify-content: center;
+}
 .title,
 .introduction,
 .text,
@@ -53,7 +60,7 @@ textarea {
 }
 
 .text textarea {
-  height: 200px;
+  height: 180px;
 }
 
 .button-form-createNew > button {

@@ -13,14 +13,13 @@
 
 .modal-content {
   position: relative;
-  width: 60%;
-  height: 60%;
   background-color: white;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   z-index: 10000;
+  max-width: 80%;
 }
 
 .modal-close-button {
