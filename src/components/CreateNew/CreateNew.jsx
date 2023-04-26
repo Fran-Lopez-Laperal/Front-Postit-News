@@ -108,7 +108,7 @@ const CreateNew = () => {
           <textarea
             id="text"
             minLength="5"
-            maxLength="500"
+            maxLength="2500"
             value={text}
             onChange={(event) => setText(event.target.value)}
             required
