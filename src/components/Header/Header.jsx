@@ -19,6 +19,7 @@ const Header = ({ handleCloseClick, setShowNavMovile }) => {
   const handleDeleteFilterNavbar = () => {
     setFilter(false);
   };
+  
 
   return (
     <div className="header">
