@@ -1,11 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-
+import React, { useContext, useEffect, useState } from "react"; 
 import "./NewsDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteNewsService, getNewDetailDataService, getVoteNews } from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
 import { getCategoriesService } from "../service";
+import { decodeToken, useJwt } from "react-jwt"
+
+
 
 const NewsDetail = () => {
   const { token, setFilter } = useContext(AuthContext);
@@ -18,7 +20,9 @@ const NewsDetail = () => {
   const [categories, setCategories] = useState([]);
   const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
+  const [editNews, setEditNews] = useState()
 
+  let idTokenDecoded = decodeToken(token)
   const handleExpandedButton = () => {
     setExpanded(!expanded);
   };
@@ -48,13 +52,18 @@ const NewsDetail = () => {
       try {
         const newDetail = await getNewDetailDataService(idNew);
         setNews(newDetail);
+        setEditNews(...newDetail)
         console.log(action);
       } catch (error) {
         setError(error);
       }
+
     };
 
-    fetchNew();
+    fetchNew()
+
+    
+    ;
   }, [idNew]);
 
   useEffect(() => {
@@ -71,6 +80,9 @@ const NewsDetail = () => {
     fetchGetAllCategories();
   }, []);
 
+
+ 
+
   const handleVoteLike = async (vote) => {
     try {
       await getVoteNews(token, idNew, vote);
@@ -81,6 +93,7 @@ const NewsDetail = () => {
     }
   };
 
+  
   const handleVoteDisLike = async (vote) => {
     try {
       await getVoteNews(token, idNew, vote);
@@ -91,14 +104,16 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = (e) => {
-    
-    setNews({...news, 
-        [e.target.name] : e.target.value})
+  const handleEdit = (event) => {
+    console.log(event.target.value)
+    event.preventDefault()
+    setEditNews({...editNews, 
+        [event.target.name] : event.target.value})
     
   };
 
   const handleDelete = async(id) => {
+    
 
     let accept = confirm("Vas a borrar la foto con id "+id )
 
@@ -118,18 +133,30 @@ const NewsDetail = () => {
 
   const editFunction = ()=>{
       setEdit(!edit)
-      console.log(edit)
   }
 
-  const handleSubmit =()=>{
-    console.log("hola")
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    const formDataNew = new FormData(e.target);
+    formDataNew.append("title", news.title);
+    formDataNew.append("introduction", news.introduction);
+    formDataNew.append("text", news.text);
+    formDataNew.append("category", category);
+    formDataNew.append("photo", photo);
 
+    const response = await fetch(`http://localhost:4000/news/${news.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+      },
+      body: formDataNew
+    });
 
   }
   if (!news) {
     return null;
   }
-  console.log(news);
+  
 
   
 
@@ -141,6 +168,7 @@ const NewsDetail = () => {
           title,
           id,
           image,
+          idUser,
           createdAt,
           introduction,
           text,
@@ -195,19 +223,19 @@ const NewsDetail = () => {
                     <div className="close-icon">
                       <div className=" fa fa-times" aria-hidden="true"></div>
                     </div>
-                    <button onClick={editFunction} className="expansion-item">
+                    {idUser == idTokenDecoded?.id ?<button onClick={editFunction} className="expansion-item">
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-edit"></div>
                       </div>
-                    </button>
-                    <button
+                    </button>: null}
+                    {idUser == idTokenDecoded?.id ?<button
                       onClick={() => handleDelete(id)}
                       className="expansion-item"
                     >
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-trash"></div>
                       </div>
-                    </button>
+                    </button> : null}
                     <button className="expansion-item">
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-share"></div>
@@ -257,7 +285,11 @@ const NewsDetail = () => {
                 </section>
               </article>
             </section>
-            {edit ? (
+            
+          </article>
+        )
+      )}
+      {edit ? (
               <section className="newsDetails__article__section__edit">
                 <section className="createNew">
                   <div className="form-container-createNew">
@@ -272,7 +304,7 @@ const NewsDetail = () => {
                         <input
                           type="text"
                           id="title"
-                          value={title}
+                          value={editNews.title}
                           minLength="5"
                           maxLength="30"
                           onChange={handleEdit}
@@ -285,7 +317,7 @@ const NewsDetail = () => {
                           id="introduction"
                           minLength="5"
                           maxLength="50"
-                          value={introduction}
+                          value={editNews.introduction}
                           onChange={handleEdit}
                           required
                         />
@@ -296,7 +328,7 @@ const NewsDetail = () => {
                           id="text"
                           minLength="5"
                           maxLength="2500"
-                          value={text}
+                          value={editNews.text}
                           onChange={handleEdit}
                           required
                         />
@@ -341,9 +373,6 @@ const NewsDetail = () => {
                 </section>
               </section>
             ) : null}
-          </article>
-        )
-      )}
     </section>
   );
 };
