@@ -129,7 +129,7 @@
 }
 .newsDetails__article__section__edit{
     position: aboslute;
-    width: 60%;
+    width: 80%;
     height: 50%;
     margin: 5vh auto
 }
@@ -320,8 +320,29 @@ hr{
     opacity: 0;
     animation: fadeIn 0.25s linear forwards;
     padding: 5px;
+    background-color: var(--corporation);
+    border-radius: 5px;
 }
 
+.expandable-button.expanded .expansion-item .expansion-content:hover{
+    background-color:#b107ea;
+}
+
+.editNew{
+  margin-top: -10px;
+}
+
+.form-container-editNew{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 80px;
+}
 
 .expandable-button.expanded .expansion-item:nth-last-of-type(1){
     left: calc(-7.5rem - -5%);
@@ -428,4 +449,47 @@ hr{
     .newsDetails__article__section__info__votes--buttons > .fa {
         font-size: 20px;
     }
+
+    .form-container-editNew{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-container-editNew > h1{
+        font-size: 20px;
+    }
+
+    #labelEdit{
+        font-size: 10px;
+    }
+    
+    .texteAreaEdit{
+        font-size: 10px;
+    }
+
+    .titleEdit{
+        font-size: 10px;
+    }
+
+    .categotyEdit{
+        font-size: 10px;
+    }
+
+    .fileEdit{
+        height: 30px;
+        font-size: 10px;
+    }
+    #button-form-EditNew{
+        width: 90px;
+        height: 20px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    
   }
