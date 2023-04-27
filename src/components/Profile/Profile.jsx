@@ -36,6 +36,7 @@ const Profile = () => {
 
       setClickInImg(false);
 
+      
       setError("");
     } catch (e) {
       console.log(e.message);
