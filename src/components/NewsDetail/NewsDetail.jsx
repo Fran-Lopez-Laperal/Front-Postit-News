@@ -22,6 +22,7 @@ const NewsDetail = () => {
   const { idNew } = useParams();
   const [editNews, setEditNews] = useState()
   const [showModal, setShowModal] = useState(false)
+  
 
   let idTokenDecoded = decodeToken(token)
   const handleExpandedButton = () => {
@@ -106,12 +107,13 @@ const NewsDetail = () => {
   };
 
   const handleEdit = (event) => {
-    console.log(event.target.value)
+    
     event.preventDefault()
-    setEditNews({
+    setEditNews({...editNews,
       [event.target.name]: event.target.value
     })
 
+    console.log(editNews)
   };
 
   const handleDelete = async (id) => {
@@ -135,24 +137,32 @@ const NewsDetail = () => {
 
   const editFunction = () => {
     setEdit(!edit)
+    
   }
 
   const handleSubmit = async (e) => {
+    console.log(e.target)
     e.preventDefault()
     const formDataNew = new FormData(e.target);
-    formDataNew.append("title", news.title);
-    formDataNew.append("introduction", news.introduction);
-    formDataNew.append("text", news.text);
+    formDataNew.append("title", editNews.title);
+    formDataNew.append("introduction", editNews.introduction);
+    formDataNew.append("text", editNews.text);
     formDataNew.append("category", category);
     formDataNew.append("photo", photo);
+    
+    console.log(editNews.title)
 
-    const response = await fetch(`http://localhost:4000/news/${news.id}`, {
+    const response = await fetch(`http://localhost:4000/news/${news[0].id}`, {
       method: "PUT",
       headers: {
         Authorization: token,
       },
       body: formDataNew
     });
+
+    console.log(response)
+
+    alert("Noticia actualizada correctamente")
 
   }
   if (!news) {
@@ -292,14 +302,14 @@ const NewsDetail = () => {
         )
       )}
       {edit ? (
-        !showModal ? (
+         
           <section className="modal__edit">
 
             <section className="newsDetails__article__section__edit">
 
               <section className="createNew">
                 <div className="form-container-createNew">
-                  <button className="button__close__modal" onClick={closeModal}>
+                  <button className="button__close__modal" onClick={editFunction}>
                     <i class="fa fa-times" aria-hidden="true"></i>
                   </button>
                   <h1 className="h1-title">Edita tu noticia</h1>
@@ -318,6 +328,7 @@ const NewsDetail = () => {
                         maxLength="30"
                         onChange={handleEdit}
                         required
+                        name="title"
                       />
                     </div>
                     <div className="introduction">
@@ -329,6 +340,7 @@ const NewsDetail = () => {
                         value={editNews.introduction}
                         onChange={handleEdit}
                         required
+                        name="introduction"
                       />
                     </div>
                     <div className="text">
@@ -340,15 +352,16 @@ const NewsDetail = () => {
                         value={editNews.text}
                         onChange={handleEdit}
                         required
+                        name="text"
                       />
                     </div>
                     <div className="category">
                       <label htmlFor="category">Categoría:</label>
                       <select
                         id="category"
-                        value={category}
-                        onChange={() => setCategory(e.target.value)}
+                        onChange={(e) => setCategory(e.target.value)}
                         required
+                        name="category"
                       >
                         {categories.map((category) => (
                           <option key={category.id} value={category.id}>
@@ -362,7 +375,8 @@ const NewsDetail = () => {
                       <input
                         type="file"
                         id="photo"
-                        onChange={() => setPhoto(e.target.file[0])}
+                        onChange={(e) => setPhoto(e.target.files[0])}
+                        name="photo"
                       />
                       {photo ? (
                         <figure className="createNew-figure">
@@ -382,9 +396,6 @@ const NewsDetail = () => {
               </section>
             </section>
           </section>
-
-        )
-          : null
 
       ) : null}
     </section>
