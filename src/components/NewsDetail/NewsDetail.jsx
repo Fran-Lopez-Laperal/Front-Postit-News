@@ -20,9 +20,8 @@ const NewsDetail = () => {
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [categories, setCategories] = useState([]);
-  // const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
-  const [editNews, setEditNews] = useState();
+
   const [showModal, setShowModal] = useState(false);
 
   /////
@@ -69,8 +68,6 @@ const NewsDetail = () => {
         setImageEdit(newDetail[0].image);
 
         console.log(newDetail[0].image);
-
-        setEditNews(...newDetail);
       } catch (error) {
         setError(error);
       }
@@ -157,8 +154,6 @@ const NewsDetail = () => {
     } catch (e) {
       console.log(e.message);
     }
-
-    // alert("Noticia actualizada correctamente")
   };
 
   if (!news) {
