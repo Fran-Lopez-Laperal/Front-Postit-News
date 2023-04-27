@@ -109,7 +109,6 @@ const NewsDetail = () => {
     console.log(event.target.value)
     event.preventDefault()
     setEditNews({
-      ...editNews,
       [event.target.name]: event.target.value
     })
 
