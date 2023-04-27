@@ -56,7 +56,6 @@ export const getNewsDataService = async () => {
 };
 
 export const editUserService = async ({ name, email, bio, token }) => {
-  console.log(name, email, bio);
   const response = await fetch(`http://localhost:4000/users`, {
     method: "PUT",
     headers: {
@@ -202,7 +201,7 @@ export const deleteNewsService = async (token, id) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json; ///???
+  return json; 
 };
 
 export const editNewService = async (token, idNew, formDataNew) => {
@@ -214,7 +213,6 @@ export const editNewService = async (token, idNew, formDataNew) => {
     body: formDataNew,
   });
 
-  console.log(formDataNew, idNew, token);
 
   const json = await response.json();
 

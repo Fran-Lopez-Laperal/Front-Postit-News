@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./NewsDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   deleteNewsService,
@@ -12,19 +11,21 @@ import imgForNew from "../../assets/imgForNew.png";
 import { getCategoriesService } from "../service";
 import { decodeToken, useJwt } from "react-jwt";
 
+
+import "./NewsDetail.css";
+
 const NewsDetail = () => {
   const { token, setFilter } = useContext(AuthContext);
+  const { idNew } = useParams();
+
   const navigate = useNavigate();
+
   const [edit, setEdit] = useState(false);
   const [news, setNews] = useState(null);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [categories, setCategories] = useState([]);
-  const { idNew } = useParams();
-
   const [showModal, setShowModal] = useState(false);
-
-  /////
   const [title, setTitle] = useState("");
   const [introduction, setIntroduction] = useState("");
   const [text, setText] = useState("");
@@ -34,10 +35,6 @@ const NewsDetail = () => {
   let idTokenDecoded = decodeToken(token);
   const handleExpandedButton = () => {
     setExpanded(!expanded);
-  };
-
-  const closeModal = () => {
-    setShowModal(!showModal);
   };
 
   const renderDate = (string) => {
@@ -67,7 +64,6 @@ const NewsDetail = () => {
         setCategoryEdit(newDetail[0].idCategory);
         setImageEdit(newDetail[0].image);
 
-        console.log(newDetail[0].image);
       } catch (error) {
         setError(error);
       }
@@ -146,7 +142,6 @@ const NewsDetail = () => {
     try {
       await editNewService(token, idNew, formDataNew);
 
-      console.log("actualizado");
 
       setEdit(false);
       const refreshNew = await getNewDetailDataService(idNew);
@@ -381,15 +376,6 @@ const NewsDetail = () => {
                       name="image"
                     />
                     
-                    {/* {imageEdit ? (
-                      <figure className="createNew-figure">
-                        <img
-                          id="selectedPhoto"
-                          src={URL.createObjectURL(imageEdit)}
-                          alt="foto-seleccionada"
-                        />
-                      </figure>
-                    ) : null} */}
                   </div>
                   <div  className="button-form-createNew">
                     <button id="button-form-EditNew" type="submit">Editar noticia</button>

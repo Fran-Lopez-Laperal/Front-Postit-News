@@ -1,5 +1,5 @@
 import React from "react";
-import './PrivacityCookies.css'
+import "./PrivacityCookies.css"
 
 const PrivacityCookies = () => {
   return (

@@ -55,7 +55,7 @@ const NavBarMovil = ({ setIdCategory, setCategoryName, setShowNavMovile }) => {
       {openMenu ? (
         <nav
           id="navbar"
-          className={`navbar__movil__expand ${openMenu} ? 'open' : ''`}
+          className={`navbar__movil__expand ${openMenu} ? "open" :" "`}
         >
           <menu className="navbar__movil__expand__menu">
             <ul className="navbar__movil__expand__menu--ul">

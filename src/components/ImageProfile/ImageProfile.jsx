@@ -29,7 +29,6 @@ const ImageProfile = ({ handleEditUser, clickInImg, setClickInImg }) => {
 
       setError("");
     } catch (e) {
-      console.log(e.message);
       setError(e.message);
     }
   };

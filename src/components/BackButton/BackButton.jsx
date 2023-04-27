@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react"
+import { Link } from "react-router-dom"
 
-import './BackButton.css'
+import "./BackButton.css"
 
 const BackButton = () => {
     return (
         <>
-            <Link to='/'  className='backButton'>
+            <Link to="/"  className="backButton">
              
-                    <i className='fa fa-arrow-left'></i>
+                    <i className="fa fa-arrow-left"></i>
            
             </Link>
 

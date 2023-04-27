@@ -7,7 +7,7 @@ import imgForUser from "../../assets/imgForUser.png";
 import { editAvatarUserService, getMyUserDataService } from "../service";
 
 const Profile = () => {
-  const { user, token, setUser } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [handleEditUser, setHandleEditUser] = useState(false);
 
   const [name, setName] = useState(user?.name);

@@ -5,7 +5,6 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import HomePage from "./components/HomePage/HomePage";
 import Login from "./components/Login/Login";
-import NavBar from "./components/NavBar/NavBar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import PrivacityCookies from "./components/FooterItems/PrivacityCookies/PrivacityCookies";
 import PrivacityPolicy from "./components/FooterItems/PrivacityPolicy/PrivacityPolicy";
@@ -68,7 +67,6 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/perfil" element={<Profile />} />
               <Route path="news/:idNew" element={<NewsDetail />} />
-              {/* <Route path="/resultado/:parametro" element={'ResultSearch'}/> */}
               <Route
                 path="/politica-privacidad"
                 element={<PrivacityPolicy />}
