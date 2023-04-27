@@ -1,4 +1,4 @@
-# Web de noticias colaborativas
+# Web de noticias colaborativas ---> POST IT NEWS
 
 Este es un proyecto de una web de noticias colaborativas relacionadas con el mundo del desarrollo web (estilo Reddit o Menéame), donde los usuarios pueden registrarse y publicar noticias en una serie de categorías fijas.
 
