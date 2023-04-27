@@ -4,10 +4,10 @@
   justify-content: space-around;
   flex-direction: column;
   background: var(--corporationX);
-  bottom: 3px;
+  margin-bottom: 5px;
   left: 4px;
   right: 4px;
-  /* height: 90px; */
+  height: 70px;
   z-index: 9999;
   position: static;
   border-radius: 5px;
