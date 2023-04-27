@@ -19,7 +19,6 @@ const NewsDetail = () => {
   const [news, setNews] = useState(null);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
-  const [category, setCategory] = useState();
   const [categories, setCategories] = useState([]);
   // const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
