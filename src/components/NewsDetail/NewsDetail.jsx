@@ -62,13 +62,13 @@ const NewsDetail = () => {
       try {
         const newDetail = await getNewDetailDataService(idNew);
         setNews(newDetail);
-        setTitle(news[0].title);
-        setIntroduction(news[0].introduction);
-        setText(news[0].text);
-        setCategoryEdit(news[0].idCategory);
-        setImageEdit(news[0].image);
+        setTitle(newDetail[0].title);
+        setIntroduction(newDetail[0].introduction);
+        setText(newDetail[0].text);
+        setCategoryEdit(newDetail[0].idCategory);
+        setImageEdit(newDetail[0].image);
 
-        console.log(news);
+        console.log(newDetail[0].image);
 
         setEditNews(...newDetail);
       } catch (error) {
@@ -136,14 +136,15 @@ const NewsDetail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // !title ? news[0].title : title;
-
     const formDataNew = new FormData();
     formDataNew.append("title", title);
     formDataNew.append("introduction", introduction);
     formDataNew.append("text", text);
     formDataNew.append("category", categoryEdit);
-    formDataNew.append("image", imageEdit ?? news[0].image);
+    formDataNew.append(
+      "image",
+      imageEdit === "null" ? news[0].image : imageEdit
+    );
 
     try {
       await editNewService(token, idNew, formDataNew);
