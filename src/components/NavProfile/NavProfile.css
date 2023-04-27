@@ -27,6 +27,14 @@
   width: fit-content;
 }
 
+.button-logout:hover{
+  color:#b107ea;
+}
+
+#fa__logout{
+
+}
+
 */ .link-profile {
   text-decoration: none;
 }

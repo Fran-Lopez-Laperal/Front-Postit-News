@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"; 
+import React, { useContext, useEffect, useState } from "react";
 import "./NewsDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteNewsService, getNewDetailDataService, getVoteNews } from "../service";
@@ -21,14 +21,15 @@ const NewsDetail = () => {
   const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
   const [editNews, setEditNews] = useState()
+  const [showModal, setShowModal] = useState(false)
 
   let idTokenDecoded = decodeToken(token)
   const handleExpandedButton = () => {
     setExpanded(!expanded);
   };
 
-  const handleCloseExpandedButton = () => {
-    setExpanded(!expanded);
+  const closeModal = () => {
+    setShowModal(!showModal);
   };
 
   const renderDate = (string) => {
@@ -62,15 +63,15 @@ const NewsDetail = () => {
 
     fetchNew()
 
-    
-    ;
+
+      ;
   }, [idNew]);
 
   useEffect(() => {
     const fetchGetAllCategories = async () => {
       try {
         const allCategories = await getCategoriesService();
-      
+
         setCategories(allCategories);
       } catch (error) {
         console.log(error);
@@ -81,7 +82,7 @@ const NewsDetail = () => {
   }, []);
 
 
- 
+
 
   const handleVoteLike = async (vote) => {
     try {
@@ -93,7 +94,7 @@ const NewsDetail = () => {
     }
   };
 
-  
+
   const handleVoteDisLike = async (vote) => {
     try {
       await getVoteNews(token, idNew, vote);
@@ -107,35 +108,37 @@ const NewsDetail = () => {
   const handleEdit = (event) => {
     console.log(event.target.value)
     event.preventDefault()
-    setEditNews({...editNews, 
-        [event.target.name] : event.target.value})
-    
+    setEditNews({
+      ...editNews,
+      [event.target.name]: event.target.value
+    })
+
   };
 
-  const handleDelete = async(id) => {
-    
+  const handleDelete = async (id) => {
 
-    let accept = confirm("Vas a borrar la foto con id "+id )
 
-    if (accept){
+    let accept = confirm("Vas a borrar la foto con id " + id)
+
+    if (accept) {
       const res = await deleteNewsService(token, id)
-  
+
       if (res.status != "ok") return alert("Hubo un error al eliminar la noticia")
-      
+
       alert("Noticia eliminada")
       navigate("/")
-    }else {
+    } else {
       alert("no has borrado nada")
     }
 
 
   };
 
-  const editFunction = ()=>{
-      setEdit(!edit)
+  const editFunction = () => {
+    setEdit(!edit)
   }
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const formDataNew = new FormData(e.target);
     formDataNew.append("title", news.title);
@@ -156,9 +159,9 @@ const NewsDetail = () => {
   if (!news) {
     return null;
   }
-  
 
-  
+
+
 
   return (
     <section className="newsDetail">
@@ -223,12 +226,12 @@ const NewsDetail = () => {
                     <div className="close-icon">
                       <div className=" fa fa-times" aria-hidden="true"></div>
                     </div>
-                    {idUser == idTokenDecoded?.id ?<button onClick={editFunction} className="expansion-item">
+                    {idUser == idTokenDecoded?.id ? <button onClick={editFunction} className="expansion-item">
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-edit"></div>
                       </div>
-                    </button>: null}
-                    {idUser == idTokenDecoded?.id ?<button
+                    </button> : null}
+                    {idUser == idTokenDecoded?.id ? <button
                       onClick={() => handleDelete(id)}
                       className="expansion-item"
                     >
@@ -285,94 +288,106 @@ const NewsDetail = () => {
                 </section>
               </article>
             </section>
-            
+
           </article>
         )
       )}
       {edit ? (
-              <section className="newsDetails__article__section__edit">
-                <section className="createNew">
-                  <div className="form-container-createNew">
-                    <h1 className="h1-title">Edita tu noticia</h1>
-                    <form
-                      className="form-createNew"
-                      encType="multipart/form-data"
-                      onSubmit={handleSubmit}
-                    >
-                      <div className="title">
-                        <label htmlFor="title">Título:</label>
-                        <input
-                          type="text"
-                          id="title"
-                          value={editNews.title}
-                          minLength="5"
-                          maxLength="30"
-                          onChange={handleEdit}
-                          required
-                        />
-                      </div>
-                      <div className="introduction">
-                        <label htmlFor="introduction">Introducción:</label>
-                        <textarea
-                          id="introduction"
-                          minLength="5"
-                          maxLength="50"
-                          value={editNews.introduction}
-                          onChange={handleEdit}
-                          required
-                        />
-                      </div>
-                      <div className="text">
-                        <label htmlFor="text">Texto:</label>
-                        <textarea
-                          id="text"
-                          minLength="5"
-                          maxLength="2500"
-                          value={editNews.text}
-                          onChange={handleEdit}
-                          required
-                        />
-                      </div>
-                      <div className="category">
-                        <label htmlFor="category">Categoría:</label>
-                        <select
-                          id="category"
-                          value={category}
-                          onChange={() => setCategory(e.target.value)}
-                          required
-                        >
-                          {categories.map((category) => (
-                            <option key={category.id} value={category.id}>
-                              {category.name}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div className="photo">
-                        <label htmlFor="photo">Foto:</label>
-                        <input
-                          type="file"
-                          id="photo"
-                          onChange={() => setPhoto(e.target.file[0])}
-                        />
-                        {photo ? (
-                          <figure className="createNew-figure">
-                            <img
-                              id="selectedPhoto"
-                              src={URL.createObjectURL(photo)}
-                              alt="foto-seleccionada"
-                            />
-                          </figure>
-                        ) : null}
-                      </div>
-                      <div className="button-form-createNew">
-                        <button type="submit">Editar noticia</button>
-                      </div>
-                    </form>
-                  </div>
-                </section>
+        !showModal ? (
+          <section className="modal__edit">
+
+            <section className="newsDetails__article__section__edit">
+
+              <section className="createNew">
+                <div className="form-container-createNew">
+                  <button className="button__close__modal" onClick={closeModal}>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                  <h1 className="h1-title">Edita tu noticia</h1>
+                  <form
+                    className="form-createNew"
+                    encType="multipart/form-data"
+                    onSubmit={handleSubmit}
+                  >
+                    <div className="title">
+                      <label htmlFor="title">Título:</label>
+                      <input
+                        type="text"
+                        id="title"
+                        value={editNews.title}
+                        minLength="5"
+                        maxLength="30"
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div className="introduction">
+                      <label htmlFor="introduction">Introducción:</label>
+                      <textarea
+                        id="introduction"
+                        minLength="5"
+                        maxLength="50"
+                        value={editNews.introduction}
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div className="text">
+                      <label htmlFor="text">Texto:</label>
+                      <textarea
+                        id="text"
+                        minLength="5"
+                        maxLength="2500"
+                        value={editNews.text}
+                        onChange={handleEdit}
+                        required
+                      />
+                    </div>
+                    <div className="category">
+                      <label htmlFor="category">Categoría:</label>
+                      <select
+                        id="category"
+                        value={category}
+                        onChange={() => setCategory(e.target.value)}
+                        required
+                      >
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="photo">
+                      <label htmlFor="photo">Foto:</label>
+                      <input
+                        type="file"
+                        id="photo"
+                        onChange={() => setPhoto(e.target.file[0])}
+                      />
+                      {photo ? (
+                        <figure className="createNew-figure">
+                          <img
+                            id="selectedPhoto"
+                            src={URL.createObjectURL(photo)}
+                            alt="foto-seleccionada"
+                          />
+                        </figure>
+                      ) : null}
+                    </div>
+                    <div className="button-form-createNew">
+                      <button type="submit">Editar noticia</button>
+                    </div>
+                  </form>
+                </div>
               </section>
-            ) : null}
+            </section>
+          </section>
+
+        )
+          : null
+
+      ) : null}
     </section>
   );
 };
