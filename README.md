@@ -38,4 +38,4 @@ Para instalar este proyecto, se deben seguir los siguientes pasos:
 2. Instalar las dependencias (npm install)
 3. Iniciar la aplicación (npm run dev)
 
-Esperamos que os disfrutéis tanto nosotr@s desarrollándola :) 
+Esperamos que disfrutéis tanto nosotr@s desarrollándola :) 
