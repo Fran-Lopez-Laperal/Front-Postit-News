@@ -21,7 +21,7 @@ const NewsDetail = () => {
   const [expanded, setExpanded] = useState(false);
   const [category, setCategory] = useState();
   const [categories, setCategories] = useState([]);
-  const [photo, setPhoto] = useState(null);
+  // const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
   const [editNews, setEditNews] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +31,7 @@ const NewsDetail = () => {
   const [introduction, setIntroduction] = useState("");
   const [text, setText] = useState("");
   const [categoryEdit, setCategoryEdit] = useState("");
-  const [photoEdit, setPhotoEdit] = useState("");
+  const [imageEdit, setImageEdit] = useState();
 
   let idTokenDecoded = decodeToken(token);
   const handleExpandedButton = () => {
@@ -67,11 +67,11 @@ const NewsDetail = () => {
         setIntroduction(news[0].introduction);
         setText(news[0].text);
         setCategoryEdit(news[0].idCategory);
+        setImageEdit(news[0].image);
 
         console.log(news);
 
         setEditNews(...newDetail);
-        console.log(action);
       } catch (error) {
         setError(error);
       }
@@ -144,12 +144,16 @@ const NewsDetail = () => {
     formDataNew.append("introduction", introduction);
     formDataNew.append("text", text);
     formDataNew.append("category", categoryEdit);
-    formDataNew.append("photo", photoEdit);
+    formDataNew.append("image", imageEdit ?? news[0].image);
 
     try {
       await editNewService(token, idNew, formDataNew);
 
       console.log("actualizado");
+
+      setEdit(false);
+      const refreshNew = await getNewDetailDataService(idNew);
+      setNews(refreshNew);
     } catch (e) {
       console.log(e.message);
     }
@@ -330,7 +334,7 @@ const NewsDetail = () => {
                       maxLength="50"
                       value={introduction}
                       onChange={(e) => {
-                        setIntroducion(e.target.value);
+                        setIntroduction(e.target.value);
                       }}
                       required
                       name="introduction"
@@ -368,23 +372,24 @@ const NewsDetail = () => {
                       ))}
                     </select>
                   </div>
-                  <div className="photo">
-                    <label htmlFor="photo">Foto:</label>
+                  <div className="image">
+                    <label htmlFor="image">Foto:</label>
                     <input
                       type="file"
-                      id="photo"
-                      onChange={(e) => setPhotoEdit(e.target.files[0])}
-                      name="photo"
+                      id="image"
+                      onChange={(e) => setImageEdit(e.target.files[0])}
+                      name="image"
                     />
-                    {photo ? (
+                    s
+                    {/* {imageEdit ? (
                       <figure className="createNew-figure">
                         <img
                           id="selectedPhoto"
-                          src={URL.createObjectURL(photo)}
+                          src={URL.createObjectURL(imageEdit)}
                           alt="foto-seleccionada"
                         />
                       </figure>
-                    ) : null}
+                    ) : null} */}
                   </div>
                   <div className="button-form-createNew">
                     <button type="submit">Editar noticia</button>
