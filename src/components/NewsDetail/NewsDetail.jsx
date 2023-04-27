@@ -295,8 +295,8 @@ const NewsDetail = () => {
       {edit ? (
         <section className="modal__edit">
           <section className="newsDetails__article__section__edit">
-            <section className="createNew">
-              <div className="form-container-createNew">
+            <section className="editNew">
+              <div className="form-container-editNew">
                 <button className="button__close__modal" onClick={editFunction}>
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
@@ -307,8 +307,9 @@ const NewsDetail = () => {
                   onSubmit={handleSubmit}
                 >
                   <div className="title">
-                    <label htmlFor="title">Título:</label>
+                    <label id="labelEdit" htmlFor="title">Título:</label>
                     <input
+                    className="titleEdit"
                       type="text"
                       id="title"
                       value={title}
@@ -322,8 +323,9 @@ const NewsDetail = () => {
                     />
                   </div>
                   <div className="introduction">
-                    <label htmlFor="introduction">Introducción:</label>
+                    <label id="labelEdit" htmlFor="introduction">Introducción:</label>
                     <textarea
+                      className="texteAreaEdit"
                       id="introduction"
                       minLength="5"
                       maxLength="50"
@@ -336,8 +338,9 @@ const NewsDetail = () => {
                     />
                   </div>
                   <div className="text">
-                    <label htmlFor="text">Texto:</label>
+                    <label id="labelEdit" htmlFor="text">Texto:</label>
                     <textarea
+                      className="texteAreaEdit"
                       id="text"
                       minLength="5"
                       maxLength="2500"
@@ -350,8 +353,9 @@ const NewsDetail = () => {
                     />
                   </div>
                   <div className="category">
-                    <label htmlFor="category">Categoría:</label>
+                    <label id="labelEdit" htmlFor="category">Categoría:</label>
                     <select
+                    className="categotyEdit"
                       id="category"
                       onChange={(e) => {
                         setCategoryEdit(e.target.value);
@@ -368,14 +372,15 @@ const NewsDetail = () => {
                     </select>
                   </div>
                   <div className="image">
-                    <label htmlFor="image">Foto:</label>
+                    <label id="labelEdit" htmlFor="image">Foto:</label>
                     <input
+                    className="fileEdit"
                       type="file"
                       id="image"
                       onChange={(e) => setImageEdit(e.target.files[0])}
                       name="image"
                     />
-                    s
+                    
                     {/* {imageEdit ? (
                       <figure className="createNew-figure">
                         <img
@@ -386,8 +391,8 @@ const NewsDetail = () => {
                       </figure>
                     ) : null} */}
                   </div>
-                  <div className="button-form-createNew">
-                    <button type="submit">Editar noticia</button>
+                  <div  className="button-form-createNew">
+                    <button id="button-form-EditNew" type="submit">Editar noticia</button>
                   </div>
                 </form>
               </div>
