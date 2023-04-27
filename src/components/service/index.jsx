@@ -1,5 +1,4 @@
 export const registerUserService = async ({ formData }) => {
-  console.log(formData);
   const response = await fetch(`http://localhost:4000/users/register`, {
     method: "POST",
     body: formData,
@@ -102,7 +101,7 @@ export const getNewDetailDataService = async (idNew) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  
+
   return json.data.ownNew;
 };
 
@@ -142,7 +141,6 @@ export const getCategoriesService = async () => {
     throw new Error(json.message);
   }
 
-  console.log("index", json.categories);
   return json.categories;
 };
 
@@ -192,7 +190,7 @@ export const filterNewsByCategoryService = async (idCategory) => {
   return json.newsWithFilter;
 };
 
-export const deleteNewsService = async (token, id ) => {
+export const deleteNewsService = async (token, id) => {
   const response = await fetch(`http://localhost:4000/news/${id}`, {
     method: "DELETE",
     headers: {
@@ -201,7 +199,25 @@ export const deleteNewsService = async (token, id ) => {
   });
 
   const json = await response.json();
-  return json
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  return json; ///???
+};
+
+export const editNewService = async (token, idNew, formDataNew) => {
+  const response = await fetch(`http://localhost:4000/news/${idNew}`, {
+    method: "PUT",
+    headers: {
+      Authorization: token,
+    },
+    body: formDataNew,
+  });
+
+  console.log(formDataNew, idNew, token);
+
+  const json = await response.json();
+
   if (!response.ok) {
     throw new Error(json.message);
   }

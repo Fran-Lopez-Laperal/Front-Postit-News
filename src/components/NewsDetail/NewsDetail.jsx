@@ -1,30 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./NewsDetail.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteNewsService, getNewDetailDataService, getVoteNews } from "../service";
+import {
+  deleteNewsService,
+  editNewService,
+  getNewDetailDataService,
+  getVoteNews,
+} from "../service";
 import { AuthContext } from "../../context/AuthContext";
 import imgForNew from "../../assets/imgForNew.png";
 import { getCategoriesService } from "../service";
-import { decodeToken, useJwt } from "react-jwt"
-
-
+import { decodeToken, useJwt } from "react-jwt";
 
 const NewsDetail = () => {
   const { token, setFilter } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(false);
   const [news, setNews] = useState(null);
   const [error, setError] = useState(null);
   const [expanded, setExpanded] = useState(false);
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState();
   const [categories, setCategories] = useState([]);
   const [photo, setPhoto] = useState(null);
   const { idNew } = useParams();
-  const [editNews, setEditNews] = useState()
-  const [showModal, setShowModal] = useState(false)
-  
+  const [editNews, setEditNews] = useState();
+  const [showModal, setShowModal] = useState(false);
 
-  let idTokenDecoded = decodeToken(token)
+  /////
+  const [title, setTitle] = useState("");
+  const [introduction, setIntroduction] = useState("");
+  const [text, setText] = useState("");
+  const [categoryEdit, setCategoryEdit] = useState("");
+  const [photoEdit, setPhotoEdit] = useState("");
+
+  let idTokenDecoded = decodeToken(token);
   const handleExpandedButton = () => {
     setExpanded(!expanded);
   };
@@ -54,18 +63,21 @@ const NewsDetail = () => {
       try {
         const newDetail = await getNewDetailDataService(idNew);
         setNews(newDetail);
-        setEditNews(...newDetail)
+        setTitle(news[0].title);
+        setIntroduction(news[0].introduction);
+        setText(news[0].text);
+        setCategoryEdit(news[0].idCategory);
+
+        console.log(news);
+
+        setEditNews(...newDetail);
         console.log(action);
       } catch (error) {
         setError(error);
       }
-
     };
 
-    fetchNew()
-
-
-      ;
+    fetchNew();
   }, [idNew]);
 
   useEffect(() => {
@@ -82,9 +94,6 @@ const NewsDetail = () => {
     fetchGetAllCategories();
   }, []);
 
-
-
-
   const handleVoteLike = async (vote) => {
     try {
       await getVoteNews(token, idNew, vote);
@@ -94,7 +103,6 @@ const NewsDetail = () => {
       setError(error);
     }
   };
-
 
   const handleVoteDisLike = async (vote) => {
     try {
@@ -106,71 +114,52 @@ const NewsDetail = () => {
     }
   };
 
-  const handleEdit = (event) => {
-    
-    event.preventDefault()
-    setEditNews({...editNews,
-      [event.target.name]: event.target.value
-    })
-
-    console.log(editNews)
-  };
-
   const handleDelete = async (id) => {
-
-
-    let accept = confirm("Vas a borrar la foto con id " + id)
+    let accept = confirm("Vas a borrar la foto con id " + id);
 
     if (accept) {
-      const res = await deleteNewsService(token, id)
+      const res = await deleteNewsService(token, id);
 
-      if (res.status != "ok") return alert("Hubo un error al eliminar la noticia")
+      if (res.status != "ok")
+        return alert("Hubo un error al eliminar la noticia");
 
-      alert("Noticia eliminada")
-      navigate("/")
+      alert("Noticia eliminada");
+      navigate("/");
     } else {
-      alert("no has borrado nada")
+      alert("no has borrado nada");
     }
-
-
   };
 
   const editFunction = () => {
-    setEdit(!edit)
-    
-  }
+    setEdit(!edit);
+  };
 
   const handleSubmit = async (e) => {
-    console.log(e.target)
-    e.preventDefault()
-    const formDataNew = new FormData(e.target);
-    formDataNew.append("title", editNews.title);
-    formDataNew.append("introduction", editNews.introduction);
-    formDataNew.append("text", editNews.text);
-    formDataNew.append("category", category);
-    formDataNew.append("photo", photo);
-    
-    console.log(editNews.title)
+    e.preventDefault();
 
-    const response = await fetch(`http://localhost:4000/news/${news[0].id}`, {
-      method: "PUT",
-      headers: {
-        Authorization: token,
-      },
-      body: formDataNew
-    });
+    // !title ? news[0].title : title;
 
-    console.log(response)
+    const formDataNew = new FormData();
+    formDataNew.append("title", title);
+    formDataNew.append("introduction", introduction);
+    formDataNew.append("text", text);
+    formDataNew.append("category", categoryEdit);
+    formDataNew.append("photo", photoEdit);
 
-    alert("Noticia actualizada correctamente")
+    try {
+      await editNewService(token, idNew, formDataNew);
 
-  }
+      console.log("actualizado");
+    } catch (e) {
+      console.log(e.message);
+    }
+
+    // alert("Noticia actualizada correctamente")
+  };
+
   if (!news) {
     return null;
   }
-
-
-
 
   return (
     <section className="newsDetail">
@@ -235,19 +224,23 @@ const NewsDetail = () => {
                     <div className="close-icon">
                       <div className=" fa fa-times" aria-hidden="true"></div>
                     </div>
-                    {idUser == idTokenDecoded?.id ? <button onClick={editFunction} className="expansion-item">
-                      <div className="expansion-content">
-                        <div id="fa-detail" className="fa fa-edit"></div>
-                      </div>
-                    </button> : null}
-                    {idUser == idTokenDecoded?.id ? <button
-                      onClick={() => handleDelete(id)}
-                      className="expansion-item"
-                    >
-                      <div className="expansion-content">
-                        <div id="fa-detail" className="fa fa-trash"></div>
-                      </div>
-                    </button> : null}
+                    {idUser == idTokenDecoded?.id ? (
+                      <button onClick={editFunction} className="expansion-item">
+                        <div className="expansion-content">
+                          <div id="fa-detail" className="fa fa-edit"></div>
+                        </div>
+                      </button>
+                    ) : null}
+                    {idUser == idTokenDecoded?.id ? (
+                      <button
+                        onClick={() => handleDelete(id)}
+                        className="expansion-item"
+                      >
+                        <div className="expansion-content">
+                          <div id="fa-detail" className="fa fa-trash"></div>
+                        </div>
+                      </button>
+                    ) : null}
                     <button className="expansion-item">
                       <div className="expansion-content">
                         <div id="fa-detail" className="fa fa-share"></div>
@@ -297,106 +290,110 @@ const NewsDetail = () => {
                 </section>
               </article>
             </section>
-
           </article>
         )
       )}
       {edit ? (
-         
-          <section className="modal__edit">
-
-            <section className="newsDetails__article__section__edit">
-
-              <section className="createNew">
-                <div className="form-container-createNew">
-                  <button className="button__close__modal" onClick={editFunction}>
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                  </button>
-                  <h1 className="h1-title">Edita tu noticia</h1>
-                  <form
-                    className="form-createNew"
-                    encType="multipart/form-data"
-                    onSubmit={handleSubmit}
-                  >
-                    <div className="title">
-                      <label htmlFor="title">Título:</label>
-                      <input
-                        type="text"
-                        id="title"
-                        value={editNews.title}
-                        minLength="5"
-                        maxLength="30"
-                        onChange={handleEdit}
-                        required
-                        name="title"
-                      />
-                    </div>
-                    <div className="introduction">
-                      <label htmlFor="introduction">Introducción:</label>
-                      <textarea
-                        id="introduction"
-                        minLength="5"
-                        maxLength="50"
-                        value={editNews.introduction}
-                        onChange={handleEdit}
-                        required
-                        name="introduction"
-                      />
-                    </div>
-                    <div className="text">
-                      <label htmlFor="text">Texto:</label>
-                      <textarea
-                        id="text"
-                        minLength="5"
-                        maxLength="2500"
-                        value={editNews.text}
-                        onChange={handleEdit}
-                        required
-                        name="text"
-                      />
-                    </div>
-                    <div className="category">
-                      <label htmlFor="category">Categoría:</label>
-                      <select
-                        id="category"
-                        onChange={(e) => setCategory(e.target.value)}
-                        required
-                        name="category"
-                      >
-                        {categories.map((category) => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="photo">
-                      <label htmlFor="photo">Foto:</label>
-                      <input
-                        type="file"
-                        id="photo"
-                        onChange={(e) => setPhoto(e.target.files[0])}
-                        name="photo"
-                      />
-                      {photo ? (
-                        <figure className="createNew-figure">
-                          <img
-                            id="selectedPhoto"
-                            src={URL.createObjectURL(photo)}
-                            alt="foto-seleccionada"
-                          />
-                        </figure>
-                      ) : null}
-                    </div>
-                    <div className="button-form-createNew">
-                      <button type="submit">Editar noticia</button>
-                    </div>
-                  </form>
-                </div>
-              </section>
+        <section className="modal__edit">
+          <section className="newsDetails__article__section__edit">
+            <section className="createNew">
+              <div className="form-container-createNew">
+                <button className="button__close__modal" onClick={editFunction}>
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h1 className="h1-title">Edita tu noticia</h1>
+                <form
+                  className="form-createNew"
+                  encType="multipart/form-data"
+                  onSubmit={handleSubmit}
+                >
+                  <div className="title">
+                    <label htmlFor="title">Título:</label>
+                    <input
+                      type="text"
+                      id="title"
+                      value={title}
+                      minLength="5"
+                      maxLength="30"
+                      onChange={(e) => {
+                        setTitle(e.target.value);
+                      }}
+                      required
+                      name="title"
+                    />
+                  </div>
+                  <div className="introduction">
+                    <label htmlFor="introduction">Introducción:</label>
+                    <textarea
+                      id="introduction"
+                      minLength="5"
+                      maxLength="50"
+                      value={introduction}
+                      onChange={(e) => {
+                        setIntroducion(e.target.value);
+                      }}
+                      required
+                      name="introduction"
+                    />
+                  </div>
+                  <div className="text">
+                    <label htmlFor="text">Texto:</label>
+                    <textarea
+                      id="text"
+                      minLength="5"
+                      maxLength="2500"
+                      value={text}
+                      onChange={(e) => {
+                        setText(e.target.value);
+                      }}
+                      required
+                      name="text"
+                    />
+                  </div>
+                  <div className="category">
+                    <label htmlFor="category">Categoría:</label>
+                    <select
+                      id="category"
+                      onChange={(e) => {
+                        setCategoryEdit(e.target.value);
+                      }}
+                      required
+                      value={categoryEdit}
+                      name="category"
+                    >
+                      {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="photo">
+                    <label htmlFor="photo">Foto:</label>
+                    <input
+                      type="file"
+                      id="photo"
+                      onChange={(e) => setPhotoEdit(e.target.files[0])}
+                      name="photo"
+                    />
+                    {photo ? (
+                      <figure className="createNew-figure">
+                        <img
+                          id="selectedPhoto"
+                          src={URL.createObjectURL(photo)}
+                          alt="foto-seleccionada"
+                        />
+                      </figure>
+                    ) : null}
+                  </div>
+                  <div className="button-form-createNew">
+                    <button type="submit">Editar noticia</button>
+                  </div>
+                </form>
+              </div>
             </section>
           </section>
-
+        </section>
       ) : null}
     </section>
   );
