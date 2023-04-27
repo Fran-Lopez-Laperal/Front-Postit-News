@@ -32,7 +32,7 @@ export const AuthProviderComponent = ({ children }) => {
 
   const login = (token) => {
     setToken(token);
-    //setIsLogged(true);
+
   };
 
   const newsFilterFunction = (filterString) => {

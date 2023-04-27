@@ -15,7 +15,6 @@ export const FilterNews = ({ idCategory, categoryName }) => {
         const filteredNews = await filterNewsByCategoryService(idCategory);
         setNewsWithFilter(filteredNews);
       } catch (error) {
-        console.log(error.message);
         setError(error.message);
       }
     };

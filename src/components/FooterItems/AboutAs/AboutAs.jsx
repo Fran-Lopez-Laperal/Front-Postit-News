@@ -1,9 +1,9 @@
-import React from 'react'
-import './AboutAs.css'
-import fran from '../../../assets/images-footer/fran.png'
-import guadi from '../../../assets/images-footer/guadi.jpg'
-import jose from '../../../assets/images-footer/jose.jpg'
-import ines from '../../../assets/images-footer/ines.jpg'
+import React from "react"
+import "./AboutAs.css"
+import fran from "../../../assets/images-footer/fran.png"
+import guadi from "../../../assets/images-footer/guadi.jpg"
+import jose from "../../../assets/images-footer/jose.jpg"
+import ines from "../../../assets/images-footer/ines.jpg"
 
 
 const AboutAs = () => {

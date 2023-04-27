@@ -19,8 +19,6 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
 
   const handleLogout = () => {
     logout();
-    //No navega al inicio
-    // navigate("/");
   };
 
   return (
@@ -50,7 +48,7 @@ export const NavProfile = ({ setShowNavMovile, hadleCloseClick }) => {
           </Link>
        
             <button className="button-logout" onClick={handleLogout}>
-            <i id="fa__logout" class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+            <i id="fa__logout" className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
             </button>
          
         </section>

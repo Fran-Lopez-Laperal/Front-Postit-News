@@ -1,6 +1,6 @@
-import './FloatingButton.css'
+import "./FloatingButton.css"
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from 'react';
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const FloatingButton = () => {
